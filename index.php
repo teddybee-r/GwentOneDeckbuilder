@@ -11,15 +11,19 @@ $sql = "
         card.data.attributes->>'armor' as armor,
         card.data.attributes->>'type' as type
         
-        FROM card.data
-        INNER JOIN card.locale_en ON card.locale_en.i = card.data.i
+        FROM        card.data
+        INNER JOIN  card.locale_en ON card.data.i= card.locale_en.i
+
         WHERE (
         	VERSION = '8.0.0'
         AND card.data.attributes->>'faction' IN ('Neutral', 'Scoiatael')
-        AND card.data.attributes->>'set' != 'NonOwnable'
-        AND card.data.attributes->>'type' != 'Ability'
-              )
-        ORDER BY card.data.attributes->'provision' DESC";
+        AND card.data.attributes->>'set'     != 'NonOwnable'
+        AND card.data.attributes->>'type'    != 'Ability'
+        )
+        ORDER BY 
+        card.data.attributes->'provision' DESC,
+        card.locale_en.name
+        ";
 
               
 $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
@@ -47,8 +51,8 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
 
         <div id="DeckBuilder">
 <?php foreach($result as $key => $card): ?>
-            <div class="DeckBuilderCard" id="<?= $card->id; ?>" onclick="Deck.addCard(<?= $card->art; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-type="<?= $card->type; ?>">
-                <img src="https://gwent.one/img/assets/low/art/<?= $card->art; ?>.png">
+            <div class="DeckBuilderCard" id="<?= $card->art; ?>" onclick="Deck.addCard(<?= $card->art; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-type="<?= $card->type; ?>">
+                <img loading="lazy" src="https://gwent.one/img/assets/low/art/<?= $card->art; ?>.png">
             </div>
 <?php endforeach; ?>
         </div>

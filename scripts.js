@@ -2,6 +2,21 @@
  * Gwent Deckbuilder Libary
  * 2021-01-02    teddybee_r 
  */
+
+class Card {
+  constructor(card) {
+    var card = document.getElementById(card);
+    console.log(card);
+    this.provision = card.querySelector('data-provision');
+    console.log(this.provision);
+    this.power = card.querySelector('data-power');
+    this.armor = card.querySelector('data-armor');
+    this.name = card.querySelector('data-name');
+    this.art = card.querySelector('data-art');
+    this.id = card.querySelector('data-id');
+    this.type = card.querySelector('data-type');
+  }
+}
 class Deckbuilder
 {
   /*
@@ -10,22 +25,15 @@ class Deckbuilder
     constructor() {
       this.deck = [];
     }
-    Card(id) {
-      search = document.getElementById(id);
-      this.provision = search.querySelectorAll('data-provision');
-      this.power = search.querySelectorAll('data-power');
-      this.armor = search.querySelectorAll('data-armor');
-      this.name = search.querySelectorAll('data-name');
-      this.id = search.querySelectorAll('data-id');
-      this.art = search.querySelectorAll('data-art');
-    }
     /*
      * Add card to deck
      * push to view
      */
     addCard(id) {
       console.log("Deckbuilder.addCard("+ id + ")");
-      this.deck.push(id);
+      var card = new Card(id);
+      this.deck.push(card);
+      console.log(this.deck);
       this.printDeck();
     }
     delCard(id) {
