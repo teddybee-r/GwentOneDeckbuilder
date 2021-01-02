@@ -1,0 +1,14 @@
+#app {
+    margin: 0 auto;
+    display:grid;
+    grid-template-columns: 550px auto;
+
+}
+#Deck {
+    width: 550px;
+}
+#DeckBuilder {
+    width: 100%;
+    display:flex;
+    flex-wrap:wrap;
+}
