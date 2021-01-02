@@ -6,15 +6,17 @@
 class Card {
   constructor(card) {
     var card = document.getElementById(card);
-    console.log(card);
-    this.provision = card.querySelector('data-provision');
-    console.log(this.provision);
-    this.power = card.querySelector('data-power');
-    this.armor = card.querySelector('data-armor');
-    this.name = card.querySelector('data-name');
-    this.art = card.querySelector('data-art');
-    this.id = card.querySelector('data-id');
-    this.type = card.querySelector('data-type');
+
+    this.provision = card.dataset.provision;
+    this.power = card.dataset.power;
+    this.armor = card.dataset.armor;
+    this.name = card.dataset.name;
+    this.art = card.dataset.art;
+    this.id = card.dataset.id;
+    this.type = card.dataset.type;
+
+    console.log("new Card()");
+    console.log("ID: " + this.id + ", Name: " + this.name + ", Provision: " + this.provision + ", Power: " + this.power  + ", Armor: " + this.armor  + ", Art: " + this.art  + ", Type: " + this.type )
   }
 }
 class Deckbuilder
@@ -24,6 +26,14 @@ class Deckbuilder
    */
     constructor() {
       this.deck = [];
+      this.deckAttr = [];
+    }
+
+    
+    removeArray(array, value) { 
+      return array.filter(function(element){ 
+          return element != value; 
+      });
     }
     /*
      * Add card to deck
@@ -32,26 +42,27 @@ class Deckbuilder
     addCard(id) {
       console.log("Deckbuilder.addCard("+ id + ")");
       var card = new Card(id);
-      this.deck.push(card);
+      this.deck.push(id);
+      this.deckAttr.push({"cardid": id, "card": card});
       console.log(this.deck);
+      console.log(this.deckAttr);
       this.printDeck();
     }
+
     delCard(id) {
       console.log("Deckbuilder.delCard("+ id + ")");
       const array = this.deck;
       
       console.log(array);
-
-      const index = array.indexOf(id);
-      if (index > -1) {
-       array.splice(index, 1);
-      }
-      this.deck = array;
+      this.deckAttr = this.deckAttr.filter(card => card.cardid != id);
+      this.deck = this.removeArray(this.deck, id);
       this.printDeck();
     }
+
     printDeck() {
       console.log("Deckbuilder.printDeck()");
 
+      /* reset the deck */
       cleanUp();
       this.deck.forEach(printJob);
 
@@ -62,5 +73,5 @@ class Deckbuilder
       function printJob(item) {
         document.getElementById("DeckCards").innerHTML += "<img onclick=\"Deck.delCard("+item+")\" src=\"https://gwent.one/img/assets/deck/cards/" + item + ".png\"><br>";
       }
-    }
+    }  
 }
