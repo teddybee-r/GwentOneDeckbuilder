@@ -14,13 +14,20 @@ $sql = "
         FROM        card.data
         INNER JOIN  card.locale_en ON card.data.i= card.locale_en.i
 
-        WHERE (
-        	VERSION = '8.0.0'
-        AND card.data.attributes->>'faction' IN ('Neutral', 'Scoiatael')
+        WHERE 
+        (VERSION = '8.0.0'
+        AND 
+        (card.data.attributes->>'faction' IN ('Neutral', 'Skellige')
+        OR  card.data.attributes->>'factionSecondary' IN ('Neutral', 'Skellige'))
         AND card.data.attributes->>'set'     != 'NonOwnable'
-        AND card.data.attributes->>'type'    != 'Ability'
         )
+        OR (VERSION = '8.0.0' AND card.data.id->>'card' = '202140')
         ORDER BY 
+        (CASE
+            WHEN card.data.attributes->>'type' = 'Ability' THEN 1
+            WHEN card.data.attributes->>'type' = 'Stratagem' THEN 2
+        END),
+        card.data.attributes->'provision' DESC,
         card.data.attributes->'provision' DESC,
         card.locale_en.name
         ";
@@ -42,6 +49,7 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
 <body>
     <div id="app">
         <div id="Deck">
+            <div id="DeckProvision"></div>
             <div id="DeckLeader"></div>
             <div id="DeckStratagem"></div>
             <div id="DeckCards"></div>
@@ -51,11 +59,24 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
 
         <div id="DeckBuilder">
 <?php foreach($result as $key => $card): ?>
-            <div class="DeckBuilderCard" id="<?= $card->art; ?>" onclick="Deck.addCard(<?= $card->art; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-type="<?= $card->type; ?>">
+    <?php switch($card->type): 
+        case("Ability"): ?>
+            <div class="DeckBuilderLeader" id="<?= $card->id; ?>" onclick="Deck.setLeader(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-type="<?= $card->type; ?>">
+                <img loading="lazy" style="height:150px;" src="https://gwent.one/img/icon/ability/<?= $card->id; ?>.png">
+            </div>
+        <?php break; ?>
+        <?php case("Stratagem"): ?>
+            <div class="DeckBuilderStratagem" id="<?= $card->id; ?>" onclick="Deck.setStratagem(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-type="<?= $card->type; ?>">
                 <img loading="lazy" src="https://gwent.one/img/assets/low/art/<?= $card->art; ?>.png">
             </div>
+        <?php break; ?>
+        <?php default: ?>
+            <div class="DeckBuilderCard" id="<?= $card->id; ?>" onclick="Deck.addCard(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-type="<?= $card->type; ?>">
+                <img loading="lazy" src="https://gwent.one/img/assets/low/art/<?= $card->art; ?>.png">
+            </div>
+        <?php break; ?>
+    <?php endswitch; ?>
 <?php endforeach; ?>
-        </div>
     </div>
 
 </body>

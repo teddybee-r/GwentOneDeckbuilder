@@ -25,8 +25,12 @@ class Deckbuilder
    * Constructor
    */
     constructor() {
+      this.leader = [];
+      this.stratagem = [];
       this.deck = [];
-      this.deckAttr = [];
+
+      this.provisionLimit = 150;
+      this.provisionTotal = 0;
     }
 
     
@@ -35,6 +39,21 @@ class Deckbuilder
           return element != value; 
       });
     }
+    setLeader(id) {
+      console.log("Deckbuilder.setLeader("+ id + ")");
+      var card = new Card(id);
+      this.leader.push(card);
+      this.provisionLimit = 150 + Number(card.provision);
+      this.printDeck();
+    }
+
+    setStratagem(id) {
+      console.log("Deckbuilder.setStratagem("+ id + ")");
+      var card = new Card(id);
+      this.stratagem.push(card);
+      this.printDeck();
+    }
+
     /*
      * Add card to deck
      * push to view
@@ -42,36 +61,85 @@ class Deckbuilder
     addCard(id) {
       console.log("Deckbuilder.addCard("+ id + ")");
       var card = new Card(id);
-      this.deck.push(id);
-      this.deckAttr.push({"cardid": id, "card": card});
-      console.log(this.deck);
-      console.log(this.deckAttr);
+      this.deck.push(card);
       this.printDeck();
     }
 
     delCard(id) {
       console.log("Deckbuilder.delCard("+ id + ")");
-      const array = this.deck;
-      
-      console.log(array);
-      this.deckAttr = this.deckAttr.filter(card => card.cardid != id);
-      this.deck = this.removeArray(this.deck, id);
+      this.deck = this.deck.filter(card => card.id != id);
       this.printDeck();
     }
 
+    setProvision() {
+      var deck = this.deck;
+      console.log(deck);
+      var limit = this.provisionLimit;
+
+      var total = deck.reduce((total, obj) => Number(obj.provision) + total,0)
+      document.getElementById("DeckProvision").innerHTML = total + "/" + limit;
+      
+    }
     printDeck() {
       console.log("Deckbuilder.printDeck()");
 
       /* reset the deck */
       cleanUp();
-      this.deck.forEach(printJob);
+      /* sort the deck */
+      this.deck.sort(dynamicSortMultiple("-provision", "name"));
+
+      /* loop the deck object and write to document */
+      this.deck.forEach(printCard);
+      this.leader.forEach(printLeader);
+      this.stratagem.forEach(printStratagem);
+
+      /* Set the Provisions */
+      this.setProvision();
 
       function cleanUp() {
         document.getElementById("DeckCards").innerHTML = "";
       }
+      function printLeader(card) {
+        document.getElementById("DeckLeader").innerHTML = "";
+        document.getElementById("DeckLeader").innerHTML += "<img style=\"height:125px;\" src=\"https://gwent.one/img/icon/ability/" + card.id + ".png\"><br>";
+      }
+      function printStratagem(card) {
+        document.getElementById("DeckStratagem").innerHTML = "";
+        document.getElementById("DeckStratagem").innerHTML += "<img src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
+      }
+      function printCard(card) {
+        document.getElementById("DeckCards").innerHTML += "<img onclick=\"Deck.delCard("+card.id+")\" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
 
-      function printJob(item) {
-        document.getElementById("DeckCards").innerHTML += "<img onclick=\"Deck.delCard("+item+")\" src=\"https://gwent.one/img/assets/deck/cards/" + item + ".png\"><br>";
       }
     }  
+}
+
+
+function dynamicSort(property) {
+  var sortOrder = 1;
+  /* Reverse sort oder if the first part is a - */
+  if(property[0] === "-") {
+      sortOrder = -1;
+      property = property.substr(1);
+  }
+  return function (a,b) {
+      /* Number check if not included it will sort numbers like: 9, 8, 7, 4, 22, 14, 11 */
+      if( !isNaN(a[property]) ) a[property] = Number(a[property]);
+      if( !isNaN(b[property]) ) b[property] = Number(b[property]);
+
+      var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+      return result * sortOrder;
+  }
+}
+
+function dynamicSortMultiple() {
+  var props = arguments;
+  return function (obj1, obj2) {
+      var i = 0, result = 0, numberOfProperties = props.length;
+      while(result === 0 && i < numberOfProperties) {
+          result = dynamicSort(props[i])(obj1, obj2);
+          i++;
+      }
+      return result;
+  }
 }
