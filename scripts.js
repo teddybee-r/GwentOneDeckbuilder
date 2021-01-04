@@ -1,7 +1,27 @@
 /*
  * Gwent Deckbuilder Libary
  * 2021-01-02    teddybee_r 
+ * 
+{
+  "version": "8.0.0" ,
+  "cards": {
+    "leader": {"id": 100000, "provision": 15},
+    "stratagem": "",
+    "deck": {
+      "id": 100000,
+      "amount": 1,
+      "data": {} 
+    } 
+  } 
+}
+
  */
+ class Deck {
+   constructor() {
+     this.deck = [];
+     this.deck = { "version": "8.0.0" , "provision": 150, "cards": { "leader": "", "stratagem": "", "deck": { "id": 100000, "amount": 1, "data": {} } } }
+   }
+ }
 
 class Card {
   constructor(card) {
@@ -105,10 +125,10 @@ class Deckbuilder
       }
       function printStratagem(card) {
         document.getElementById("DeckStratagem").innerHTML = "";
-        document.getElementById("DeckStratagem").innerHTML += "<img src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
+        document.getElementById("DeckStratagem").innerHTML += "<img class=\"DeckCard\" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
       }
       function printCard(card) {
-        document.getElementById("DeckCards").innerHTML += "<img onclick=\"Deck.delCard("+card.id+")\" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
+        document.getElementById("DeckCards").innerHTML += "<img class=\"DeckCard\" onclick=\"Deck.delCard("+card.id+")\" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
 
       }
     }  
