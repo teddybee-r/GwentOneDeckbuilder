@@ -16,11 +16,30 @@
 }
 
  */
- class Deck {
-   constructor() {
-     this.deck = [];
-     this.deck = { "version": "8.0.0" , "provision": 150, "cards": { "leader": "", "stratagem": "", "deck": { "id": 100000, "amount": 1, "data": {} } } }
-   }
+class Deck {
+  constructor() {
+    this.version = document.getElementById("Deck").dataset.version;
+    this.provisionTotal = 150;
+    this.leader = [];
+    this.stratagem = [];
+    this.cards = []
+  }
+  returnDeck() {
+    var deck = { 
+      "version": this.version,
+      "provisionTotal": this.provisionTotal,
+      "deck": {
+        "leader": this.leader,
+        "stratagem": this.stratagem,
+        "card": { 
+          "id": 100000,
+          "amount": 0,
+          "data": {}
+        }
+      }
+    }
+    return deck;
+  }
  }
 
 class Card {
@@ -47,30 +66,40 @@ class Deckbuilder
     constructor() {
       this.leader = [];
       this.stratagem = [];
-      this.deck = [];
+      this.deck = new Deck();
 
       this.provisionLimit = 150;
       this.provisionTotal = 0;
     }
 
-    
+
     removeArray(array, value) { 
       return array.filter(function(element){ 
           return element != value; 
       });
     }
+
+
     setLeader(id) {
       console.log("Deckbuilder.setLeader("+ id + ")");
+
       var card = new Card(id);
-      this.leader.push(card);
+
+      this.deck.leader = card;
+      this.deck.provisionTotal = 150 + Number(card.provision)
+
       this.provisionLimit = 150 + Number(card.provision);
+
       this.printDeck();
     }
 
     setStratagem(id) {
       console.log("Deckbuilder.setStratagem("+ id + ")");
+
       var card = new Card(id);
-      this.stratagem.push(card);
+
+      this.deck.stratagem = card;
+
       this.printDeck();
     }
 
@@ -81,7 +110,9 @@ class Deckbuilder
     addCard(id) {
       console.log("Deckbuilder.addCard("+ id + ")");
       var card = new Card(id);
-      this.deck.push(card);
+      var data = { "id": card.id, "amount": 1, "data": {card} };
+
+      this.deck.cards.push(data);
       this.printDeck();
     }
 
@@ -106,12 +137,12 @@ class Deckbuilder
       /* reset the deck */
       cleanUp();
       /* sort the deck */
-      this.deck.sort(dynamicSortMultiple("-provision", "name"));
+      //this.deck.cards.data.sort(dynamicSortMultiple("-provision", "name"));
 
       /* loop the deck object and write to document */
-      this.deck.forEach(printCard);
-      this.leader.forEach(printLeader);
-      this.stratagem.forEach(printStratagem);
+      this.deck.cards.data.forEach(printCard);
+      this.deck.leader.forEach(printLeader);
+      this.deck.stratagem.forEach(printStratagem);
 
       /* Set the Provisions */
       this.setProvision();
@@ -128,7 +159,7 @@ class Deckbuilder
         document.getElementById("DeckStratagem").innerHTML += "<img class=\"DeckCard\" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
       }
       function printCard(card) {
-        document.getElementById("DeckCards").innerHTML += "<img class=\"DeckCard\" onclick=\"Deck.delCard("+card.id+")\" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
+        document.getElementById("DeckCards").innerHTML += "<img class=\"DeckCard\" onclick=\"Decklist.delCard("+card.id+")\" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
 
       }
     }  
@@ -162,4 +193,66 @@ function dynamicSortMultiple() {
       }
       return result;
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+function lzw_encode(s) {
+  var dict = {};
+  var data = (s + "").split("");
+  var out = [];
+  var currChar;
+  var phrase = data[0];
+  var code = 256;
+  for (var i=1; i<data.length; i++) {
+      currChar=data[i];
+      if (dict[phrase + currChar] != null) {
+          phrase += currChar;
+      }
+      else {
+          out.push(phrase.length > 1 ? dict[phrase] : phrase.charCodeAt(0));
+          dict[phrase + currChar] = code;
+          code++;
+          phrase=currChar;
+      }
+  }
+  out.push(phrase.length > 1 ? dict[phrase] : phrase.charCodeAt(0));
+  for (var i=0; i<out.length; i++) {
+      out[i] = String.fromCharCode(out[i]);
+  }
+  return out.join("");
+}
+
+// Decompress an LZW-encoded string
+function lzw_decode(s) {
+  var dict = {};
+  var data = (s + "").split("");
+  var currChar = data[0];
+  var oldPhrase = currChar;
+  var out = [currChar];
+  var code = 256;
+  var phrase;
+  for (var i=1; i<data.length; i++) {
+      var currCode = data[i].charCodeAt(0);
+      if (currCode < 256) {
+          phrase = data[i];
+      }
+      else {
+         phrase = dict[currCode] ? dict[currCode] : (oldPhrase + currChar);
+      }
+      out.push(phrase);
+      currChar = phrase.charAt(0);
+      dict[code] = oldPhrase + currChar;
+      code++;
+      oldPhrase = phrase;
+  }
+  return out.join("");
 }

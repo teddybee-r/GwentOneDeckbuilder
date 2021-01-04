@@ -31,6 +31,7 @@ $sql = "
         card.data.attributes->'provision' DESC,
         card.locale_en.name
         ";
+$version = '8.0.0';
 
               
 $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
@@ -48,30 +49,30 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
 </head>
 <body>
     <div id="app">
-        <div id="Deck">
+        <div id="Deck" data-version="<?= $version; ?>">
             <div id="DeckProvision"></div>
             <div id="DeckLeader"></div>
             <div id="DeckStratagem"></div>
             <div id="DeckCards"></div>
         </div>
 
-        <script>var Deck = new Deckbuilder();</script>
+        <script>var Decklist = new Deckbuilder();</script>
 
         <div id="DeckBuilder">
 <?php foreach($result as $key => $card): ?>
     <?php switch($card->type): 
         case("Ability"): ?>
-            <div class="DeckBuilderLeader" id="<?= $card->id; ?>" onclick="Deck.setLeader(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-type="<?= $card->type; ?>">
-                <img loading="lazy" style="height:150px;" src="https://gwent.one/img/icon/ability/<?= $card->id; ?>.png">
+            <div class="DeckBuilderLeader" id="<?= $card->id; ?>" onclick="Decklist.setLeader(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-type="<?= $card->type; ?>">
+                <img loading="lazy" src="https://gwent.one/img/icon/ability/<?= $card->id; ?>.png">
             </div>
         <?php break; ?>
         <?php case("Stratagem"): ?>
-            <div class="DeckBuilderStratagem" id="<?= $card->id; ?>" onclick="Deck.setStratagem(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-type="<?= $card->type; ?>">
+            <div class="DeckBuilderStratagem" id="<?= $card->id; ?>" onclick="Decklist.setStratagem(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-type="<?= $card->type; ?>">
                 <img loading="lazy" src="https://gwent.one/img/assets/low/art/<?= $card->art; ?>.png">
             </div>
         <?php break; ?>
         <?php default: ?>
-            <div class="DeckBuilderCard" id="<?= $card->id; ?>" onclick="Deck.addCard(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-type="<?= $card->type; ?>">
+            <div class="DeckBuilderCard" id="<?= $card->id; ?>" onclick="Decklist.addCard(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-type="<?= $card->type; ?>">
                 <img loading="lazy" src="https://gwent.one/img/assets/low/art/<?= $card->art; ?>.png">
             </div>
         <?php break; ?>

@@ -16,3 +16,6 @@
 .DeckCard {
     width:350px;
 }
+.DeckBuilderLeader img, .DeckBuilderStratagem img, .DeckBuilderCard img {
+    width:110px;
+}
