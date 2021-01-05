@@ -127,10 +127,10 @@ class Decklist
       var limit = this.provisionLimit;
 
       var total = this.cards.reduce((total, obj) => Number(obj.provision*obj.amount) + total,0)
-      document.getElementById("DeckProvision").innerHTML = total + "/" + limit;
+      document.getElementById("DeckProvision").innerHTML = "Provision: " + total + "/" + limit;
       
       var deckSize = this.cards.reduce((total, obj) => Number(obj.amount) + total,0)
-      document.getElementById("DeckSize").innerHTML = deckSize + "/25";
+      document.getElementById("DeckSize").innerHTML = "Cards: " + deckSize + "/25";
       
     }
 
@@ -162,7 +162,7 @@ class Decklist
         document.getElementById("DeckStratagem").innerHTML += "<img class=\"DeckCard\" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
       }
       function printCard(card) {
-        document.getElementById("DeckCards").innerHTML += "<img class=\"DeckCard\" onclick=\"Deck.delCard("+card.id+")\" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
+        document.getElementById("DeckCards").innerHTML += "<div class=\"DeckCard\"><div class=\"amount\"></div><img class=\"art\" onclick=\"Deck.delCard("+card.id+")\" data-amount="+card.amount+" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"></div>";
 
       }
     }  

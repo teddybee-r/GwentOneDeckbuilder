@@ -19,9 +19,17 @@ body {
     display:flex;
     flex-wrap:wrap;
 }
-.DeckCard {
+.DeckCard ,.DeckCard img {
     width:350px;
 }
 .DeckBuilderLeader img, .DeckBuilderStratagem img, .DeckBuilderCard img {
     width:110px;
+}
+#DeckSize, #DeckProvision {
+    font-size:2em;
+    color:white;
+}
+
+.DeckCard[data-amount='2'] {
+    content: 'x2';
 }

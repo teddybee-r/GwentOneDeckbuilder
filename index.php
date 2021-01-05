@@ -1,6 +1,7 @@
 <?php 
 
 $pdo = new PDO("pgsql:host=localhost;dbname=gwent", 'postgres', 'meowmeow');
+$faction = $_GET["faction"] ?? 'Skellige';
 $sql = "
         SELECT
         card.data.id->>'card' as id,
@@ -18,8 +19,8 @@ $sql = "
         WHERE 
         (VERSION = '8.0.0'
         AND 
-        (card.data.attributes->>'faction' IN ('Neutral', 'Northern Realms')
-        OR  card.data.attributes->>'factionSecondary' IN ('Neutral', 'Northern Realms'))
+        (card.data.attributes->>'faction' IN ('Neutral', '$faction')
+        OR  card.data.attributes->>'factionSecondary' IN ('Neutral', '$faction'))
         AND card.data.attributes->>'set'     != 'NonOwnable'
         )
         OR (VERSION = '8.0.0' AND card.data.id->>'card' = '202140')
