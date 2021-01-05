@@ -28,23 +28,32 @@ class Card {
     this.armor = card.dataset.armor;
     this.name = card.dataset.name;
     this.art = card.dataset.art;
+    this.color = card.dataset.color;
     this.type = card.dataset.type;
 
-    console.log("new Card()");
-    console.log("ID: " + this.id + ", Name: " + this.name + ", Provision: " + this.provision + ", Power: " + this.power  + ", Armor: " + this.armor  + ", Art: " + this.art  + ", Type: " + this.type )
+    console.log("new Card() ID: " + this.id + ", Name: " + this.name + ", Provision: " + this.provision + ", Power: " + this.power  + ", Armor: " + this.armor  + ", Art: " + this.art  + ", Type: " + this.type )
   }
 }
 
+
 class Decklist
 {
+
   /*
    * Constructor
    */
     constructor() {
+      /* @var string */
       this.version = document.getElementById("Deck").dataset.version;
+      /* @var int */
       this.provisionTotal = 150;
+      /* @var int */
+      this.provision = 0;
+      /* @var obj */
       this.leader = [];
+      /* @var obj */
       this.stratagem = [];
+      /* @var obj */
       this.cards = [];
     }
 
@@ -56,7 +65,7 @@ class Decklist
 
 
     setLeader(id) {
-      console.log("Deckbuilder.setLeader("+ id + ")");
+      console.log("Decklist.setLeader("+ id + ")");
       var card = new Card(id);
 
       this.leader[0] = card;
@@ -66,66 +75,60 @@ class Decklist
     }
 
     setStratagem(id) {
-      console.log("Deckbuilder.setStratagem("+ id + ")");
+      console.log("Decklist.setStratagem("+ id + ")");
 
       var card = new Card(id);
 
       this.stratagem[0] = card;
-
+      
       this.printDeck();
     }
 
-    /*
-     * Add card to deck
-     * push to view
-     */
     addCard(id) {
-      console.log("Deckbuilder.addCard("+ id + ")");
+      console.log("Decklist.addCard("+ id + ")");
 
       var card = new Card(id);
-      var search = this.cards.find(card => card.id = id);
-      console.log(search);
-      var amount = search.amount
+      var cardSearch = this.cards.find(x => Number(x.id) === Number(id));
+      console.log(cardSearch);
 
-      if(search.id = id) {
-        if(amount=1){
-          amount = amount++
-        }
+      /*
+       * If cardSearch is not defined push it to the deck
+       */
+      if(cardSearch === undefined) {
+        this.cards.push(card);
       }
-      this.cards.push(card);
-
+      /*
+       * If it is we increase the amount by 1
+       * Only bronze are allowed to have two copies
+       */
+      else if(cardSearch.amount === 1 && cardSearch.color === 'Bronze') {
+        cardSearch.amount = 2;
+      }
       this.printDeck();
     }
 
     delCard(id) {
       console.log("Deckbuilder.delCard("+ id + ")");
+      var card = this.cards.find(x => Number(x.id) === Number(id));
 
-      var search = this.cards.find(card => card.id = id);
-
-      function searchRemove(id, search) {
-        console.log(search);
-        if( search === id ){
-          console.log("Match");
-          this.cards = this.cards.filter(card => card.id != id);
-        }
-        else {
-          console.log("No Match");
-          this.cards = this.cards.filter(card => card.amount = 1);
-        }
+      if(card.amount === 1) {
+        this.cards = this.cards.filter(card => Number(card.id) != Number(id));
       }
-      searchRemove(id, search);
+      else if(card.amount === 2) {
+        cardSearch.amount = 1;
+      }
+
       this.printDeck();
     }
 
     setProvision() {
-      var deck = this.cards;
-      console.log(deck);
       var limit = this.provisionLimit;
 
       var total = this.cards.reduce((total, obj) => Number(obj.provision) + total,0)
       document.getElementById("DeckProvision").innerHTML = total + "/" + limit;
       
     }
+
     printDeck() {
       console.log("Deckbuilder.printDeck()");
 
