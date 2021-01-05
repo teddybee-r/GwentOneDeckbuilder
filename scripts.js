@@ -21,13 +21,13 @@ class Card {
   constructor(card) {
     var card = document.getElementById(card);
 
-    this.id = card.dataset.id;
+    this.id = Number(card.dataset.id);
     this.amount = 1;
-    this.provision = card.dataset.provision;
-    this.power = card.dataset.power;
-    this.armor = card.dataset.armor;
+    this.provision = Number(card.dataset.provision);
+    this.power = Number(card.dataset.power);
+    this.armor = Number(card.dataset.armor);
     this.name = card.dataset.name;
-    this.art = card.dataset.art;
+    this.art = Number(card.dataset.art);
     this.color = card.dataset.color;
     this.type = card.dataset.type;
 
@@ -46,9 +46,11 @@ class Decklist
       /* @var string */
       this.version = document.getElementById("Deck").dataset.version;
       /* @var int */
-      this.provisionTotal = 150;
+      this.provisionTotal = 0;
       /* @var int */
-      this.provision = 0;
+      this.provisionLimit = 150;
+      /* @var int */
+      this.deckSize = 0;
       /* @var obj */
       this.leader = [];
       /* @var obj */
@@ -69,7 +71,7 @@ class Decklist
       var card = new Card(id);
 
       this.leader[0] = card;
-      this.provisionTotal = 150 + Number(card.provision)
+      this.provisionLimit = 150 + Number(card.provision)
 
       this.printDeck();
     }
@@ -88,7 +90,7 @@ class Decklist
       console.log("Decklist.addCard("+ id + ")");
 
       var card = new Card(id);
-      var cardSearch = this.cards.find(x => Number(x.id) === Number(id));
+      var cardSearch = this.cards.find(x => x.id === id);
       console.log(cardSearch);
 
       /*
@@ -109,13 +111,13 @@ class Decklist
 
     delCard(id) {
       console.log("Deckbuilder.delCard("+ id + ")");
-      var card = this.cards.find(x => Number(x.id) === Number(id));
+      var card = this.cards.find(x => x.id === id);
 
       if(card.amount === 1) {
-        this.cards = this.cards.filter(card => Number(card.id) != Number(id));
+        this.cards = this.cards.filter(card => card.id !== id);
       }
       else if(card.amount === 2) {
-        cardSearch.amount = 1;
+        card.amount = 1;
       }
 
       this.printDeck();
@@ -124,8 +126,11 @@ class Decklist
     setProvision() {
       var limit = this.provisionLimit;
 
-      var total = this.cards.reduce((total, obj) => Number(obj.provision) + total,0)
+      var total = this.cards.reduce((total, obj) => Number(obj.provision*obj.amount) + total,0)
       document.getElementById("DeckProvision").innerHTML = total + "/" + limit;
+      
+      var deckSize = this.cards.reduce((total, obj) => Number(obj.amount) + total,0)
+      document.getElementById("DeckSize").innerHTML = deckSize + "/25";
       
     }
 
