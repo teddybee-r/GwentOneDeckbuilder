@@ -16,62 +16,37 @@
 }
 
  */
-class Deck {
-  constructor() {
-    this.version = document.getElementById("Deck").dataset.version;
-    this.provisionTotal = 150;
-    this.leader = [];
-    this.stratagem = [];
-    this.cards = []
-  }
-  returnDeck() {
-    var deck = { 
-      "version": this.version,
-      "provisionTotal": this.provisionTotal,
-      "deck": {
-        "leader": this.leader,
-        "stratagem": this.stratagem,
-        "card": { 
-          "id": 100000,
-          "amount": 0,
-          "data": {}
-        }
-      }
-    }
-    return deck;
-  }
- }
 
 class Card {
   constructor(card) {
     var card = document.getElementById(card);
 
+    this.id = card.dataset.id;
+    this.amount = 1;
     this.provision = card.dataset.provision;
     this.power = card.dataset.power;
     this.armor = card.dataset.armor;
     this.name = card.dataset.name;
     this.art = card.dataset.art;
-    this.id = card.dataset.id;
     this.type = card.dataset.type;
 
     console.log("new Card()");
     console.log("ID: " + this.id + ", Name: " + this.name + ", Provision: " + this.provision + ", Power: " + this.power  + ", Armor: " + this.armor  + ", Art: " + this.art  + ", Type: " + this.type )
   }
 }
-class Deckbuilder
+
+class Decklist
 {
   /*
    * Constructor
    */
     constructor() {
+      this.version = document.getElementById("Deck").dataset.version;
+      this.provisionTotal = 150;
       this.leader = [];
       this.stratagem = [];
-      this.deck = new Deck();
-
-      this.provisionLimit = 150;
-      this.provisionTotal = 0;
+      this.cards = [];
     }
-
 
     removeArray(array, value) { 
       return array.filter(function(element){ 
@@ -82,13 +57,10 @@ class Deckbuilder
 
     setLeader(id) {
       console.log("Deckbuilder.setLeader("+ id + ")");
-
       var card = new Card(id);
 
-      this.deck.leader = card;
-      this.deck.provisionTotal = 150 + Number(card.provision)
-
-      this.provisionLimit = 150 + Number(card.provision);
+      this.leader[0] = card;
+      this.provisionTotal = 150 + Number(card.provision)
 
       this.printDeck();
     }
@@ -98,7 +70,7 @@ class Deckbuilder
 
       var card = new Card(id);
 
-      this.deck.stratagem = card;
+      this.stratagem[0] = card;
 
       this.printDeck();
     }
@@ -109,25 +81,48 @@ class Deckbuilder
      */
     addCard(id) {
       console.log("Deckbuilder.addCard("+ id + ")");
-      var card = new Card(id);
-      var data = { "id": card.id, "amount": 1, "data": {card} };
 
-      this.deck.cards.push(data);
+      var card = new Card(id);
+      var search = this.cards.find(card => card.id = id);
+      console.log(search);
+      var amount = search.amount
+
+      if(search.id = id) {
+        if(amount=1){
+          amount = amount++
+        }
+      }
+      this.cards.push(card);
+
       this.printDeck();
     }
 
     delCard(id) {
       console.log("Deckbuilder.delCard("+ id + ")");
-      this.deck = this.deck.filter(card => card.id != id);
+
+      var search = this.cards.find(card => card.id = id);
+
+      function searchRemove(id, search) {
+        console.log(search);
+        if( search === id ){
+          console.log("Match");
+          this.cards = this.cards.filter(card => card.id != id);
+        }
+        else {
+          console.log("No Match");
+          this.cards = this.cards.filter(card => card.amount = 1);
+        }
+      }
+      searchRemove(id, search);
       this.printDeck();
     }
 
     setProvision() {
-      var deck = this.deck;
+      var deck = this.cards;
       console.log(deck);
       var limit = this.provisionLimit;
 
-      var total = deck.reduce((total, obj) => Number(obj.provision) + total,0)
+      var total = this.cards.reduce((total, obj) => Number(obj.provision) + total,0)
       document.getElementById("DeckProvision").innerHTML = total + "/" + limit;
       
     }
@@ -137,12 +132,12 @@ class Deckbuilder
       /* reset the deck */
       cleanUp();
       /* sort the deck */
-      //this.deck.cards.data.sort(dynamicSortMultiple("-provision", "name"));
+      this.cards.sort(dynamicSortMultiple("-provision", "name"));
 
       /* loop the deck object and write to document */
-      this.deck.cards.data.forEach(printCard);
-      this.deck.leader.forEach(printLeader);
-      this.deck.stratagem.forEach(printStratagem);
+      this.cards.forEach(printCard);
+      this.leader.forEach(printLeader);
+      this.stratagem.forEach(printStratagem);
 
       /* Set the Provisions */
       this.setProvision();
@@ -159,7 +154,7 @@ class Deckbuilder
         document.getElementById("DeckStratagem").innerHTML += "<img class=\"DeckCard\" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
       }
       function printCard(card) {
-        document.getElementById("DeckCards").innerHTML += "<img class=\"DeckCard\" onclick=\"Decklist.delCard("+card.id+")\" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
+        document.getElementById("DeckCards").innerHTML += "<img class=\"DeckCard\" onclick=\"Deck.delCard("+card.id+")\" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
 
       }
     }  
