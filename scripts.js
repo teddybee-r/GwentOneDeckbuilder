@@ -3,15 +3,12 @@
  * 2021-01-02    teddybee_r 
  * 
 {
-  "version": "8.0.0" ,
-  "cards": {
-    "leader": {"id": 100000, "provision": 15},
-    "stratagem": "",
-    "deck": {
-      "id": 100000,
-      "amount": 1,
-      "data": {} 
-    } 
+  "version": "8.0.0",
+  "Leader": {},
+  "stratagem": {},
+  "cards": {}, 
+  "deckSize": 0,
+  "provision": {"limit": 150, "total": 0}
   } 
 }
 
@@ -43,42 +40,28 @@ class Decklist
    * Constructor
    */
     constructor() {
-      /* @var string */
       this.version = document.getElementById("Deck").dataset.version;
-      /* @var int */
-      this.provisionTotal = 0;
-      /* @var int */
-      this.provisionLimit = 150;
-      /* @var int */
+      this.provision = [];
+      this.provision.total = 0;
+      this.provision.limit = 150;
       this.deckSize = 0;
-      /* @var obj */
       this.leader = [];
-      /* @var obj */
       this.stratagem = [];
-      /* @var obj */
       this.cards = [];
     }
-
-    removeArray(array, value) { 
-      return array.filter(function(element){ 
-          return element != value; 
-      });
-    }
-
 
     setLeader(id) {
       console.log("Decklist.setLeader("+ id + ")");
       var card = new Card(id);
 
       this.leader[0] = card;
-      this.provisionLimit = 150 + Number(card.provision)
+      this.provision.limit = 150 + Number(card.provision)
 
       this.printDeck();
     }
 
     setStratagem(id) {
       console.log("Decklist.setStratagem("+ id + ")");
-
       var card = new Card(id);
 
       this.stratagem[0] = card;
@@ -91,10 +74,9 @@ class Decklist
 
       var card = new Card(id);
       var cardSearch = this.cards.find(x => x.id === id);
-      console.log(cardSearch);
 
       /*
-       * If cardSearch is not defined push it to the deck
+       * If cardSearch is not defined it doesn't exists so we push it to the deck array
        */
       if(cardSearch === undefined) {
         this.cards.push(card);
@@ -113,8 +95,9 @@ class Decklist
       console.log("Deckbuilder.delCard("+ id + ")");
       var card = this.cards.find(x => x.id === id);
 
+      /* Remove from card array if only one copy found */
       if(card.amount === 1) {
-        this.cards = this.cards.filter(card => card.id !== id);
+        this.cards = this.cards.filter(x => x.id !== id);
       }
       else if(card.amount === 2) {
         card.amount = 1;
@@ -124,7 +107,7 @@ class Decklist
     }
 
     setProvision() {
-      var limit = this.provisionLimit;
+      var limit = this.provision.limit;
 
       var total = this.cards.reduce((total, obj) => Number(obj.provision*obj.amount) + total,0)
       document.getElementById("DeckProvision").innerHTML = "Provision: " + total + "/" + limit;
