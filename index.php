@@ -1,6 +1,6 @@
 <?php 
 
-$pdo = new PDO("pgsql:host=localhost;dbname=gwent", 'postgres', 'meowmeow');
+$pdo = new PDO("pgsql:host=localhost;dbname=gwent", 'postgres', 'postgres');
 $faction = $_GET["faction"] ?? 'Skellige';
 $sql = "
         SELECT
@@ -41,7 +41,7 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
 
 ?>
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
     <title>Deckbuilder</title>
     
@@ -52,11 +52,14 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
 <body>
     <div id="app">
         <div id="Deck" data-version="<?= $version; ?>">
-            <div id="DeckProvision"></div>
-            <div id="DeckSize"></div>
-            <div id="DeckLeader"></div>
+            <div class="head">
+                <div id="DeckAbility"></div>
+                <div id="DeckProvision"></div>
+                <div id="DeckSize"></div>
+            </div>
             <div id="DeckStratagem"></div>
             <div id="DeckCards"></div>
+            
         </div>
 
 
@@ -64,7 +67,7 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
 <?php foreach($result as $key => $card): ?>
     <?php switch($card->type): 
         case("Ability"): ?>
-            <div class="DeckBuilderLeader" id="<?= $card->id; ?>" onclick="Deck.setLeader(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-color="<?= $card->color; ?>" data-type="<?= $card->type; ?>">
+            <div class="DeckBuilderLeader" id="<?= $card->id; ?>" onclick="Deck.setAbility(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-color="<?= $card->color; ?>" data-type="<?= $card->type; ?>">
                 <img loading="lazy" src="https://gwent.one/img/icon/ability/<?= $card->id; ?>.png">
             </div>
         <?php break; ?>

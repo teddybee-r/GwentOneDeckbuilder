@@ -25,42 +25,37 @@ class Card {
 
 class Decklist
 {
-
-  /*
-   * Constructor
-   */
     constructor() {
-      this.version = document.getElementById("Deck").dataset.version;
-      this.provision = [];
-      this.provision.total = 0;
-      this.provision.limit = 150;
-      this.deckSize = 0;
-      this.leader = [];
-      this.stratagem = [];
-      this.cards = [];
+        this.version = document.getElementById("Deck").dataset.version;
+        this.provision = [];
+        this.provision.total = 0;
+        this.provision.limit = 150;
+        this.deckSize = 0;
+        this.ability = [];
+        this.stratagem = [];
+        this.cards = [];
     }
 
-    setLeader(id) {
-      console.log("Decklist.setLeader("+ id + ")");
-      var card = new Card(id);
+    setAbility(id) {
+        var card = new Card(id);
 
-      this.leader[0] = card;
-      this.provision.limit = 150 + Number(card.provision)
+        this.ability[0] = card;
+        this.provision.limit = 150 + Number(card.provision)
 
-      this.printDeck();
+        this.printDeck();
+        console.log("Decklist.setAbility("+ id + ") > Ability set to '" + card.name +"'");
     }
 
     setStratagem(id) {
-      console.log("Decklist.setStratagem("+ id + ")");
-      var card = new Card(id);
+        var card = new Card(id);
 
-      this.stratagem[0] = card;
+        this.stratagem[0] = card;
       
-      this.printDeck();
+        this.printDeck();
+        console.log("Decklist.setStratagem("+ id + ") > Stratagem set to '" + card.name +"'");
     }
 
     addCard(id) {
-
       var card = new Card(id);
       var cardSearch = this.findCard(id);
 
@@ -114,7 +109,7 @@ class Decklist
 
       /* loop the deck object and write to document */
       this.cards.forEach(printCard);
-      this.leader.forEach(printLeader);
+      this.ability.forEach(printAbility);
       this.stratagem.forEach(printStratagem);
 
       /* Set the Provisions */
@@ -127,9 +122,9 @@ class Decklist
       function cleanUp() {
         document.getElementById("DeckCards").innerHTML = "";
       }
-      function printLeader(card) {
-        document.getElementById("DeckLeader").innerHTML = "";
-        document.getElementById("DeckLeader").innerHTML += "<img style=\"height:125px;\" src=\"https://gwent.one/img/icon/ability/" + card.id + ".png\"><br>";
+      function printAbility(card) {
+        document.getElementById("DeckAbility").innerHTML = "";
+        document.getElementById("DeckAbility").innerHTML += "<img style=\"height:100px;\" src=\"https://gwent.one/img/icon/ability/" + card.id + ".png\"><br>";
       }
       function printStratagem(card) {
         document.getElementById("DeckStratagem").innerHTML = "";
@@ -152,7 +147,7 @@ class Decklist
         render += "</div>";
       } else if(type === 'stratagem') {
         
-      } else if(type === 'leader') {
+      } else if(type === 'ability') {
         
       }
     }

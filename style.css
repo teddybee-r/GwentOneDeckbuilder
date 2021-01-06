@@ -13,6 +13,23 @@ body {
     width: 100%;
     padding: 5px;
 }
+#Deck .head {
+    width: 100%;
+    display:grid;
+    grid-template-areas: "ability provision"
+                         "ability size";
+}
+
+#DeckAbility {
+    grid-area:ability;
+}
+#DeckProvision {
+    grid-area:provision;
+}
+#DeckSize {
+    grid-area:size;
+}
+
 #DeckBuilder {
     background-color: #350c0c;
     width: 100%;
