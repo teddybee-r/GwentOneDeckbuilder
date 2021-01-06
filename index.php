@@ -64,19 +64,27 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
 
 
         <div id="DeckBuilder">
+        <?php 
+            $ability = [];
+            $stratagem = [];
+            $cards = []; 
+        ?>
 <?php foreach($result as $key => $card): ?>
     <?php switch($card->type): 
         case("Ability"): ?>
+        <?php array_push($ability, $card); ?>
             <div class="DeckBuilderLeader" id="<?= $card->id; ?>" onclick="Deck.setAbility(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-color="<?= $card->color; ?>" data-type="<?= $card->type; ?>">
                 <img loading="lazy" src="https://gwent.one/img/icon/ability/<?= $card->id; ?>.png">
             </div>
         <?php break; ?>
         <?php case("Stratagem"): ?>
+        <?php array_push($stratagem, $card); ?>
             <div class="DeckBuilderStratagem" id="<?= $card->id; ?>" onclick="Deck.setStratagem(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-color="<?= $card->color; ?>" data-type="<?= $card->type; ?>">
                 <img loading="lazy" src="https://gwent.one/img/assets/low/art/<?= $card->art; ?>.png">
             </div>
         <?php break; ?>
         <?php default: ?>
+        <?php array_push($cards, $card); ?>
             <div class="DeckBuilderCard" id="<?= $card->id; ?>" onclick="Deck.addCard(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-color="<?= $card->color; ?>" data-type="<?= $card->type; ?>">
                 <img loading="lazy" src="https://gwent.one/img/assets/low/art/<?= $card->art; ?>.png">
             </div>
