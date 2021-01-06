@@ -4,6 +4,10 @@ console.log("┬┴┬┴┬┴┤ 2021-01-06    teddybee_r ├┬┴┬┴┬�
 console.log("┬┴┬┴┬┴┤   thanks                 ├┬┴┬┴┬┴");
 console.log("┬┴┬┴┬┴┤•ᴥ•ʔ  for poking around   ├┬┴┬┴┬┴");
 
+/*
+ * This deckbuilder works by making all the data available on the website
+ * using data-attribute- tags.
+*/
 class Card {
   constructor(card) {
     var card = document.getElementById(card);
@@ -123,8 +127,16 @@ class Decklist
         document.getElementById("DeckStratagem").innerHTML += "<img class=\"DeckCard\" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
       }
       function printCard(card) {
-        document.getElementById("DeckCards").innerHTML += "<div class=\"DeckCard\"><div class=\"amount\"></div><img class=\"art\" onclick=\"Deck.delCard("+card.id+")\" data-amount="+card.amount+" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"></div>";
-
+        document.getElementById("DeckCards").innerHTML += `
+        <div class="DeckCard" onclick="Deck.delCard(${card.id})" data-name="${card.name}" data-provision="${card.provision}" data-power="${card.power}" data-armor="${card.armor}" data-art="${card.art}" data-id="${card.id}" data-color="${card.color}" data-type="${card.type}">
+          <div class="art"><img data-amount="${card.amount}" src="https://gwent.one/img/assets/deck/cards/${card.art}.png"></div>
+          <div class="gradient"></div>
+          <div class="border"></div>
+          <div class="provision" style="background-image: url('img/assets/deck/provision/${card.provision}.png');"></div>
+          <div class="power" style="background-image: url('img/assets/deck/power/${card.power}.png');">></div>
+          <div class="amount"></div>
+          <div class="name">${card.name}</div>
+        `;
       }
     }  
 }
