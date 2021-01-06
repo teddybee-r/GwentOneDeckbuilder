@@ -56,68 +56,60 @@ class Decklist
     }
 
     addCard(id) {
-      var card = new Card(id);
-      var cardSearch = this.findCard(id);
+        var card = new Card(id);
+        var cardSearch = this.findCard(id);
 
-      if(cardSearch === null) {
-        this.cards.push(card);
-        console.log("Decklist.addCard("+ id + ") > '" + card.name + "' added to Decklist.cards");
-      } else if(cardSearch.amount === 1 && cardSearch.color === 'Bronze') {
-        cardSearch.amount = 2;
-        console.log("Decklist.addCard("+ id + ") > card.amount increased by 1");
-      } else {
-        console.log("Decklist.addCard("+ id + ") > card.amount limit reached");
-
-      }
-      this.printDeck();
+        if(cardSearch === null) {
+            this.cards.push(card);
+            console.log("Decklist.addCard("+ id + ") > '" + card.name + "' added to Decklist.cards");
+        } else if(cardSearch.amount === 1 && cardSearch.color === 'Bronze') {
+            cardSearch.amount = 2;
+            console.log("Decklist.addCard("+ id + ") > card.amount increased by 1");
+        } else {
+            console.log("Decklist.addCard("+ id + ") > card.amount limit reached");
+        }
+        this.printDeck();
     }
 
     delCard(id) {
-      var card = this.findCard(id);
+        var card = this.findCard(id);
 
-      if(card.amount === 1) {
-        this.cards = this.cards.filter(x => x.id !== id);
-        console.log("Decklist.delCard("+ id + ") > '" + card.name + "' removed from Decklist.cards");
-      }
-      else if(card.amount === 2) {
-        card.amount = 1;
-        console.log("Decklist.delCard("+ id + ") > card.amount decreased by 1");
-      }
-
-      this.printDeck();
+        if(card.amount === 1) {
+            this.cards = this.cards.filter(x => x.id !== id);
+            console.log("Decklist.delCard("+ id + ") > '" + card.name + "' removed from Decklist.cards");
+        }
+        else if(card.amount === 2) {
+            card.amount = 1;
+            console.log("Decklist.delCard("+ id + ") > card.amount decreased by 1");
+        }
+        this.printDeck();
     }
+
     findCard(id) {
-      var card = this.cards.find(x => x.id === id);
-      if(!card) {
-        return null;
-      } else {
-        return card;
-      }
-    }
-
-    setProvision() {
-      
+        var card = this.cards.find(x => x.id === id);
+        if(!card) {
+          return null;
+        } else {
+          return card;
+        }
     }
 
     printDeck() {
-      // console.log("Deckbuilder.printDeck()");
 
-      /* reset the deck */
+      /* reset, sort, render, provision */
       cleanUp();
-      /* sort the deck */
-      this.cards.sort(dynamicSortMultiple("-provision", "name"));
 
-      /* loop the deck object and write to document */
+      this.cards.sort(cardSortMultiple("-provision", "name"));
+
       this.cards.forEach(printCard);
       this.ability.forEach(printAbility);
       this.stratagem.forEach(printStratagem);
 
-      /* Set the Provisions */
       var total = this.cards.reduce((total, obj) => Number(obj.provision*obj.amount) + total,0)
       document.getElementById("DeckProvision").innerHTML = "Provision: " + total + " / " + this.provision.limit;
-      
       var deckSize = this.cards.reduce((total, obj) => Number(obj.amount) + total,0)
       document.getElementById("DeckSize").innerHTML = "Cards: " + deckSize + " / 25";
+
 
       function cleanUp() {
         document.getElementById("DeckCards").innerHTML = "";
@@ -135,26 +127,10 @@ class Decklist
 
       }
     }  
-    render(type, card) {
-      var render ="";
-      if(type === 'card') {
-        render += "<div class=\"DeckCard\">";
-        render += "<div class=\"art\"></div";
-        render += "<div class=\"border\"></div>";
-        render += "<div class=\"provision\"></div";
-        render += "<div class=\"power\"></div";
-        render += "<div class=\"provision\"></div";
-        render += "</div>";
-      } else if(type === 'stratagem') {
-        
-      } else if(type === 'ability') {
-        
-      }
-    }
 }
 
 
-function dynamicSort(property) {
+function cardSort(property) {
   var sortOrder = 1;
   /* Reverse sort oder if the first part is a - */
   if(property[0] === "-") {
@@ -171,76 +147,14 @@ function dynamicSort(property) {
   }
 }
 
-function dynamicSortMultiple() {
+function cardSortMultiple() {
   var props = arguments;
   return function (obj1, obj2) {
       var i = 0, result = 0, numberOfProperties = props.length;
       while(result === 0 && i < numberOfProperties) {
-          result = dynamicSort(props[i])(obj1, obj2);
+          result = cardSort(props[i])(obj1, obj2);
           i++;
       }
       return result;
   }
-}
-
-
-
-
-
-
-
-
-
-
-
-function lzw_encode(s) {
-  var dict = {};
-  var data = (s + "").split("");
-  var out = [];
-  var currChar;
-  var phrase = data[0];
-  var code = 256;
-  for (var i=1; i<data.length; i++) {
-      currChar=data[i];
-      if (dict[phrase + currChar] != null) {
-          phrase += currChar;
-      }
-      else {
-          out.push(phrase.length > 1 ? dict[phrase] : phrase.charCodeAt(0));
-          dict[phrase + currChar] = code;
-          code++;
-          phrase=currChar;
-      }
-  }
-  out.push(phrase.length > 1 ? dict[phrase] : phrase.charCodeAt(0));
-  for (var i=0; i<out.length; i++) {
-      out[i] = String.fromCharCode(out[i]);
-  }
-  return out.join("");
-}
-
-// Decompress an LZW-encoded string
-function lzw_decode(s) {
-  var dict = {};
-  var data = (s + "").split("");
-  var currChar = data[0];
-  var oldPhrase = currChar;
-  var out = [currChar];
-  var code = 256;
-  var phrase;
-  for (var i=1; i<data.length; i++) {
-      var currCode = data[i].charCodeAt(0);
-      if (currCode < 256) {
-          phrase = data[i];
-      }
-      else {
-         phrase = dict[currCode] ? dict[currCode] : (oldPhrase + currChar);
-      }
-      out.push(phrase);
-      currChar = phrase.charAt(0);
-      dict[code] = oldPhrase + currChar;
-      code++;
-      oldPhrase = phrase;
-  }
-  return out.join("");
 }
