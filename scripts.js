@@ -128,7 +128,7 @@ class Decklist
       }
       function printCard(card) {
         document.getElementById("DeckCards").innerHTML += `
-        <div class="DeckCard" onclick="Deck.delCard(${card.id})" data-name="${card.name}" data-provision="${card.provision}" data-power="${card.power}" data-armor="${card.armor}" data-art="${card.art}" data-id="${card.id}" data-color="${card.color}" data-type="${card.type}">
+        <div class="DeckCard" onclick="Deck.delCard(${card.id})" data-name="${card.name}" data-amount="${card.amount}" data-provision="${card.provision}" data-power="${card.power}" data-armor="${card.armor}" data-art="${card.art}" data-id="${card.id}" data-color="${card.color}" data-type="${card.type}">
           <div class="art"><img data-amount="${card.amount}" src="https://gwent.one/img/assets/deck/cards/${card.art}.png"></div>
           <div class="gradient"></div>
           <div class="border"></div>

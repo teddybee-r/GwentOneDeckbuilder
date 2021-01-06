@@ -60,11 +60,9 @@ body {
     top: 0px;
 }
 
-.DeckCard[data-amount='2'] {
-    content: 'x2';
-}
 .DeckCard .art,
 .DeckCard .gradient,
+.DeckCard .amount,
 .DeckCard .border,
 .DeckCard .provision,
 .DeckCard .power {
@@ -98,28 +96,29 @@ body {
 .DeckCard[data-color='Bronze'] .border {
     background-image: url("img/assets/deck/border/bronze.png");
 }
-.DeckCard .ggradient {
+.DeckCard .gradient {
     background-image: url("img/assets/deck/other/gradient.png");
+}
+.DeckCard[data-amount='2'] .amount {
+    background-image: url("img/assets/deck/other/amount-2.png");
 }
 
 .gdeck.Leader .gdeck__border { background-image: url("../../gwent/img/deck/border-leader.png"); }
 
-.gdeck__name { }
-
  .gdeck__strength {background-position: top left; background-size: 50px; background-repeat: no-repeat;
-	  height: 50px; width: 50px; position: absolute; font-family:gnum; font-size:4rem; bottom: 30px; left: 20px;
-	  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black; }
+      height: 50px; width: 50px; position: absolute; font-family:gnum; font-size:4rem; bottom: 30px; left: 20px;
+      text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black; }
 .gdeck__provision { background-position: top left; background-size: 50px; background-repeat: no-repeat; height: 50px; width: 50px; position: absolute;
-	  font-family:gnum; font-size:4rem; bottom: 30px; left: 60px; color:gold;
-	  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+      font-family:gnum; font-size:4rem; bottom: 30px; left: 60px; color:gold;
+      text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   }
 .gdeck__Artifact {
       background-image: url("../image/icons/filter/Artifact.png");
-	  background-position: top left; background-size: 50px; background-repeat: no-repeat; height: 50px; width: 50px; position: absolute; top: 15px; right: 440px;  }  
+      background-position: top left; background-size: 50px; background-repeat: no-repeat; height: 50px; width: 50px; position: absolute; top: 15px; right: 440px;  }  
 .gdeck__Spell {
       background-image: url("../image/icons/filter/Spell.png");
-	  background-position: top left; background-size: 50px; background-repeat: no-repeat; height: 50px; width: 50px; position: absolute; top: 10px; right: 440px;  }  
+      background-position: top left; background-size: 50px; background-repeat: no-repeat; height: 50px; width: 50px; position: absolute; top: 10px; right: 440px;  }  
 
 .gdeck.Leader .gdeck__name { position: absolute; left: 40px; top: 30px; text-align: left; color: white; 
       text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	  font-size: 2rem; font-weight: 800; line-height: 1.4; }
+      font-size: 2rem; font-weight: 800; line-height: 1.4; }
