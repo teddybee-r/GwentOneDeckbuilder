@@ -1,18 +1,8 @@
-/*
- * Gwent Deckbuilder Libary
- * 2021-01-02    teddybee_r 
- * 
-{
-  "version": "8.0.0",
-  "Leader": {},
-  "stratagem": {},
-  "cards": {}, 
-  "deckSize": 0,
-  "provision": {"limit": 150, "total": 0}
-  } 
-}
-
- */
+console.log("┬┴┬┴┬┴┤                      ʕ·ᴥ·├┬┴┬┴┬┴");
+console.log("┬┴┬┴┬┴┤ Gwent Deckbuilder Libary ├┬┴┬┴┬┴");
+console.log("┬┴┬┴┬┴┤ 2021-01-06    teddybee_r ├┬┴┬┴┬┴");
+console.log("┬┴┬┴┬┴┤   thanks                 ├┬┴┬┴┬┴");
+console.log("┬┴┬┴┬┴┤•ᴥ•ʔ  for poking around   ├┬┴┬┴┬┴");
 
 class Card {
   constructor(card) {
@@ -28,7 +18,7 @@ class Card {
     this.color = card.dataset.color;
     this.type = card.dataset.type;
 
-    console.log("new Card() ID: " + this.id + ", Name: " + this.name + ", Provision: " + this.provision + ", Power: " + this.power  + ", Armor: " + this.armor  + ", Art: " + this.art  + ", Type: " + this.type )
+    console.log("new Card("+this.id+") {\"id\":  " + this.id + ", \"name\": \"" + this.name + "\", \"provision\": " + this.provision + ", \"power\": " + this.power  + ", \"armor\": " + this.armor  + ", \"art\": " + this.art  + ", \"type\": \"" + this.type + "\"}")
   }
 }
 
@@ -70,55 +60,52 @@ class Decklist
     }
 
     addCard(id) {
-      console.log("Decklist.addCard("+ id + ")");
 
       var card = new Card(id);
-      var cardSearch = this.cards.find(x => x.id === id);
+      var cardSearch = this.findCard(id);
 
-      /*
-       * If cardSearch is not defined it doesn't exists so we push it to the deck array
-       */
-      if(cardSearch === undefined) {
+      if(cardSearch === null) {
         this.cards.push(card);
-      }
-      /*
-       * If it is we increase the amount by 1
-       * Only bronze are allowed to have two copies
-       */
-      else if(cardSearch.amount === 1 && cardSearch.color === 'Bronze') {
+        console.log("Decklist.addCard("+ id + ") > '" + card.name + "' added to Decklist.cards");
+      } else if(cardSearch.amount === 1 && cardSearch.color === 'Bronze') {
         cardSearch.amount = 2;
+        console.log("Decklist.addCard("+ id + ") > card.amount increased by 1");
+      } else {
+        console.log("Decklist.addCard("+ id + ") > card.amount limit reached");
+
       }
       this.printDeck();
     }
 
     delCard(id) {
-      console.log("Deckbuilder.delCard("+ id + ")");
-      var card = this.cards.find(x => x.id === id);
+      var card = this.findCard(id);
 
-      /* Remove from card array if only one copy found */
       if(card.amount === 1) {
         this.cards = this.cards.filter(x => x.id !== id);
+        console.log("Decklist.delCard("+ id + ") > '" + card.name + "' removed from Decklist.cards");
       }
       else if(card.amount === 2) {
         card.amount = 1;
+        console.log("Decklist.delCard("+ id + ") > card.amount decreased by 1");
       }
 
       this.printDeck();
     }
+    findCard(id) {
+      var card = this.cards.find(x => x.id === id);
+      if(!card) {
+        return null;
+      } else {
+        return card;
+      }
+    }
 
     setProvision() {
-      var limit = this.provision.limit;
-
-      var total = this.cards.reduce((total, obj) => Number(obj.provision*obj.amount) + total,0)
-      document.getElementById("DeckProvision").innerHTML = "Provision: " + total + "/" + limit;
-      
-      var deckSize = this.cards.reduce((total, obj) => Number(obj.amount) + total,0)
-      document.getElementById("DeckSize").innerHTML = "Cards: " + deckSize + "/25";
       
     }
 
     printDeck() {
-      console.log("Deckbuilder.printDeck()");
+      // console.log("Deckbuilder.printDeck()");
 
       /* reset the deck */
       cleanUp();
@@ -131,7 +118,11 @@ class Decklist
       this.stratagem.forEach(printStratagem);
 
       /* Set the Provisions */
-      this.setProvision();
+      var total = this.cards.reduce((total, obj) => Number(obj.provision*obj.amount) + total,0)
+      document.getElementById("DeckProvision").innerHTML = "Provision: " + total + " / " + this.provision.limit;
+      
+      var deckSize = this.cards.reduce((total, obj) => Number(obj.amount) + total,0)
+      document.getElementById("DeckSize").innerHTML = "Cards: " + deckSize + " / 25";
 
       function cleanUp() {
         document.getElementById("DeckCards").innerHTML = "";
@@ -149,6 +140,22 @@ class Decklist
 
       }
     }  
+    render(type, card) {
+      var render ="";
+      if(type === 'card') {
+        render += "<div class=\"DeckCard\">";
+        render += "<div class=\"art\"></div";
+        render += "<div class=\"border\"></div>";
+        render += "<div class=\"provision\"></div";
+        render += "<div class=\"power\"></div";
+        render += "<div class=\"provision\"></div";
+        render += "</div>";
+      } else if(type === 'stratagem') {
+        
+      } else if(type === 'leader') {
+        
+      }
+    }
 }
 
 

@@ -59,7 +59,6 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
             <div id="DeckCards"></div>
         </div>
 
-        <script>var Deck = new Decklist();</script>
 
         <div id="DeckBuilder">
 <?php foreach($result as $key => $card): ?>
@@ -83,5 +82,9 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
 <?php endforeach; ?>
     </div>
 
+    <script>
+        var Deck = new Decklist();
+        Deck.setStratagem(202140);
+    </script>
 </body>
 </html>
