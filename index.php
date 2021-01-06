@@ -1,6 +1,6 @@
 <?php 
 
-$pdo = new PDO("pgsql:host=localhost;dbname=gwent", 'postgres', 'meowmeow');
+$pdo = new PDO("pgsql:host=localhost;dbname=gwent", 'postgres', 'postgres');
 $faction = $_GET["faction"] ?? 'Skellige';
 $sql = "
         SELECT
