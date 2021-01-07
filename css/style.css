@@ -100,16 +100,16 @@ body {
 
 
 .DeckCard[data-color='Gold'] .border {
-    background-image: url("img/assets/deck/border/gold.png");
+    background-image: url("../img/assets/deck/border/gold.png");
 }
 .DeckCard[data-color='Bronze'] .border {
-    background-image: url("img/assets/deck/border/bronze.png");
+    background-image: url("../img/assets/deck/border/bronze.png");
 }
 .DeckCard .gradient {
-    background-image: url("img/assets/deck/other/gradient.png");
+    background-image: url("../img/assets/deck/other/gradient.png");
 }
 .DeckCard[data-amount='2'] .amount {
-    background-image: url("img/assets/deck/other/amount-2.png");
+    background-image: url("../img/assets/deck/other/amount-2.png");
 }
 
 .gdeck.Leader .gdeck__border { background-image: url("../../gwent/img/deck/border-leader.png"); }
