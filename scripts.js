@@ -124,12 +124,12 @@ class Decklist
       }
       function printStratagem(card) {
         document.getElementById("DeckStratagem").innerHTML = "";
-        document.getElementById("DeckStratagem").innerHTML += "<img class=\"DeckCard\" src=\"https://gwent.one/img/assets/deck/cards/" + card.art + ".png\"><br>";
+        document.getElementById("DeckStratagem").innerHTML += "<img class=\"DeckCard\" src=\"img/assets/deck/cards/" + card.art + ".png\"><br>";
       }
       function printCard(card) {
         document.getElementById("DeckCards").innerHTML += `
         <div class="DeckCard" onclick="Deck.delCard(${card.id})" data-name="${card.name}" data-amount="${card.amount}" data-provision="${card.provision}" data-power="${card.power}" data-armor="${card.armor}" data-art="${card.art}" data-id="${card.id}" data-color="${card.color}" data-type="${card.type}">
-          <div class="art"><img data-amount="${card.amount}" src="https://gwent.one/img/assets/deck/cards/${card.art}.png"></div>
+          <div class="art"><img src="img/assets/deck/cards/${card.art}.png"></div>
           <div class="gradient"></div>
           <div class="border"></div>
           <div class="provision" style="background-image: url('img/assets/deck/provision/${card.provision}.png');"></div>
@@ -169,4 +169,10 @@ function cardSortMultiple() {
       }
       return result;
   }
+}
+
+function h2c() {
+    html2canvas(document.getElementById("h2c")).then(canvas => {
+        document.getElementById("canvas").appendChild(canvas)
+    });
 }
