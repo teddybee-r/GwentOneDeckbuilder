@@ -17,7 +17,7 @@ body {
     width: 1160px;
     margin: 0 auto;
     display:grid;
-    grid-template-columns: 360px 800px;
+    grid-template-columns: 555px 800px;
 
 }
 #Deck {
@@ -29,17 +29,28 @@ body {
     width: 100%;
     display:grid;
     grid-template-areas: "ability provision"
-                         "ability size";
+                         "size units";
 }
 
+#DeckUnits {
+    grid-area:units;
+    font-size:4em;
+    color:white;
+}
 #DeckAbility {
     grid-area:ability;
+    font-size:4em;
+    color:white;
 }
 #DeckProvision {
     grid-area:provision;
+    font-size:4em;
+    color:white;
 }
 #DeckSize {
     grid-area:size;
+    font-size:4em;
+    color:white;
 }
 
 #DeckBuilder {
@@ -51,28 +62,18 @@ body {
 .DeckBuilderLeader img, .DeckBuilderStratagem img, .DeckBuilderCard img {
     width:110px;
 }
-#DeckSize, #DeckProvision {
-    font-size:2em;
-    color:white;
-}
 
 .DeckCard {
-    width:350px;
-    height:44px;
+    width:525px;
+    height:70px;
     position:relative;
-}
-.DeckCard .art img {
-    width: 320px;
-    height: 40px;
-    position: absolute;
-    right: 22px;
-    top: 0px;
 }
 
 .DeckCard .art,
 .DeckCard .gradient,
 .DeckCard .amount,
 .DeckCard .border,
+.DeckCard .stratagem,
 .DeckCard .provision,
 .DeckCard .power {
     background-repeat: no-repeat;
@@ -82,9 +83,14 @@ body {
     top: 0px; left: 0px;
 }
 .DeckCard .name {
-    position: absolute; left: 100px; bottom: 15px; text-align: left; color: white;
+    position: absolute;
+    left: 150px; bottom: 15px;
+    text-align: left; color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    font-size: .8rem; font-weight: 800; line-height: 1;  
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.5;  
+    font-family: Gwent;
 }
 /*
 <DeckCard>
@@ -104,6 +110,9 @@ body {
 }
 .DeckCard[data-color='Bronze'] .border {
     background-image: url("../img/assets/deck/border/bronze.png");
+}
+.DeckCard[data-type='Stratagem'] .border {
+    background-image: url("../img/assets/deck/border/stratagem.png") !important;
 }
 .DeckCard .gradient {
     background-image: url("../img/assets/deck/other/gradient.png");

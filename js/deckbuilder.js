@@ -110,9 +110,11 @@ class Decklist
       this.stratagem.forEach(printStratagem);
 
       var total = this.cards.reduce((total, obj) => Number(obj.provision*obj.amount) + total,0)
-      document.getElementById("DeckProvision").innerHTML = "Provision: " + total + " / " + this.provision.limit;
+      document.getElementById("DeckProvision").innerHTML = "<img src=\"img/icon/deckbuilder/provision.png\"> " + "<span>" + (this.provision.limit - total) + "</span>";
       var deckSize = this.cards.reduce((total, obj) => Number(obj.amount) + total,0)
-      document.getElementById("DeckSize").innerHTML = "Cards: " + deckSize + " / 25";
+      document.getElementById("DeckSize").innerHTML = "<img src=\"img/icon/deckbuilder/cards.png\">  " + "<span>" +deckSize + "</span>";
+      var units = this.cards.reduce((total, obj) => (obj.type ==='Unit') + total,0)
+      document.getElementById("DeckUnits").innerHTML = "<img src=\"img/icon/deckbuilder/units.png\"> " + "<span>" + units + "</span>";
 
 
       function cleanUp() {
@@ -124,7 +126,15 @@ class Decklist
       }
       function printStratagem(card) {
         document.getElementById("DeckStratagem").innerHTML = "";
-        document.getElementById("DeckStratagem").innerHTML += "<img class=\"DeckCard\" src=\"img/assets/deck/cards/" + card.art + ".png\"><br>";
+        document.getElementById("DeckStratagem").innerHTML += `
+        <div class="DeckCard"  data-name="${card.name}" data-provision="${card.provision}" data-power="${card.power}" data-armor="${card.armor}" data-art="${card.art}" data-id="${card.id}" data-color="${card.color}" data-type="${card.type}">
+          <div class="art"><img src="img/assets/deck/cards/${card.art}.png"></div>
+          <div class="gradient"></div>
+          <div class="border"></div>
+          <div class="stratagem" style="background-image: url('img/assets/deck/other/stratagem.png');"></div>
+          <div class="amount"></div>
+          <div class="name">${card.name}</div>
+        `;
       }
       function printCard(card) {
         document.getElementById("DeckCards").innerHTML += `
@@ -172,7 +182,7 @@ function cardSortMultiple() {
 }
 
 function h2c() {
-    html2canvas(document.getElementById("h2c")).then(canvas => {
+    html2canvas(document.getElementById("h2c"), { allowTaint: true, backgroundColor: "rgba(0,0,0,0)"}).then(canvas => {
         document.getElementById("canvas").appendChild(canvas)
     });
 }

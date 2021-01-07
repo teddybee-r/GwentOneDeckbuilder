@@ -19,8 +19,8 @@ $sql = "
         WHERE 
         (VERSION = '8.0.0'
         AND 
-        (card.data.attributes->>'faction' IN ('Neutral', '$faction')
-        OR  card.data.attributes->>'factionSecondary' IN ('Neutral', '$faction'))
+        (card.data.attributes->>'faction' IN ( '$faction')
+        OR  card.data.attributes->>'factionSecondary' IN ( '$faction'))
         AND card.data.attributes->>'set'     != 'NonOwnable'
         )
         OR (VERSION = '8.0.0' AND card.data.id->>'card' = '202140')
@@ -61,8 +61,9 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
         <div id="h2c">
             <div class="head">
                 <div id="DeckAbility"></div>
-                <div id="DeckProvision"></div>
                 <div id="DeckSize"></div>
+                <div id="DeckUnits"></div>
+                <div id="DeckProvision"></div>
             </div>
             <div id="DeckStratagem"></div>
             <div id="DeckCards"></div>
