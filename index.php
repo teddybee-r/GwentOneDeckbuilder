@@ -19,8 +19,8 @@ $sql = "
         WHERE 
         (VERSION = '8.0.0'
         AND 
-        (card.data.attributes->>'faction' IN ( '$faction')
-        OR  card.data.attributes->>'factionSecondary' IN ( '$faction'))
+        (card.data.attributes->>'faction' IN ('Neutral', '$faction')
+        OR  card.data.attributes->>'factionSecondary' IN ('Neutral', '$faction'))
         AND card.data.attributes->>'set'     != 'NonOwnable'
         )
         OR (VERSION = '8.0.0' AND card.data.id->>'card' = '202140')
@@ -29,7 +29,6 @@ $sql = "
             WHEN card.data.attributes->>'type' = 'Ability' THEN 1
             WHEN card.data.attributes->>'type' = 'Stratagem' THEN 2
         END),
-        card.data.attributes->'provision' DESC,
         card.data.attributes->'provision' DESC,
         card.locale_en.name
         ";
