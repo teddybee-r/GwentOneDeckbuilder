@@ -120,7 +120,7 @@ class Decklist
       }
       function printAbility(card) {
         document.getElementById("DeckAbility").innerHTML = "";
-        document.getElementById("DeckAbility").innerHTML += "<img style=\"height:100px;\" src=\"https://gwent.one/img/icon/ability/" + card.id + ".png\"><br>";
+        document.getElementById("DeckAbility").innerHTML += "<img style=\"height:100px;\" src=\"img/assets/ability/" + card.id + ".png\"><br>";
       }
       function printStratagem(card) {
         document.getElementById("DeckStratagem").innerHTML = "";
