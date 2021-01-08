@@ -42,24 +42,39 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Deckbuilder</title>
-    
+
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta name="viewport"           content="width=device-width, initial-scale=1">
+    <meta name="theme-color"        content="#334455">
+    <meta name="description"        content="Build your own Gwent decks online.">
+    <meta property="og:title"       content="Gwent Deckbuilder"/>
+    <meta property="og:type"        content="website"/>
+    <meta property="og:image"       content="https://gwent.one/img/icon/favicon/192x192.png" />
+    <meta property="og:url"         content="https://gwent.one/"/>
+    <meta property="og:site_name"   content="The Voice of Gwent - gwent.one"/>
+    <meta property="og:description" content="Build your own Gwent decks online.">
+
     <script type="text/javascript" src="js/deckbuilder.js"></script>
     <script type="text/javascript" src="js/html2canvas.js"></script>
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <title>Deckbuilder</title>
+    
 
 </head>
 <body>
     <div id="canvas"></div>
     <div id="app-nav">
         <h1>app-nav</h1>
-        <button onclick="h2c()">H2C</button>
+        <button onclick="h2c()">html2canvas</button>
+        <button onclick="downloadDeck()">Download</button>
     </div>
     <div id="app">
         <div id="Deck" data-version="<?= $version; ?>">
         <div id="h2c">
-            <div id="DeckName"></div>
             <div class="head">
+                <div id="DeckName"></div>
                 <div id="DeckAbility"></div>
                 <div id="DeckSize"></div>
                 <div id="DeckUnits"></div>

@@ -122,7 +122,7 @@ class Decklist
       }
       function printAbility(card) {
         document.getElementById("DeckAbility").innerHTML = "";
-        document.getElementById("DeckAbility").innerHTML += "<img style=\"height:100px;\" src=\"img/assets/ability/" + card.id + ".png\">";
+        document.getElementById("DeckAbility").innerHTML += "<img src=\"img/assets/ability/" + card.id + ".png\">";
         document.getElementById("DeckName").innerHTML = "";
         document.getElementById("DeckName").innerHTML += card.name;
       }
@@ -187,4 +187,22 @@ function h2c() {
     html2canvas(document.getElementById("h2c"), { allowTaint: true, backgroundColor: "rgba(0,0,0,0)"}).then(canvas => {
         document.getElementById("canvas").appendChild(canvas)
     });
+}
+
+function download(url){
+  var a = document.createElement('a');
+  a.style.display = "none";
+  a.setAttribute("href", url);
+  a.setAttribute("download", "deck.png");
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+function downloadDeck() {
+  var element = document.getElementById("h2c");
+
+  html2canvas(element, { allowTaint: true, backgroundColor: "rgba(0,0,0,0)"}).then(function(canvas) {
+    download(canvas.toDataURL("image/png"));
+  })
 }
