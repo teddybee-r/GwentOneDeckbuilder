@@ -122,7 +122,9 @@ class Decklist
       }
       function printAbility(card) {
         document.getElementById("DeckAbility").innerHTML = "";
-        document.getElementById("DeckAbility").innerHTML += "<img style=\"height:100px;\" src=\"img/assets/ability/" + card.id + ".png\"><br>";
+        document.getElementById("DeckAbility").innerHTML += "<img style=\"height:100px;\" src=\"img/assets/ability/" + card.id + ".png\">";
+        document.getElementById("DeckName").innerHTML = "";
+        document.getElementById("DeckName").innerHTML += card.name;
       }
       function printStratagem(card) {
         document.getElementById("DeckStratagem").innerHTML = "";

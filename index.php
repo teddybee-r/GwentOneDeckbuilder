@@ -58,6 +58,7 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
     <div id="app">
         <div id="Deck" data-version="<?= $version; ?>">
         <div id="h2c">
+            <div id="DeckName"></div>
             <div class="head">
                 <div id="DeckAbility"></div>
                 <div id="DeckSize"></div>

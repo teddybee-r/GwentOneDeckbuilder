@@ -32,6 +32,10 @@ body {
                          "size units";
 }
 
+#DeckName {
+    font-size:4em;
+    color:white;
+}
 #DeckUnits {
     grid-area:units;
     font-size:4em;

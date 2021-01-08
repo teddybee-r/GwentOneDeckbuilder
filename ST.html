@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Deckbuilder</title>
+    
+    <script type="text/javascript" src="js/deckbuilder.js"></script>
+    <script type="text/javascript" src="js/html2canvas.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+<body>
+    <div id="canvas"></div>
+    <div id="app-nav">
+        <h1>app-nav</h1>
+        <button onclick="h2c()">H2C</button>
+        
+        <a href="MO.html">MO</a> - 
+        <a href="NG.html">NG</a> - 
+        <a href="NR.html">NR</a> - 
+        <a href="ST.html">ST</a> - 
+        <a href="SK.html">SK</a> - 
+        <a href="SY.html">SY</a>
+    </div>
+    <div id="app">
+        <div id="Deck" data-version="8.0.0">
+        <div id="h2c">
+            <div id="DeckName"></div>
+            <div class="head">
+                <div id="DeckAbility"></div>
+                <div id="DeckSize"></div>
+                <div id="DeckUnits"></div>
+                <div id="DeckProvision"></div>
+            </div>
+            <div id="DeckStratagem"></div>
+            <div id="DeckCards"></div>
+        </div>
+        </div>
+
+
+        <div id="DeckBuilder">
+                                <div class="DeckBuilderLeader" id="200167" onclick="Deck.setAbility(200167)" data-name="Guerilla Tactics" data-provision="16" data-power="0" data-armor="0" data-art="1187" data-id="200167" data-color="Leader" data-type="Ability">
+                <img src="img/assets/ability/200167.png">
+            </div>
+                                <div class="DeckBuilderLeader" id="201589" onclick="Deck.setAbility(201589)" data-name="Invigorate" data-provision="16" data-power="0" data-armor="0" data-art="1378" data-id="201589" data-color="Leader" data-type="Ability">
+                <img src="img/assets/ability/201589.png">
+            </div>
+                                <div class="DeckBuilderLeader" id="202575" onclick="Deck.setAbility(202575)" data-name="Mahakam Forge" data-provision="16" data-power="0" data-armor="0" data-art="2282" data-id="202575" data-color="Leader" data-type="Ability">
+                <img src="img/assets/ability/202575.png">
+            </div>
+                                <div class="DeckBuilderLeader" id="202188" onclick="Deck.setAbility(202188)" data-name="Call of Harmony" data-provision="15" data-power="0" data-armor="0" data-art="1721" data-id="202188" data-color="Leader" data-type="Ability">
+                <img src="img/assets/ability/202188.png">
+            </div>
+                                <div class="DeckBuilderLeader" id="202115" onclick="Deck.setAbility(202115)" data-name="Deadeye Ambush" data-provision="15" data-power="0" data-armor="0" data-art="1505" data-id="202115" data-color="Leader" data-type="Ability">
+                <img src="img/assets/ability/202115.png">
+            </div>
+                                <div class="DeckBuilderLeader" id="200165" onclick="Deck.setAbility(200165)" data-name="Nature's Gift" data-provision="15" data-power="0" data-armor="0" data-art="1185" data-id="200165" data-color="Leader" data-type="Ability">
+                <img src="img/assets/ability/200165.png">
+            </div>
+                                <div class="DeckBuilderLeader" id="200166" onclick="Deck.setAbility(200166)" data-name="Precision Strike" data-provision="14" data-power="0" data-armor="0" data-art="1186" data-id="200166" data-color="Leader" data-type="Ability">
+                <img src="img/assets/ability/200166.png">
+            </div>
+                                <div class="DeckBuilderStratagem" id="202532" onclick="Deck.setStratagem(202532)" data-name="Aen Seidhe Sabre" data-provision="0" data-power="0" data-armor="0" data-art="1987" data-id="202532" data-color="Gold" data-type="Stratagem">
+                <img src="img/assets/low/art/1987.png">
+            </div>
+                                <div class="DeckBuilderStratagem" id="202491" onclick="Deck.setStratagem(202491)" data-name="Basilisk Venom" data-provision="0" data-power="0" data-armor="0" data-art="2035" data-id="202491" data-color="Gold" data-type="Stratagem">
+                <img src="img/assets/low/art/2035.png">
+            </div>
+                                <div class="DeckBuilderStratagem" id="202500" onclick="Deck.setStratagem(202500)" data-name="Ceremonial Dagger" data-provision="0" data-power="0" data-armor="0" data-art="2039" data-id="202500" data-color="Gold" data-type="Stratagem">
+                <img src="img/assets/low/art/2039.png">
+            </div>
+                                <div class="DeckBuilderStratagem" id="202493" onclick="Deck.setStratagem(202493)" data-name="Crystal Skull" data-provision="0" data-power="0" data-armor="0" data-art="2036" data-id="202493" data-color="Gold" data-type="Stratagem">
+                <img src="img/assets/low/art/2036.png">
+            </div>
+                                <div class="DeckBuilderStratagem" id="202498" onclick="Deck.setStratagem(202498)" data-name="Cursed Scroll" data-provision="0" data-power="0" data-armor="0" data-art="2038" data-id="202498" data-color="Gold" data-type="Stratagem">
+                <img src="img/assets/low/art/2038.png">
+            </div>
+                                <div class="DeckBuilderStratagem" id="202497" onclick="Deck.setStratagem(202497)" data-name="Enchanted Armor" data-provision="0" data-power="0" data-armor="0" data-art="2037" data-id="202497" data-color="Gold" data-type="Stratagem">
+                <img src="img/assets/low/art/2037.png">
+            </div>
+                                <div class="DeckBuilderStratagem" id="202501" onclick="Deck.setStratagem(202501)" data-name="Magic Lamp" data-provision="0" data-power="0" data-armor="0" data-art="2040" data-id="202501" data-color="Gold" data-type="Stratagem">
+                <img src="img/assets/low/art/2040.png">
+            </div>
+                                <div class="DeckBuilderStratagem" id="202140" onclick="Deck.setStratagem(202140)" data-name="Tactical Advantage" data-provision="0" data-power="0" data-armor="0" data-art="1006" data-id="202140" data-color="Gold" data-type="Stratagem">
+                <img src="img/assets/low/art/1006.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202536" onclick="Deck.addCard(202536)" data-name="Feign Death" data-provision="14" data-power="0" data-armor="0" data-art="1972" data-id="202536" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/1972.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201611" onclick="Deck.addCard(201611)" data-name="Iorveth's Gambit" data-provision="13" data-power="0" data-armor="0" data-art="1606" data-id="201611" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1606.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202594" onclick="Deck.addCard(202594)" data-name="Oneiromancy" data-provision="13" data-power="0" data-armor="0" data-art="1852" data-id="202594" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1852.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112104" onclick="Deck.addCard(112104)" data-name="Regis" data-provision="13" data-power="2" data-armor="0" data-art="1010" data-id="112104" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1010.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201627" onclick="Deck.addCard(201627)" data-name="Shupe's Day Off" data-provision="13" data-power="0" data-armor="0" data-art="1484" data-id="201627" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1484.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202264" onclick="Deck.addCard(202264)" data-name="The Great Oak" data-provision="13" data-power="7" data-armor="0" data-art="1362" data-id="202264" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1362.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200532" onclick="Deck.addCard(200532)" data-name="Ale of the Ancestors" data-provision="12" data-power="0" data-armor="0" data-art="1478" data-id="200532" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/1478.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202670" onclick="Deck.addCard(202670)" data-name="Eithné Young Queen" data-provision="12" data-power="6" data-armor="0" data-art="2205" data-id="202670" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2205.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202801" onclick="Deck.addCard(202801)" data-name="Gezras of Leyda" data-provision="12" data-power="5" data-armor="0" data-art="2335" data-id="202801" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2335.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200079" onclick="Deck.addCard(200079)" data-name="Hanmarvyn's Blue Dream" data-provision="12" data-power="0" data-armor="0" data-art="1382" data-id="200079" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1382.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202469" onclick="Deck.addCard(202469)" data-name="Munro Bruys" data-provision="12" data-power="6" data-armor="1" data-art="1921" data-id="202469" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1921.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202201" onclick="Deck.addCard(202201)" data-name="Portal" data-provision="12" data-power="0" data-armor="0" data-art="1687" data-id="202201" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/1687.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202478" onclick="Deck.addCard(202478)" data-name="Radeyah" data-provision="12" data-power="8" data-armor="0" data-art="2002" data-id="202478" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2002.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113316" onclick="Deck.addCard(113316)" data-name="Renew" data-provision="12" data-power="0" data-armor="0" data-art="1064" data-id="113316" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1064.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113309" onclick="Deck.addCard(113309)" data-name="Scorch" data-provision="12" data-power="0" data-armor="0" data-art="1058" data-id="113309" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1058.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202194" onclick="Deck.addCard(202194)" data-name="Syanna" data-provision="12" data-power="3" data-armor="0" data-art="1368" data-id="202194" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1368.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202535" onclick="Deck.addCard(202535)" data-name="Vernossiel" data-provision="12" data-power="5" data-armor="0" data-art="1990" data-id="202535" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1990.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200225" onclick="Deck.addCard(200225)" data-name="Vigo's Muzzle" data-provision="12" data-power="0" data-armor="0" data-art="1469" data-id="200225" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1469.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202266" onclick="Deck.addCard(202266)" data-name="Water of Brokilon" data-provision="12" data-power="0" data-armor="0" data-art="1371" data-id="202266" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1371.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200056" onclick="Deck.addCard(200056)" data-name="Aguara: True Form" data-provision="11" data-power="2" data-armor="0" data-art="1359" data-id="200056" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1359.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202776" onclick="Deck.addCard(202776)" data-name="Alzur" data-provision="11" data-power="6" data-armor="0" data-art="2365" data-id="202776" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2365.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112112" onclick="Deck.addCard(112112)" data-name="Avallac'h: Sage" data-provision="11" data-power="1" data-armor="0" data-art="1018" data-id="112112" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1018.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201776" onclick="Deck.addCard(201776)" data-name="Dandelion: Poet" data-provision="11" data-power="4" data-armor="0" data-art="1647" data-id="201776" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1647.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201637" onclick="Deck.addCard(201637)" data-name="Dragon's Dream" data-provision="11" data-power="0" data-armor="0" data-art="1589" data-id="201637" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1589.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202673" onclick="Deck.addCard(202673)" data-name="Forest Protector" data-provision="11" data-power="5" data-armor="0" data-art="2208" data-id="202673" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2208.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201772" onclick="Deck.addCard(201772)" data-name="Geralt: Professional" data-provision="11" data-power="3" data-armor="0" data-art="1641" data-id="201772" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1641.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201523" onclick="Deck.addCard(201523)" data-name="Geralt: Yrden" data-provision="11" data-power="2" data-armor="0" data-art="1577" data-id="201523" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1577.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202404" onclick="Deck.addCard(202404)" data-name="Living Armor" data-provision="11" data-power="10" data-armor="10" data-art="1928" data-id="202404" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1928.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201579" onclick="Deck.addCard(201579)" data-name="Phoenix" data-provision="11" data-power="4" data-armor="0" data-art="1595" data-id="201579" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1595.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201613" onclick="Deck.addCard(201613)" data-name="Saesenthessis: Blaze" data-provision="11" data-power="5" data-armor="0" data-art="1360" data-id="201613" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1360.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200209" onclick="Deck.addCard(200209)" data-name="Saskia" data-provision="11" data-power="5" data-armor="0" data-art="1461" data-id="200209" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1461.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201632" onclick="Deck.addCard(201632)" data-name="Sihil" data-provision="11" data-power="0" data-armor="0" data-art="1619" data-id="201632" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/1619.png">
+            </div>
+                                <div class="DeckBuilderCard" id="122107" onclick="Deck.addCard(122107)" data-name="Triss: Butterflies" data-provision="11" data-power="5" data-armor="0" data-art="1079" data-id="122107" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1079.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201773" onclick="Deck.addCard(201773)" data-name="Triss: Telekinesis" data-provision="11" data-power="4" data-armor="0" data-art="1644" data-id="201773" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1644.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200058" onclick="Deck.addCard(200058)" data-name="Uma's Curse" data-provision="11" data-power="0" data-armor="0" data-art="1361" data-id="200058" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1361.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112107" onclick="Deck.addCard(112107)" data-name="Villentretenmerth" data-provision="11" data-power="6" data-armor="0" data-art="1013" data-id="112107" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1013.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112108" onclick="Deck.addCard(112108)" data-name="Yennefer of Vengerberg" data-provision="11" data-power="2" data-armor="0" data-art="1014" data-id="112108" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1014.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202467" onclick="Deck.addCard(202467)" data-name="Zoltan: Warrior" data-provision="11" data-power="6" data-armor="1" data-art="1919" data-id="202467" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1919.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142106" onclick="Deck.addCard(142106)" data-name="Aglaïs" data-provision="10" data-power="4" data-armor="0" data-art="1193" data-id="142106" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1193.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202596" onclick="Deck.addCard(202596)" data-name="Allgod" data-provision="10" data-power="4" data-armor="0" data-art="2247" data-id="202596" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2247.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202149" onclick="Deck.addCard(202149)" data-name="Angoulême" data-provision="10" data-power="3" data-armor="0" data-art="1708" data-id="202149" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1708.png">
+            </div>
+                                <div class="DeckBuilderCard" id="132105" onclick="Deck.addCard(132105)" data-name="Avallac'h" data-provision="10" data-power="4" data-armor="0" data-art="1134" data-id="132105" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1134.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202107" onclick="Deck.addCard(202107)" data-name="Barnabas Beckenbauer" data-provision="10" data-power="6" data-armor="0" data-art="1576" data-id="202107" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1576.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201779" onclick="Deck.addCard(201779)" data-name="Call of the Forest" data-provision="10" data-power="0" data-armor="0" data-art="1650" data-id="201779" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1650.png">
+            </div>
+                                <div class="DeckBuilderCard" id="122216" onclick="Deck.addCard(122216)" data-name="Carlo Varese" data-provision="10" data-power="3" data-armor="0" data-art="1095" data-id="122216" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1095.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112101" onclick="Deck.addCard(112101)" data-name="Ciri" data-provision="10" data-power="4" data-armor="0" data-art="1007" data-id="112101" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1007.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112110" onclick="Deck.addCard(112110)" data-name="Ciri: Dash" data-provision="10" data-power="5" data-armor="0" data-art="1016" data-id="112110" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1016.png">
+            </div>
+                                <div class="DeckBuilderCard" id="132210" onclick="Deck.addCard(132210)" data-name="Colossal Ifrit" data-provision="10" data-power="4" data-armor="0" data-art="1147" data-id="132210" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1147.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201774" onclick="Deck.addCard(201774)" data-name="Dandelion: Vainglory" data-provision="10" data-power="5" data-armor="0" data-art="1645" data-id="201774" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1645.png">
+            </div>
+                                <div class="DeckBuilderCard" id="132404" onclick="Deck.addCard(132404)" data-name="Enraged Ifrit" data-provision="10" data-power="4" data-armor="0" data-art="1177" data-id="132404" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1177.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201639" onclick="Deck.addCard(201639)" data-name="Garrison" data-provision="10" data-power="0" data-armor="0" data-art="1517" data-id="201639" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1517.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202400" onclick="Deck.addCard(202400)" data-name="Gascon: Iron Falcon" data-provision="10" data-power="4" data-armor="3" data-art="1925" data-id="202400" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1925.png">
+            </div>
+                                <div class="DeckBuilderCard" id="132215" onclick="Deck.addCard(132215)" data-name="Gaunter O'Dimm" data-provision="10" data-power="5" data-armor="0" data-art="1152" data-id="132215" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1152.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112103" onclick="Deck.addCard(112103)" data-name="Geralt of Rivia" data-provision="10" data-power="3" data-armor="0" data-art="1009" data-id="112103" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1009.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112111" onclick="Deck.addCard(112111)" data-name="Geralt: Aard" data-provision="10" data-power="3" data-armor="0" data-art="1017" data-id="112111" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1017.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202396" onclick="Deck.addCard(202396)" data-name="Geralt: Axii" data-provision="10" data-power="5" data-armor="2" data-art="1916" data-id="202396" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1916.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112102" onclick="Deck.addCard(112102)" data-name="Geralt: Igni" data-provision="10" data-power="2" data-armor="0" data-art="1008" data-id="112102" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1008.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202781" onclick="Deck.addCard(202781)" data-name="Geralt: Quen" data-provision="10" data-power="2" data-armor="0" data-art="2369" data-id="202781" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2369.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200523" onclick="Deck.addCard(200523)" data-name="Germain Piquant" data-provision="10" data-power="5" data-armor="0" data-art="1522" data-id="200523" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1522.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201817" onclick="Deck.addCard(201817)" data-name="Ihuarraquax" data-provision="10" data-power="4" data-armor="0" data-art="1354" data-id="201817" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1354.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202399" onclick="Deck.addCard(202399)" data-name="Iris: Shade" data-provision="10" data-power="5" data-armor="0" data-art="1742" data-id="202399" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1742.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142107" onclick="Deck.addCard(142107)" data-name="Ithlinne Aegli" data-provision="10" data-power="5" data-armor="0" data-art="1194" data-id="142107" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1194.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200018" onclick="Deck.addCard(200018)" data-name="Korathi Heatwave" data-provision="10" data-power="0" data-armor="0" data-art="1330" data-id="200018" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1330.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200235" onclick="Deck.addCard(200235)" data-name="Lambert: Swordmaster" data-provision="10" data-power="6" data-armor="0" data-art="1474" data-id="200235" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1474.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202193" onclick="Deck.addCard(202193)" data-name="Land of a Thousand Fables" data-provision="10" data-power="0" data-armor="0" data-art="1701" data-id="202193" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/1701.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202479" onclick="Deck.addCard(202479)" data-name="Maraal" data-provision="10" data-power="5" data-armor="0" data-art="2003" data-id="202479" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2003.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202384" onclick="Deck.addCard(202384)" data-name="Novigradian Justice" data-provision="10" data-power="0" data-armor="0" data-art="1872" data-id="202384" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1872.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112206" onclick="Deck.addCard(112206)" data-name="Ocvist" data-provision="10" data-power="5" data-armor="0" data-art="1025" data-id="112206" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1025.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202401" onclick="Deck.addCard(202401)" data-name="One-Eyed Betsy" data-provision="10" data-power="4" data-armor="2" data-art="1926" data-id="202401" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1926.png">
+            </div>
+                                <div class="DeckBuilderCard" id="132213" onclick="Deck.addCard(132213)" data-name="Primordial D'ao" data-provision="10" data-power="9" data-armor="0" data-art="1150" data-id="132213" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1150.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113101" onclick="Deck.addCard(113101)" data-name="Ragh Nar Roog" data-provision="10" data-power="0" data-armor="0" data-art="1040" data-id="113101" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1040.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202195" onclick="Deck.addCard(202195)" data-name="Regis: Bloodlust" data-provision="10" data-power="4" data-armor="0" data-art="1695" data-id="202195" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1695.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112105" onclick="Deck.addCard(112105)" data-name="Regis: Higher Vampire" data-provision="10" data-power="4" data-armor="0" data-art="1011" data-id="112105" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1011.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200154" onclick="Deck.addCard(200154)" data-name="Royal Decree" data-provision="10" data-power="0" data-armor="0" data-art="1458" data-id="200154" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1458.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200237" onclick="Deck.addCard(200237)" data-name="Vesemir: Mentor" data-provision="10" data-power="4" data-armor="0" data-art="1476" data-id="200237" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1476.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202198" onclick="Deck.addCard(202198)" data-name="Vivienne: Oriole" data-provision="10" data-power="1" data-armor="0" data-art="1397" data-id="202198" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1397.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112113" onclick="Deck.addCard(112113)" data-name="Yennefer: Conjurer" data-provision="10" data-power="5" data-armor="0" data-art="1019" data-id="112113" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1019.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142105" onclick="Deck.addCard(142105)" data-name="Zoltan Chivay" data-provision="10" data-power="4" data-armor="4" data-art="1192" data-id="142105" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1192.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112109" onclick="Deck.addCard(112109)" data-name="Zoltan: Scoundrel" data-provision="10" data-power="4" data-armor="0" data-art="1015" data-id="112109" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1015.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200062" onclick="Deck.addCard(200062)" data-name="Aguara" data-provision="9" data-power="7" data-armor="0" data-art="1365" data-id="200062" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1365.png">
+            </div>
+                                <div class="DeckBuilderCard" id="132106" onclick="Deck.addCard(132106)" data-name="Caretaker" data-provision="9" data-power="7" data-armor="0" data-art="1135" data-id="132106" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1135.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201626" onclick="Deck.addCard(201626)" data-name="Ciri: Nova" data-provision="9" data-power="8" data-armor="0" data-art="1615" data-id="201626" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1615.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113207" onclick="Deck.addCard(113207)" data-name="Commander's Horn" data-provision="9" data-power="0" data-armor="0" data-art="1048" data-id="113207" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1048.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202779" onclick="Deck.addCard(202779)" data-name="Cosimo Malaspina" data-provision="9" data-power="5" data-armor="0" data-art="2367" data-id="202779" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2367.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202204" onclick="Deck.addCard(202204)" data-name="Curse of Corruption" data-provision="9" data-power="0" data-armor="0" data-art="1696" data-id="202204" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1696.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142214" onclick="Deck.addCard(142214)" data-name="Ele'yas" data-provision="9" data-power="6" data-armor="0" data-art="1209" data-id="142214" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1209.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200236" onclick="Deck.addCard(200236)" data-name="Eskel: Pathfinder" data-provision="9" data-power="6" data-armor="0" data-art="1475" data-id="200236" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1475.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202470" onclick="Deck.addCard(202470)" data-name="Figgis Merluzzo" data-provision="9" data-power="5" data-armor="2" data-art="1922" data-id="202470" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1922.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202106" onclick="Deck.addCard(202106)" data-name="Gabor Zigrin" data-provision="9" data-power="5" data-armor="0" data-art="1477" data-id="202106" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1477.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202199" onclick="Deck.addCard(202199)" data-name="Gregoire de Gorgon" data-provision="9" data-power="4" data-armor="0" data-art="1675" data-id="202199" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1675.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202192" onclick="Deck.addCard(202192)" data-name="Hen Gaidth Sword" data-provision="9" data-power="0" data-armor="0" data-art="1702" data-id="202192" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/1702.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142103" onclick="Deck.addCard(142103)" data-name="Iorveth" data-provision="9" data-power="3" data-armor="0" data-art="1190" data-id="142103" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1190.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202064" onclick="Deck.addCard(202064)" data-name="Ivo of Belhaven" data-provision="9" data-power="5" data-armor="0" data-art="1578" data-id="202064" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1578.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113306" onclick="Deck.addCard(113306)" data-name="Manticore Venom" data-provision="9" data-power="0" data-armor="0" data-art="1055" data-id="113306" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1055.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202592" onclick="Deck.addCard(202592)" data-name="Master Mirror" data-provision="9" data-power="6" data-armor="0" data-art="2229" data-id="202592" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2229.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202480" onclick="Deck.addCard(202480)" data-name="Matta Hu'uri" data-provision="9" data-power="6" data-armor="0" data-art="2004" data-id="202480" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2004.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113202" onclick="Deck.addCard(113202)" data-name="Merigold's Hailstorm" data-provision="9" data-power="0" data-armor="0" data-art="1043" data-id="113202" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1043.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200030" onclick="Deck.addCard(200030)" data-name="Milaen" data-provision="9" data-power="4" data-armor="0" data-art="1003" data-id="200030" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1003.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202398" onclick="Deck.addCard(202398)" data-name="Olgierd: Immortal" data-provision="9" data-power="7" data-armor="0" data-art="1785" data-id="202398" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1785.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112210" onclick="Deck.addCard(112210)" data-name="Roach" data-provision="9" data-power="3" data-armor="0" data-art="1029" data-id="112210" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1029.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202802" onclick="Deck.addCard(202802)" data-name="Saber-Tooth Tiger" data-provision="9" data-power="7" data-armor="0" data-art="2338" data-id="202802" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2338.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142101" onclick="Deck.addCard(142101)" data-name="Saesenthessis" data-provision="9" data-power="8" data-armor="0" data-art="1188" data-id="142101" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1188.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142108" onclick="Deck.addCard(142108)" data-name="Schirrú" data-provision="9" data-power="3" data-armor="0" data-art="1195" data-id="142108" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1195.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202674" onclick="Deck.addCard(202674)" data-name="Shaping Nature" data-provision="9" data-power="0" data-armor="0" data-art="2209" data-id="202674" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/2209.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200091" onclick="Deck.addCard(200091)" data-name="Stregobor" data-provision="9" data-power="5" data-armor="0" data-art="1394" data-id="200091" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1394.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200530" onclick="Deck.addCard(200530)" data-name="Tainted Ale" data-provision="9" data-power="0" data-armor="0" data-art="1472" data-id="200530" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/1472.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202783" onclick="Deck.addCard(202783)" data-name="Triangle Within a Triangle" data-provision="9" data-power="0" data-armor="0" data-art="1456" data-id="202783" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1456.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112106" onclick="Deck.addCard(112106)" data-name="Triss Merigold" data-provision="9" data-power="3" data-armor="0" data-art="1012" data-id="112106" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1012.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142213" onclick="Deck.addCard(142213)" data-name="Yarpen Zigrin" data-provision="9" data-power="5" data-armor="0" data-art="1208" data-id="142213" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1208.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201780" onclick="Deck.addCard(201780)" data-name="Yennefer: Divination" data-provision="9" data-power="3" data-armor="0" data-art="1651" data-id="201780" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1651.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142211" onclick="Deck.addCard(142211)" data-name="Aelirenn" data-provision="8" data-power="5" data-armor="0" data-art="1206" data-id="142211" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1206.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113209" onclick="Deck.addCard(113209)" data-name="Alzur's Double-Cross" data-provision="8" data-power="0" data-armor="0" data-art="1050" data-id="113209" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1050.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113315" onclick="Deck.addCard(113315)" data-name="Bekker's Dark Mirror" data-provision="8" data-power="0" data-armor="0" data-art="1063" data-id="113315" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1063.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201634" onclick="Deck.addCard(201634)" data-name="Bekker's Rockslide" data-provision="8" data-power="0" data-armor="0" data-art="1621" data-id="201634" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1621.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113206" onclick="Deck.addCard(113206)" data-name="Blizzard" data-provision="8" data-power="0" data-armor="0" data-art="1047" data-id="113206" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1047.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202804" onclick="Deck.addCard(202804)" data-name="Brehen" data-provision="8" data-power="4" data-armor="0" data-art="2336" data-id="202804" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2336.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112402" onclick="Deck.addCard(112402)" data-name="Chironex" data-provision="8" data-power="4" data-armor="0" data-art="1036" data-id="112402" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1036.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112214" onclick="Deck.addCard(112214)" data-name="Cyprian Wiley" data-provision="8" data-power="5" data-armor="0" data-art="1033" data-id="112214" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1033.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142201" onclick="Deck.addCard(142201)" data-name="Dennis Cranmer" data-provision="8" data-power="4" data-armor="0" data-art="1196" data-id="142201" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1196.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112201" onclick="Deck.addCard(112201)" data-name="Dudu" data-provision="8" data-power="1" data-armor="0" data-art="1020" data-id="112201" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1020.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202593" onclick="Deck.addCard(202593)" data-name="Ethereal" data-provision="8" data-power="4" data-armor="0" data-art="2245" data-id="202593" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2245.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202533" onclick="Deck.addCard(202533)" data-name="Etriel" data-provision="8" data-power="4" data-armor="0" data-art="1988" data-id="202533" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1988.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202098" onclick="Deck.addCard(202098)" data-name="Eyck of Denesle" data-provision="8" data-power="3" data-armor="0" data-art="1483" data-id="202098" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1483.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202263" onclick="Deck.addCard(202263)" data-name="Fauve" data-provision="8" data-power="2" data-armor="0" data-art="1403" data-id="202263" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1403.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112213" onclick="Deck.addCard(112213)" data-name="Francis Bedlam" data-provision="8" data-power="4" data-armor="0" data-art="1032" data-id="112213" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1032.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202403" onclick="Deck.addCard(202403)" data-name="Free Company" data-provision="8" data-power="6" data-armor="1" data-art="1803" data-id="202403" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1803.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202675" onclick="Deck.addCard(202675)" data-name="Freixenet" data-provision="8" data-power="5" data-armor="0" data-art="2210" data-id="202675" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2210.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202099" onclick="Deck.addCard(202099)" data-name="Gascon" data-provision="8" data-power="1" data-armor="0" data-art="1520" data-id="202099" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1520.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201635" onclick="Deck.addCard(201635)" data-name="Glorious Hunt" data-provision="8" data-power="0" data-armor="0" data-art="1579" data-id="201635" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1579.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202780" onclick="Deck.addCard(202780)" data-name="Idarran of Ulivo" data-provision="8" data-power="6" data-armor="0" data-art="2368" data-id="202780" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2368.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201615" onclick="Deck.addCard(201615)" data-name="Isengrim's Council" data-provision="8" data-power="0" data-armor="0" data-art="1607" data-id="201615" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1607.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142102" onclick="Deck.addCard(142102)" data-name="Isengrim Faoiltiarna" data-provision="8" data-power="4" data-armor="0" data-art="1189" data-id="142102" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1189.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202397" onclick="Deck.addCard(202397)" data-name="Knickers" data-provision="8" data-power="3" data-armor="1" data-art="1684" data-id="202397" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1684.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201653" onclick="Deck.addCard(201653)" data-name="Mahakam Horn" data-provision="8" data-power="0" data-armor="0" data-art="1584" data-id="201653" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/1584.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200223" onclick="Deck.addCard(200223)" data-name="Mandrake" data-provision="8" data-power="0" data-armor="0" data-art="1467" data-id="200223" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1467.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200019" onclick="Deck.addCard(200019)" data-name="Marching Orders" data-provision="8" data-power="0" data-armor="0" data-art="1331" data-id="200019" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1331.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202534" onclick="Deck.addCard(202534)" data-name="Muirlega" data-provision="8" data-power="4" data-armor="0" data-art="1989" data-id="202534" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1989.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112205" onclick="Deck.addCard(112205)" data-name="Myrgtabrakke" data-provision="8" data-power="4" data-armor="0" data-art="1024" data-id="112205" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1024.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200089" onclick="Deck.addCard(200089)" data-name="Nivellen" data-provision="8" data-power="5" data-armor="0" data-art="1392" data-id="200089" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1392.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112207" onclick="Deck.addCard(112207)" data-name="Olgierd von Everec" data-provision="8" data-power="7" data-armor="0" data-art="1026" data-id="112207" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1026.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112208" onclick="Deck.addCard(112208)" data-name="Operator" data-provision="8" data-power="5" data-armor="0" data-art="1027" data-id="112208" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1027.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201676" onclick="Deck.addCard(201676)" data-name="Pavko Gale" data-provision="8" data-power="5" data-armor="0" data-art="1630" data-id="201676" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1630.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202483" onclick="Deck.addCard(202483)" data-name="Saer Qu'an" data-provision="8" data-power="2" data-armor="0" data-art="2005" data-id="202483" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2005.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142212" onclick="Deck.addCard(142212)" data-name="Sheldon Skaggs" data-provision="8" data-power="6" data-armor="0" data-art="1207" data-id="142212" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1207.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202267" onclick="Deck.addCard(202267)" data-name="Sirssa" data-provision="8" data-power="4" data-armor="0" data-art="1404" data-id="202267" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1404.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202778" onclick="Deck.addCard(202778)" data-name="Snowdrop" data-provision="8" data-power="2" data-armor="0" data-art="2439" data-id="202778" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2439.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202803" onclick="Deck.addCard(202803)" data-name="Stygga Castle" data-provision="8" data-power="0" data-armor="0" data-art="2339" data-id="202803" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/2339.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202406" onclick="Deck.addCard(202406)" data-name="Surrender" data-provision="8" data-power="0" data-armor="0" data-art="1930" data-id="202406" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1930.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113102" onclick="Deck.addCard(113102)" data-name="The Last Wish" data-provision="8" data-power="0" data-armor="0" data-art="1041" data-id="113102" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1041.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113311" onclick="Deck.addCard(113311)" data-name="Thunderbolt" data-provision="8" data-power="0" data-armor="0" data-art="1060" data-id="113311" data-color="Bronze" data-type="Artifact">
+                <img src="img/assets/low/art/1060.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142204" onclick="Deck.addCard(142204)" data-name="Toruviel" data-provision="8" data-power="5" data-armor="0" data-art="1199" data-id="142204" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1199.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200078" onclick="Deck.addCard(200078)" data-name="Trial of the Grasses" data-provision="8" data-power="0" data-armor="0" data-art="1381" data-id="200078" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1381.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112401" onclick="Deck.addCard(112401)" data-name="Unicorn" data-provision="8" data-power="4" data-armor="0" data-art="1035" data-id="112401" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1035.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200226" onclick="Deck.addCard(200226)" data-name="Wolfsbane" data-provision="8" data-power="0" data-armor="0" data-art="1470" data-id="200226" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1470.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202102" onclick="Deck.addCard(202102)" data-name="Xavier Lemmens" data-provision="8" data-power="6" data-armor="0" data-art="1502" data-id="202102" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1502.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200023" onclick="Deck.addCard(200023)" data-name="Arachas Venom" data-provision="7" data-power="0" data-armor="0" data-art="1002" data-id="200023" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1002.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142207" onclick="Deck.addCard(142207)" data-name="Barclay Els" data-provision="7" data-power="4" data-armor="0" data-art="1202" data-id="142207" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1202.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201697" onclick="Deck.addCard(201697)" data-name="Black Blood" data-provision="7" data-power="0" data-armor="0" data-art="1633" data-id="201697" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/1633.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201598" onclick="Deck.addCard(201598)" data-name="Bone Talisman" data-provision="7" data-power="0" data-armor="0" data-art="1603" data-id="201598" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1603.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142206" onclick="Deck.addCard(142206)" data-name="Ciaran aep Easnillen" data-provision="7" data-power="5" data-armor="0" data-art="1201" data-id="142206" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1201.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202101" onclick="Deck.addCard(202101)" data-name="Count Caldwell" data-provision="7" data-power="10" data-armor="0" data-art="1480" data-id="202101" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1480.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200087" onclick="Deck.addCard(200087)" data-name="Dorregaray of Vole" data-provision="7" data-power="5" data-armor="0" data-art="1390" data-id="200087" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1390.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202481" onclick="Deck.addCard(202481)" data-name="Dulla kh'Amanni" data-provision="7" data-power="6" data-armor="0" data-art="1977" data-id="202481" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1977.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202676" onclick="Deck.addCard(202676)" data-name="Dunca" data-provision="7" data-power="4" data-armor="1" data-art="2211" data-id="202676" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2211.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112202" onclick="Deck.addCard(112202)" data-name="Eskel" data-provision="7" data-power="3" data-armor="0" data-art="1021" data-id="112202" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1021.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202197" onclick="Deck.addCard(202197)" data-name="Fisher King" data-provision="7" data-power="5" data-armor="0" data-art="1680" data-id="202197" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1680.png">
+            </div>
+                                <div class="DeckBuilderCard" id="132405" onclick="Deck.addCard(132405)" data-name="Frenzied D'ao" data-provision="7" data-power="7" data-armor="0" data-art="1178" data-id="132405" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1178.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202805" onclick="Deck.addCard(202805)" data-name="Gaetan" data-provision="7" data-power="5" data-armor="0" data-art="2337" data-id="202805" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2337.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202044" onclick="Deck.addCard(202044)" data-name="Gimpy Gerwin" data-provision="7" data-power="3" data-armor="0" data-art="1688" data-id="202044" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1688.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202383" onclick="Deck.addCard(202383)" data-name="Harald Gord" data-provision="7" data-power="3" data-armor="0" data-art="1873" data-id="202383" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1873.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142202" onclick="Deck.addCard(142202)" data-name="Ida Emean aep Sivney" data-provision="7" data-power="5" data-armor="0" data-art="1197" data-id="142202" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1197.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200083" onclick="Deck.addCard(200083)" data-name="Iris' Companions" data-provision="7" data-power="5" data-armor="0" data-art="1386" data-id="200083" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1386.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112215" onclick="Deck.addCard(112215)" data-name="Iris von Everec" data-provision="7" data-power="5" data-armor="0" data-art="1034" data-id="112215" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1034.png">
+            </div>
+                                <div class="DeckBuilderCard" id="153301" onclick="Deck.addCard(153301)" data-name="Lacerate" data-provision="7" data-power="0" data-armor="0" data-art="1281" data-id="153301" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1281.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202196" onclick="Deck.addCard(202196)" data-name="Lady of the Lake" data-provision="7" data-power="7" data-armor="0" data-art="1697" data-id="202196" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1697.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112204" onclick="Deck.addCard(112204)" data-name="Lambert" data-provision="7" data-power="3" data-armor="0" data-art="1023" data-id="112204" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1023.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202785" onclick="Deck.addCard(202785)" data-name="Leo" data-provision="7" data-power="4" data-armor="0" data-art="1486" data-id="202785" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1486.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201656" onclick="Deck.addCard(201656)" data-name="Mastercrafted Spear" data-provision="7" data-power="0" data-armor="0" data-art="1562" data-id="201656" data-color="Bronze" data-type="Artifact">
+                <img src="img/assets/low/art/1562.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142104" onclick="Deck.addCard(142104)" data-name="Milva" data-provision="7" data-power="3" data-armor="0" data-art="1191" data-id="142104" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1191.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142208" onclick="Deck.addCard(142208)" data-name="Morenn" data-provision="7" data-power="5" data-armor="0" data-art="1203" data-id="142208" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1203.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200020" onclick="Deck.addCard(200020)" data-name="Necromancy" data-provision="7" data-power="0" data-armor="0" data-art="1332" data-id="200020" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1332.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202468" onclick="Deck.addCard(202468)" data-name="Percival Schuttenbach" data-provision="7" data-power="4" data-armor="2" data-art="1920" data-id="202468" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1920.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200008" onclick="Deck.addCard(200008)" data-name="Petri's Philter" data-provision="7" data-power="0" data-armor="0" data-art="1066" data-id="200008" data-color="Bronze" data-type="Artifact">
+                <img src="img/assets/low/art/1066.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202482" onclick="Deck.addCard(202482)" data-name="Runewright" data-provision="7" data-power="6" data-armor="0" data-art="1978" data-id="202482" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1978.png">
+            </div>
+                                <div class="DeckBuilderCard" id="143201" onclick="Deck.addCard(143201)" data-name="Serpent Trap" data-provision="7" data-power="0" data-armor="0" data-art="1228" data-id="143201" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/1228.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202595" onclick="Deck.addCard(202595)" data-name="Siegfried of Denesle" data-provision="7" data-power="5" data-armor="0" data-art="1762" data-id="202595" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1762.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113203" onclick="Deck.addCard(113203)" data-name="Skellige Storm" data-provision="7" data-power="0" data-armor="0" data-art="1044" data-id="113203" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1044.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202191" onclick="Deck.addCard(202191)" data-name="Tesham Mutna Sword" data-provision="7" data-power="0" data-armor="0" data-art="1698" data-id="202191" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/1698.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202268" onclick="Deck.addCard(202268)" data-name="Treant Boar" data-provision="7" data-power="5" data-armor="0" data-art="1447" data-id="202268" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1447.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113208" onclick="Deck.addCard(113208)" data-name="Vaedermakar" data-provision="7" data-power="5" data-armor="0" data-art="1049" data-id="113208" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1049.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112203" onclick="Deck.addCard(112203)" data-name="Vesemir" data-provision="7" data-power="3" data-armor="0" data-art="1022" data-id="112203" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1022.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202402" onclick="Deck.addCard(202402)" data-name="Vlodimir von Everec" data-provision="7" data-power="5" data-armor="0" data-art="1795" data-id="202402" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1795.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202265" onclick="Deck.addCard(202265)" data-name="Weeping Willow" data-provision="7" data-power="5" data-armor="0" data-art="1725" data-id="202265" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1725.png">
+            </div>
+                                <div class="DeckBuilderCard" id="133301" onclick="Deck.addCard(133301)" data-name="Wyvern Scale Shield" data-provision="7" data-power="0" data-armor="0" data-art="1588" data-id="133301" data-color="Bronze" data-type="Artifact">
+                <img src="img/assets/low/art/1588.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200080" onclick="Deck.addCard(200080)" data-name="Xavier Moran" data-provision="7" data-power="5" data-armor="0" data-art="1383" data-id="200080" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1383.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142203" onclick="Deck.addCard(142203)" data-name="Yaevinn" data-provision="7" data-power="4" data-armor="0" data-art="1198" data-id="142203" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1198.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202405" onclick="Deck.addCard(202405)" data-name="Armory" data-provision="6" data-power="0" data-armor="0" data-art="1929" data-id="202405" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1929.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202784" onclick="Deck.addCard(202784)" data-name="Berengar" data-provision="6" data-power="9" data-armor="0" data-art="1457" data-id="202784" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1457.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142209" onclick="Deck.addCard(142209)" data-name="Braenn" data-provision="6" data-power="4" data-armor="0" data-art="1204" data-id="142209" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1204.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202484" onclick="Deck.addCard(202484)" data-name="Caravan Vanguard" data-provision="6" data-power="3" data-armor="0" data-art="2031" data-id="202484" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2031.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201645" onclick="Deck.addCard(201645)" data-name="Crushing Trap" data-provision="6" data-power="0" data-armor="0" data-art="1539" data-id="201645" data-color="Bronze" data-type="Artifact">
+                <img src="img/assets/low/art/1539.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113201" onclick="Deck.addCard(113201)" data-name="Decoy" data-provision="6" data-power="0" data-armor="0" data-art="1042" data-id="113201" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1042.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202207" onclick="Deck.addCard(202207)" data-name="Devil's Puffball" data-provision="6" data-power="0" data-armor="0" data-art="1693" data-id="202207" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1693.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201631" onclick="Deck.addCard(201631)" data-name="Doppler" data-provision="6" data-power="1" data-armor="0" data-art="1618" data-id="201631" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1618.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200520" onclick="Deck.addCard(200520)" data-name="Éibhear Hattori" data-provision="6" data-power="3" data-armor="0" data-art="1515" data-id="200520" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1515.png">
+            </div>
+                                <div class="DeckBuilderCard" id="152405" onclick="Deck.addCard(152405)" data-name="Elder Bear" data-provision="6" data-power="6" data-armor="0" data-art="1278" data-id="152405" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1278.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202054" onclick="Deck.addCard(202054)" data-name="Elf and Onion Soup" data-provision="6" data-power="0" data-armor="0" data-art="1575" data-id="202054" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1575.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201636" onclick="Deck.addCard(201636)" data-name="Half-Elf Hunter" data-provision="6" data-power="3" data-armor="0" data-art="1622" data-id="201636" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1622.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142315" onclick="Deck.addCard(142315)" data-name="Hawker Smuggler" data-provision="6" data-power="4" data-armor="0" data-art="1224" data-id="142315" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1224.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112211" onclick="Deck.addCard(112211)" data-name="Johnny" data-provision="6" data-power="4" data-armor="0" data-art="1030" data-id="112211" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1030.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142210" onclick="Deck.addCard(142210)" data-name="Malena" data-provision="6" data-power="4" data-armor="0" data-art="1205" data-id="142210" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1205.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202597" onclick="Deck.addCard(202597)" data-name="Marlene de Trastamara" data-provision="6" data-power="6" data-armor="0" data-art="2248" data-id="202597" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2248.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202786" onclick="Deck.addCard(202786)" data-name="Maxii Van Dekkar" data-provision="6" data-power="6" data-armor="0" data-art="2366" data-id="202786" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/2366.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202200" onclick="Deck.addCard(202200)" data-name="Musicians of Blaviken" data-provision="6" data-power="6" data-armor="0" data-art="1700" data-id="202200" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1700.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202601" onclick="Deck.addCard(202601)" data-name="Offering" data-provision="6" data-power="0" data-armor="0" data-art="2252" data-id="202601" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/2252.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201696" onclick="Deck.addCard(201696)" data-name="Paulie Dahlberg" data-provision="6" data-power="6" data-armor="0" data-art="1632" data-id="201696" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1632.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200228" onclick="Deck.addCard(200228)" data-name="Pitfall Trap" data-provision="6" data-power="0" data-armor="0" data-art="1555" data-id="200228" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/1555.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202100" onclick="Deck.addCard(202100)" data-name="Prince Villem" data-provision="6" data-power="2" data-armor="0" data-art="1503" data-id="202100" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1503.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112209" onclick="Deck.addCard(112209)" data-name="Prize-Winning Cow" data-provision="6" data-power="1" data-armor="0" data-art="1028" data-id="112209" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1028.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200138" onclick="Deck.addCard(200138)" data-name="Sage" data-provision="6" data-power="4" data-armor="0" data-art="1443" data-id="200138" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1443.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202202" onclick="Deck.addCard(202202)" data-name="Sangreal" data-provision="6" data-power="0" data-armor="0" data-art="1657" data-id="202202" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1657.png">
+            </div>
+                                <div class="DeckBuilderCard" id="112212" onclick="Deck.addCard(112212)" data-name="Sarah" data-provision="6" data-power="4" data-armor="0" data-art="1031" data-id="112212" data-color="Gold" data-type="Unit">
+                <img src="img/assets/low/art/1031.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202220" onclick="Deck.addCard(202220)" data-name="Scepter of Storms" data-provision="6" data-power="0" data-armor="0" data-art="1583" data-id="202220" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/1583.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202782" onclick="Deck.addCard(202782)" data-name="Selective mutation" data-provision="6" data-power="0" data-armor="0" data-art="2370" data-id="202782" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/2370.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113204" onclick="Deck.addCard(113204)" data-name="Stammelford's Tremors" data-provision="6" data-power="0" data-armor="0" data-art="1045" data-id="113204" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1045.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200022" onclick="Deck.addCard(200022)" data-name="Summoning Circle" data-provision="6" data-power="0" data-armor="0" data-art="1333" data-id="200022" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/1333.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202203" onclick="Deck.addCard(202203)" data-name="Tempest" data-provision="6" data-power="0" data-armor="0" data-art="1655" data-id="202203" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1655.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202271" onclick="Deck.addCard(202271)" data-name="Treant Mantis: Stalk" data-provision="6" data-power="0" data-armor="0" data-art="1448" data-id="202271" data-color="Gold" data-type="Artifact">
+                <img src="img/assets/low/art/1448.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202471" onclick="Deck.addCard(202471)" data-name="Zoltan's Company" data-provision="6" data-power="0" data-armor="0" data-art="1923" data-id="202471" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1923.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113307" onclick="Deck.addCard(113307)" data-name="Adrenaline Rush" data-provision="5" data-power="0" data-armor="0" data-art="1056" data-id="113307" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1056.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113301" onclick="Deck.addCard(113301)" data-name="Alzur's Thunder" data-provision="5" data-power="0" data-armor="0" data-art="1051" data-id="113301" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1051.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202416" onclick="Deck.addCard(202416)" data-name="Armorer's Workshop" data-provision="5" data-power="0" data-armor="0" data-art="1951" data-id="202416" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1951.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200053" onclick="Deck.addCard(200053)" data-name="Artefact Compression" data-provision="5" data-power="0" data-armor="0" data-art="1356" data-id="200053" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1356.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113302" onclick="Deck.addCard(113302)" data-name="Biting Frost" data-provision="5" data-power="0" data-armor="0" data-art="1052" data-id="113302" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1052.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202122" onclick="Deck.addCard(202122)" data-name="Bomb Heaver" data-provision="5" data-power="4" data-armor="0" data-art="1540" data-id="202122" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1540.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202485" onclick="Deck.addCard(202485)" data-name="Caravan Guard" data-provision="5" data-power="3" data-armor="0" data-art="2032" data-id="202485" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2032.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202806" onclick="Deck.addCard(202806)" data-name="Cat Witcher" data-provision="5" data-power="4" data-armor="0" data-art="2340" data-id="202806" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2340.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202807" onclick="Deck.addCard(202807)" data-name="Cat Witcher Mentor" data-provision="5" data-power="1" data-armor="0" data-art="2342" data-id="202807" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2342.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202808" onclick="Deck.addCard(202808)" data-name="Cat Witcher Saboteur" data-provision="5" data-power="3" data-armor="0" data-art="2343" data-id="202808" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2343.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202677" onclick="Deck.addCard(202677)" data-name="Circle of Life" data-provision="5" data-power="0" data-armor="0" data-art="2212" data-id="202677" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/2212.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113303" onclick="Deck.addCard(113303)" data-name="Clear Skies" data-provision="5" data-power="0" data-armor="0" data-art="1053" data-id="113303" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1053.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202381" onclick="Deck.addCard(202381)" data-name="Cleaver's Muscle" data-provision="5" data-power="5" data-armor="0" data-art="1875" data-id="202381" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1875.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202206" onclick="Deck.addCard(202206)" data-name="Dancing Star" data-provision="5" data-power="0" data-armor="0" data-art="1694" data-id="202206" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1694.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113319" onclick="Deck.addCard(113319)" data-name="Dimeritium Shackles" data-provision="5" data-power="0" data-armor="0" data-art="1065" data-id="113319" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1065.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142310" onclick="Deck.addCard(142310)" data-name="Dol Blathanna Archer" data-provision="5" data-power="4" data-armor="0" data-art="1219" data-id="142310" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1219.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200039" onclick="Deck.addCard(200039)" data-name="Dol Blathanna Sentry" data-provision="5" data-power="4" data-armor="1" data-art="1343" data-id="200039" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1343.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202275" onclick="Deck.addCard(202275)" data-name="Dryad Matron" data-provision="5" data-power="4" data-armor="0" data-art="1679" data-id="202275" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1679.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202274" onclick="Deck.addCard(202274)" data-name="Dryad Ranger" data-provision="5" data-power="3" data-armor="0" data-art="1349" data-id="202274" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1349.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202679" onclick="Deck.addCard(202679)" data-name="Duén Canell Guardian" data-provision="5" data-power="4" data-armor="0" data-art="2215" data-id="202679" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2215.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202476" onclick="Deck.addCard(202476)" data-name="Dwarf Berserker" data-provision="5" data-power="3" data-armor="4" data-art="1945" data-id="202476" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1945.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202472" onclick="Deck.addCard(202472)" data-name="Dwarven Chariot" data-provision="5" data-power="4" data-armor="1" data-art="1941" data-id="202472" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1941.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142311" onclick="Deck.addCard(142311)" data-name="Dwarven Mercenary" data-provision="5" data-power="7" data-armor="0" data-art="1220" data-id="142311" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1220.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113308" onclick="Deck.addCard(113308)" data-name="Epidemic" data-provision="5" data-power="0" data-armor="0" data-art="1057" data-id="113308" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1057.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202272" onclick="Deck.addCard(202272)" data-name="Forest Whisperer" data-provision="5" data-power="4" data-armor="0" data-art="1439" data-id="202272" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1439.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202678" onclick="Deck.addCard(202678)" data-name="Hamadryad" data-provision="5" data-power="4" data-armor="0" data-art="2213" data-id="202678" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2213.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113305" onclick="Deck.addCard(113305)" data-name="Impenetrable Fog" data-provision="5" data-power="0" data-armor="0" data-art="1054" data-id="113305" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1054.png">
+            </div>
+                                <div class="DeckBuilderCard" id="143301" onclick="Deck.addCard(143301)" data-name="Incinerating Trap" data-provision="5" data-power="0" data-armor="0" data-art="1229" data-id="143301" data-color="Bronze" data-type="Artifact">
+                <img src="img/assets/low/art/1229.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202486" onclick="Deck.addCard(202486)" data-name="King Cobra" data-provision="5" data-power="3" data-armor="1" data-art="2033" data-id="202486" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2033.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200519" onclick="Deck.addCard(200519)" data-name="Mahakam Ale" data-provision="5" data-power="0" data-armor="0" data-art="1499" data-id="200519" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1499.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142306" onclick="Deck.addCard(142306)" data-name="Mahakam Defender" data-provision="5" data-power="4" data-armor="0" data-art="1215" data-id="142306" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1215.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201559" onclick="Deck.addCard(201559)" data-name="Mahakam Volunteers" data-provision="5" data-power="4" data-armor="0" data-art="1592" data-id="201559" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1592.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202413" onclick="Deck.addCard(202413)" data-name="Mantlet" data-provision="5" data-power="4" data-armor="1" data-art="1556" data-id="202413" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1556.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202209" onclick="Deck.addCard(202209)" data-name="Moon Dust" data-provision="5" data-power="0" data-armor="0" data-art="1692" data-id="202209" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1692.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201585" onclick="Deck.addCard(201585)" data-name="Morana Runestone" data-provision="5" data-power="0" data-armor="0" data-art="1601" data-id="201585" data-color="Gold" data-type="Special">
+                <img src="img/assets/low/art/1601.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202539" onclick="Deck.addCard(202539)" data-name="Nature's Rebuke" data-provision="5" data-power="0" data-armor="0" data-art="2017" data-id="202539" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/2017.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202208" onclick="Deck.addCard(202208)" data-name="Northern Wind" data-provision="5" data-power="0" data-armor="0" data-art="1643" data-id="202208" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1643.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200139" onclick="Deck.addCard(200139)" data-name="Panther" data-provision="5" data-power="3" data-armor="0" data-art="1444" data-id="200139" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1444.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202216" onclick="Deck.addCard(202216)" data-name="Pellar" data-provision="5" data-power="4" data-armor="0" data-art="1771" data-id="202216" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1771.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202411" onclick="Deck.addCard(202411)" data-name="Piercing Missile" data-provision="5" data-power="0" data-armor="0" data-art="1950" data-id="202411" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1950.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202211" onclick="Deck.addCard(202211)" data-name="Red Haze" data-provision="5" data-power="0" data-armor="0" data-art="1690" data-id="202211" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1690.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201647" onclick="Deck.addCard(201647)" data-name="Rock Barrage" data-provision="5" data-power="0" data-armor="0" data-art="1625" data-id="201647" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1625.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202205" onclick="Deck.addCard(202205)" data-name="Sandstorm" data-provision="5" data-power="0" data-armor="0" data-art="1686" data-id="202205" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1686.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202414" onclick="Deck.addCard(202414)" data-name="Sapper" data-provision="5" data-power="5" data-armor="0" data-art="1560" data-id="202414" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1560.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201704" onclick="Deck.addCard(201704)" data-name="Scout" data-provision="5" data-power="5" data-armor="0" data-art="1067" data-id="201704" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1067.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202121" onclick="Deck.addCard(202121)" data-name="Strays of Spalla" data-provision="5" data-power="4" data-armor="0" data-art="1519" data-id="202121" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1519.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113310" onclick="Deck.addCard(113310)" data-name="Swallow" data-provision="5" data-power="0" data-armor="0" data-art="1059" data-id="113310" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1059.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113312" onclick="Deck.addCard(113312)" data-name="Torrential Rain" data-provision="5" data-power="0" data-armor="0" data-art="1061" data-id="113312" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1061.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202540" onclick="Deck.addCard(202540)" data-name="Trained Hawk" data-provision="5" data-power="3" data-armor="0" data-art="2018" data-id="202540" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2018.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202215" onclick="Deck.addCard(202215)" data-name="Traveling Merchant" data-provision="5" data-power="4" data-armor="0" data-art="1770" data-id="202215" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1770.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202537" onclick="Deck.addCard(202537)" data-name="Vernossiel's Commando" data-provision="5" data-power="3" data-armor="0" data-art="2015" data-id="202537" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2015.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142302" onclick="Deck.addCard(142302)" data-name="Vrihedd Brigade" data-provision="5" data-power="3" data-armor="0" data-art="1211" data-id="142302" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1211.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142307" onclick="Deck.addCard(142307)" data-name="Vrihedd Sappers" data-provision="5" data-power="5" data-armor="0" data-art="1216" data-id="142307" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1216.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142309" onclick="Deck.addCard(142309)" data-name="Vrihedd Vanguard" data-provision="5" data-power="1" data-armor="0" data-art="1218" data-id="142309" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1218.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202407" onclick="Deck.addCard(202407)" data-name="Wagenburg" data-provision="5" data-power="3" data-armor="3" data-art="1552" data-id="202407" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1552.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201661" onclick="Deck.addCard(201661)" data-name="Watchman" data-provision="5" data-power="5" data-armor="0" data-art="1628" data-id="201661" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1628.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142308" onclick="Deck.addCard(142308)" data-name="Waylay" data-provision="5" data-power="0" data-armor="0" data-art="1217" data-id="142308" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1217.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202599" onclick="Deck.addCard(202599)" data-name="Will o' the wisp" data-provision="5" data-power="0" data-armor="0" data-art="2250" data-id="202599" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/2250.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202681" onclick="Deck.addCard(202681)" data-name="Abandoned Girl" data-provision="4" data-power="4" data-armor="0" data-art="2216" data-id="202681" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2216.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142316" onclick="Deck.addCard(142316)" data-name="Blue Mountain Elite" data-provision="4" data-power="3" data-armor="0" data-art="1225" data-id="142316" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1225.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202273" onclick="Deck.addCard(202273)" data-name="Brokilon Sentinel" data-provision="4" data-power="2" data-armor="0" data-art="1438" data-id="202273" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1438.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202809" onclick="Deck.addCard(202809)" data-name="Cat Witcher Adept" data-provision="4" data-power="3" data-armor="0" data-art="2341" data-id="202809" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2341.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200224" onclick="Deck.addCard(200224)" data-name="Crow's Eye" data-provision="4" data-power="0" data-armor="0" data-art="1468" data-id="200224" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1468.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202217" onclick="Deck.addCard(202217)" data-name="Cutthroat" data-provision="4" data-power="3" data-armor="0" data-art="1772" data-id="202217" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1772.png">
+            </div>
+                                <div class="DeckBuilderCard" id="113205" onclick="Deck.addCard(113205)" data-name="Dimeritium Bomb" data-provision="4" data-power="0" data-armor="0" data-art="1046" data-id="113205" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1046.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142304" onclick="Deck.addCard(142304)" data-name="Dol Blathanna Bomber" data-provision="4" data-power="2" data-armor="0" data-art="1213" data-id="142304" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1213.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142314" onclick="Deck.addCard(142314)" data-name="Dol Blathanna Bowman" data-provision="4" data-power="3" data-armor="0" data-art="1223" data-id="142314" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1223.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202269" onclick="Deck.addCard(202269)" data-name="Dryad's Caress" data-provision="4" data-power="0" data-armor="0" data-art="1724" data-id="202269" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1724.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202475" onclick="Deck.addCard(202475)" data-name="Dryad Enchantress" data-provision="4" data-power="4" data-armor="0" data-art="1944" data-id="202475" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1944.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202276" onclick="Deck.addCard(202276)" data-name="Dryad Fledgling" data-provision="4" data-power="4" data-armor="0" data-art="1746" data-id="202276" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1746.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202270" onclick="Deck.addCard(202270)" data-name="Dryad Grovekeeper" data-provision="4" data-power="4" data-armor="0" data-art="1722" data-id="202270" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1722.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200293" onclick="Deck.addCard(200293)" data-name="Dwarven Agitator" data-provision="4" data-power="3" data-armor="0" data-art="1487" data-id="200293" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1487.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142305" onclick="Deck.addCard(142305)" data-name="Dwarven Skirmisher" data-provision="4" data-power="1" data-armor="0" data-art="1214" data-id="142305" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1214.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201638" onclick="Deck.addCard(201638)" data-name="Elven Scout" data-provision="4" data-power="4" data-armor="0" data-art="1538" data-id="201638" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1538.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200535" onclick="Deck.addCard(200535)" data-name="Elven Swordmaster" data-provision="4" data-power="4" data-armor="0" data-art="1593" data-id="200535" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1593.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142313" onclick="Deck.addCard(142313)" data-name="Elven Wardancer" data-provision="4" data-power="3" data-armor="0" data-art="1222" data-id="142313" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1222.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200136" onclick="Deck.addCard(200136)" data-name="Farseer" data-provision="4" data-power="4" data-armor="0" data-art="1441" data-id="200136" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1441.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202602" onclick="Deck.addCard(202602)" data-name="Fortune Teller" data-provision="4" data-power="4" data-armor="0" data-art="2253" data-id="202602" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2253.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201749" onclick="Deck.addCard(201749)" data-name="Golden Froth" data-provision="4" data-power="0" data-armor="0" data-art="1640" data-id="201749" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1640.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142301" onclick="Deck.addCard(142301)" data-name="Hawker Healer" data-provision="4" data-power="3" data-armor="0" data-art="1210" data-id="142301" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1210.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142312" onclick="Deck.addCard(142312)" data-name="Hawker Support" data-provision="4" data-power="3" data-armor="0" data-art="1221" data-id="142312" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1221.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202415" onclick="Deck.addCard(202415)" data-name="Highwaymen" data-provision="4" data-power="4" data-armor="1" data-art="1557" data-id="202415" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1557.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202212" onclick="Deck.addCard(202212)" data-name="Inspirational Ballad" data-provision="4" data-power="0" data-armor="0" data-art="1491" data-id="202212" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1491.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202409" onclick="Deck.addCard(202409)" data-name="Iron Falcon Infantry" data-provision="4" data-power="4" data-armor="0" data-art="1948" data-id="202409" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1948.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202408" onclick="Deck.addCard(202408)" data-name="Iron Falcon Knife Juggler" data-provision="4" data-power="2" data-armor="1" data-art="1947" data-id="202408" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1947.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202410" onclick="Deck.addCard(202410)" data-name="Iron Falcon Troubadour" data-provision="4" data-power="4" data-armor="0" data-art="1949" data-id="202410" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1949.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142317" onclick="Deck.addCard(142317)" data-name="Mahakam Guard" data-provision="4" data-power="3" data-armor="0" data-art="1226" data-id="142317" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1226.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200042" onclick="Deck.addCard(200042)" data-name="Mahakam Marauder" data-provision="4" data-power="4" data-armor="0" data-art="1346" data-id="200042" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1346.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202810" onclick="Deck.addCard(202810)" data-name="Making a Bomb" data-provision="4" data-power="0" data-armor="0" data-art="2344" data-id="202810" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/2344.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202474" onclick="Deck.addCard(202474)" data-name="Miner" data-provision="4" data-power="4" data-armor="0" data-art="1943" data-id="202474" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1943.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202680" onclick="Deck.addCard(202680)" data-name="Oakcritters" data-provision="4" data-power="2" data-armor="0" data-art="2214" data-id="202680" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2214.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202487" onclick="Deck.addCard(202487)" data-name="Ofiri Merchant" data-provision="4" data-power="4" data-armor="0" data-art="2034" data-id="202487" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2034.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202218" onclick="Deck.addCard(202218)" data-name="Oxenfurt Scholar" data-provision="4" data-power="3" data-armor="0" data-art="1773" data-id="202218" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1773.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202598" onclick="Deck.addCard(202598)" data-name="Pact" data-provision="4" data-power="0" data-armor="0" data-art="2249" data-id="202598" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/2249.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201753" onclick="Deck.addCard(201753)" data-name="Peasant Militia" data-provision="4" data-power="2" data-armor="0" data-art="1631" data-id="201753" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1631.png">
+            </div>
+                                <div class="DeckBuilderCard" id="200135" onclick="Deck.addCard(200135)" data-name="Pyrotechnician" data-provision="4" data-power="4" data-armor="2" data-art="1440" data-id="200135" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1440.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202210" onclick="Deck.addCard(202210)" data-name="Samum" data-provision="4" data-power="0" data-armor="0" data-art="1691" data-id="202210" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1691.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142401" onclick="Deck.addCard(142401)" data-name="Scoia'tael Neophyte" data-provision="4" data-power="2" data-armor="0" data-art="1227" data-id="142401" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1227.png">
+            </div>
+                                <div class="DeckBuilderCard" id="201744" onclick="Deck.addCard(201744)" data-name="Spores" data-provision="4" data-power="0" data-armor="0" data-art="1069" data-id="201744" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1069.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202219" onclick="Deck.addCard(202219)" data-name="Spring Equinox" data-provision="4" data-power="0" data-armor="0" data-art="1699" data-id="202219" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1699.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202600" onclick="Deck.addCard(202600)" data-name="Squirrel" data-provision="4" data-power="4" data-armor="0" data-art="2251" data-id="202600" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2251.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202473" onclick="Deck.addCard(202473)" data-name="Tempering" data-provision="4" data-power="0" data-armor="0" data-art="1942" data-id="202473" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1942.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202213" onclick="Deck.addCard(202213)" data-name="Thaw" data-provision="4" data-power="0" data-armor="0" data-art="1678" data-id="202213" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1678.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202227" onclick="Deck.addCard(202227)" data-name="Undying Thirst" data-provision="4" data-power="0" data-armor="0" data-art="1656" data-id="202227" data-color="Bronze" data-type="Special">
+                <img src="img/assets/low/art/1656.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142205" onclick="Deck.addCard(142205)" data-name="Vrihedd Dragoon" data-provision="4" data-power="4" data-armor="0" data-art="1200" data-id="142205" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1200.png">
+            </div>
+                                <div class="DeckBuilderCard" id="142303" onclick="Deck.addCard(142303)" data-name="Vrihedd Officer" data-provision="4" data-power="3" data-armor="0" data-art="1212" data-id="142303" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1212.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202538" onclick="Deck.addCard(202538)" data-name="Vrihedd Saboteur" data-provision="4" data-power="3" data-armor="0" data-art="2016" data-id="202538" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/2016.png">
+            </div>
+                                <div class="DeckBuilderCard" id="202412" onclick="Deck.addCard(202412)" data-name="Wagon" data-provision="4" data-power="4" data-armor="0" data-art="1664" data-id="202412" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1664.png">
+            </div>
+                                <div class="DeckBuilderCard" id="132403" onclick="Deck.addCard(132403)" data-name="Wolf Pack" data-provision="4" data-power="2" data-armor="0" data-art="1176" data-id="132403" data-color="Bronze" data-type="Unit">
+                <img src="img/assets/low/art/1176.png">
+            </div>
+            </div>
+
+    <script>
+        var Deck = new Decklist();
+        Deck.setStratagem(202140);
+    </script>
+</body>
+</html>

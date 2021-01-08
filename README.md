@@ -1,5 +1,5 @@
 # Gwent Deck Builder
-Since you cannot copy my database yet please use Skellige.html
+Since you cannot copy my database yet please use the .html files
 
 # Work in Progress
 Just wait we're slowly getting there..  
