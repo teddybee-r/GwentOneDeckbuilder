@@ -1,22 +1,36 @@
 <?php 
+/*
+ * API for GwentOneDeckbuilder
+ * Right clicking on a card will bring up card information to the right of the list
+ * Required: $id, $version, $lang
+ * Response: HTML, JSON
+ */
+
+/*
+ * Todo:
+ * validation
+ * css sass for this response 
+ */
+
+$id       = $_GET["id"] ?? 202308 ;
+$response = $_GET["response"] ?? 'html';
+$lang     = $_GET["lang"] ?? 'en';
+$version  = '8.0.0';
 
 $pdo = new PDO("pgsql:host=localhost;dbname=gwent", 'postgres', 'meowmeow');
-$id = $_GET["id"] ?? 202308 ;
-$lang = $_GET["lang"] ?? 'en';
-$version = '8.0.0';
 $sql = "
         SELECT *     
         FROM        card.data
         INNER JOIN  card.locale_$lang ON card.data.i= card.locale_en.i
-        WHERE (card.data.version = '8.0.0' AND card.data.id->'card' = '$id')
+        WHERE (card.data.version = :version AND card.data.id->'card' = :id)
         ";
-              
-$card = $pdo->query($sql)->fetch(PDO::FETCH_OBJ);
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':version', $version);
+$stmt->bindParam(':id', $id);
+$stmt->execute();
 
-?>
-<div class="cardInfo">
-    <div class="content-wrap">
-<?php 
+$card = $stmt->fetch(PDO::FETCH_OBJ);
+
 $attr         = json_decode($card->attributes);
 $ids          = json_decode($card->id);
 $id           = $ids->card;
@@ -37,9 +51,14 @@ $power        = $attr->power;
 $armor        = $attr->armor;
 $provision    = $attr->provision;
 $reach	      = $attr->reach;
-$abilityIcon  = 2;?>
+$abilityIcon  = 2;
+?>
 
-        <div class="gwent-card" data-res="medium" data-id="<?= $id; ?>" data-artid="<?= $artid; ?>j" data-power="<?=$power;?>" data-armor="<?=$armor;?>" data-provision="<?=$provision;?>" data-faction="<?=$faction;?>" data-set="<?=$set;?>" data-color="<?=$color;?>" data-type="<?=$type;?>" data-rarity="<?=$rarity;?>" <?php if($faction2!=''){ echo ' data-faction-duo="' . $faction . '_' . $faction2 . '"';}?>>
+<?php if($response === 'html'): ?>
+<div class="cardInfo">
+    <div class="content-wrap">
+
+        <div class="gwent-card" data-id="<?= $id; ?>" data-artid="<?= $artid; ?>j" data-power="<?=$power;?>" data-armor="<?=$armor;?>" data-provision="<?=$provision;?>" data-faction="<?=$faction;?>" data-set="<?=$set;?>" data-color="<?=$color;?>" data-type="<?=$type;?>" data-rarity="<?=$rarity;?>" <?php if($faction2!=''){ echo ' data-faction-duo="' . $faction . '_' . $faction2 . '"';}?>>
 
             <div class="info">
                 <div class="head">
@@ -60,7 +79,7 @@ $abilityIcon  = 2;?>
                           
             <div class="image">
                           
-                <div class="art">
+                <div class="art" data-res="medium">
                           
               <?php switch($type):
                 case 'ability': ?>
@@ -128,3 +147,28 @@ $abilityIcon  = 2;?>
         </div>
     </div>
 </div>
+<?php endif; ?>
+
+<?php if($response === 'json') {
+    header('Content-type: application/json; charset=UTF-8');
+    $json = [
+        'id' => $id,
+        'art' => $artid,
+        'name' => $name,
+        'flavor' => $flavor,
+        'category' => $category,
+        'ability' => $ability,
+        'keyword' => $keywords,
+        'provision' => $provision,
+        'power' => $power,
+        'armor' => $armor,
+        'faction' => $faction,
+        'set' => $set,
+        'color' => $color,
+        'type' => $type,
+        'rarity' => $rarity,
+        'reach' => $reach,
+    ];
+    echo json_encode($json, JSON_FORCE_OBJECT);
+}
+?>

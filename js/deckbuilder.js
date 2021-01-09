@@ -122,7 +122,7 @@ class Decklist
       }
       function printAbility(card) {
         document.getElementById("DeckAbility").innerHTML = "";
-        document.getElementById("DeckAbility").innerHTML += "<img oncontextmenu=\"cardInfo('"+card.id+"');return false;\" src=\"img/assets/ability/" + card.id + ".png\">";
+        document.getElementById("DeckAbility").innerHTML += "<img oncontextmenu=\"cardInfo("+card.id+");return false;\" src=\"img/assets/ability/" + card.id + ".png\">";
         document.getElementById("DeckName").innerHTML = "";
         document.getElementById("DeckName").innerHTML += card.name;
       }
@@ -140,7 +140,7 @@ class Decklist
       }
       function printCard(card) {
         document.getElementById("DeckCards").innerHTML += `
-        <div class="DeckCard" onclick="Deck.delCard(${card.id})" oncontextmenu="cardInfo('${card.id}');return false;" data-name="${card.name}" data-amount="${card.amount}" data-provision="${card.provision}" data-power="${card.power}" data-armor="${card.armor}" data-art="${card.art}" data-id="${card.id}" data-color="${card.color}" data-type="${card.type}">
+        <div class="DeckCard" onclick="Deck.delCard(${card.id})" oncontextmenu="cardInfo(${card.id});return false;" data-name="${card.name}" data-amount="${card.amount}" data-provision="${card.provision}" data-power="${card.power}" data-armor="${card.armor}" data-art="${card.art}" data-id="${card.id}" data-color="${card.color}" data-type="${card.type}">
           <div class="art"><img src="img/assets/deck/cards/${card.art}.png"></div>
           <div class="gradient"></div>
           <div class="border"></div>
@@ -218,7 +218,7 @@ function cardInfo(id) {
         }
     };
 
-    ajax.open("GET", "card-response.php?id=" + id, true);
+    ajax.open("GET", "api.php?id=" + id, true);
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     ajax.send();   
 }

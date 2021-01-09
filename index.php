@@ -115,7 +115,7 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
         <?php break; ?>
         <?php default: ?>
         <?php array_push($cards, $card); ?>
-            <div class="DeckBuilderCard" id="<?= $card->id; ?>" onclick="Deck.addCard(<?= $card->id; ?>)" oncontextmenu="cardInfo('<?= $card->id; ?>');return false;" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-color="<?= $card->color; ?>" data-type="<?= $card->type; ?>">
+            <div class="DeckBuilderCard" id="<?= $card->id; ?>" onclick="Deck.addCard(<?= $card->id; ?>)" oncontextmenu="cardInfo(<?= $card->id; ?>);return false;" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-color="<?= $card->color; ?>" data-type="<?= $card->type; ?>">
                 <img src="img/assets/low/art/<?= $card->art; ?>.png">
             </div>
         <?php break; ?>
