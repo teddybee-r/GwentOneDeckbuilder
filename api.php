@@ -34,7 +34,7 @@ $card = $stmt->fetch(PDO::FETCH_OBJ);
 $attr         = json_decode($card->attributes);
 $ids          = json_decode($card->id);
 $id           = $ids->card;
-$artid        = $ids->art;
+$art          = $ids->art;
 $audio        = $ids->audio;
 $name         = $card->name;
 $category     = $card->category;
@@ -56,93 +56,89 @@ $abilityIcon  = 2;
 
 <?php if($response === 'html'): ?>
 <div class="cardInfo">
-    <div class="content-wrap">
 
-        <div class="gwent-card" data-id="<?= $id; ?>" data-artid="<?= $artid; ?>j" data-power="<?=$power;?>" data-armor="<?=$armor;?>" data-provision="<?=$provision;?>" data-faction="<?=$faction;?>" data-set="<?=$set;?>" data-color="<?=$color;?>" data-type="<?=$type;?>" data-rarity="<?=$rarity;?>" <?php if($faction2!=''){ echo ' data-faction-duo="' . $faction . '_' . $faction2 . '"';}?>>
+    <div class="card-render" data-id="<?= $id; ?>" data-artid="<?= $art; ?>j" data-power="<?=$power;?>" data-armor="<?=$armor;?>" data-provision="<?=$provision;?>" data-faction="<?=$faction;?>" data-set="<?=$set;?>" data-color="<?=$color;?>" data-type="<?=$type;?>" data-rarity="<?=$rarity;?>" <?php if($faction2!=''){ echo ' data-faction-duo="' . $faction . '_' . $faction2 . '"';}?>>
 
-            <div class="info">
-                <div class="head">
-                    <div class="name"><?= $name; ?></div>
-                    <div class="category"><?= $category ?></div>
-                </div>
-
-                <div class="body">
-                    <div class="ability"><?= $ability; ?></div>  
-
-                    <?php if(!empty($keywordsHTML)): ?>                    
-                    <div class="seperator-short"></div>                    
-                    <div class="keyword"><?= $keywordsHTML; ?>
-                    </div>                    
-                    <?php endif; ?>
-                </div>
+        <div class="info">
+            <div class="head">
+                <div class="name"><?= $name; ?></div>
+                <div class="category"><?= $category ?></div>
             </div>
+
+            <div class="body">
+                <div class="ability"><?= $ability; ?></div>  
+                <?php if(!empty($keywordsHTML)): ?>                    
+                <div class="seperator-short"></div>                    
+                <div class="keyword"><?= $keywordsHTML; ?></div>                    
+                <?php endif; ?>
+            </div>
+        </div>
                           
-            <div class="image">
-                          
-                <div class="art" data-res="medium">
-                          
-              <?php switch($type):
-                case 'ability': ?>
+        <div class="image">
+                
+            <div class="art" data-res="medium">
+<?php switch($type):
+      case 'ability': ?>
 <?php if ($abilityIcon == 0): ?>
-                        <div id="premium" class="card_asset-img"><img src="https://gwent.one/img/assets/medium/art/<?= $artid;?>.jpg"></div>
-                        <div class="card_asset-border"></div>
-                        <div class="card_asset-banner"></div>
-                        <div class="card_asset-ability-icon"></div>
-                        <div class="card_asset-ability-provision-icon"><div class="card_asset-ability-provision"></div></div>
-                        <div class="card_asset-rarity"></div>
+                <div id="premium" class="bg-img"><img src="https://gwent.one/img/assets/medium/art/<?= $art;?>.jpg"></div>
+                <div class="border"></div>
+                <div class="banner"></div>
+                <div class="ability-icon"></div>
+                <div class="provision-icon"><div class="provision"></div></div>
+                <div class="rarity"></div>
 <?php elseif ($abilityIcon == 1): ?>
-                        <img class="ability-icon-249"  loading="lazy" src="https://gwent.one/img/icon/ability/pre720/<?= $id; ?>.png">
+                <img class="ability-icon-249" loading="lazy" src="https://gwent.one/img/icon/ability/pre720/<?= $id; ?>.png">
 <?php elseif ($abilityIcon == 2): ?>
-                        <img class="ability-icon-249"  loading="lazy" src="https://gwent.one/img/icon/ability/<?= $id; ?>.png">
+                <img class="ability-icon-249" loading="lazy" src="https://gwent.one/img/icon/ability/<?= $id; ?>.png">
 <?php endif; ?>
 <?php break;?>
                       
 <?php case 'stratagem': ?>
-                    <div id="premium" class="card_asset-img"><img src="https://gwent.one/img/assets/medium/art/<?= $artid;?>.jpg"></div>
-                    <div class="card_asset-border"></div>
-                    <div class="card_asset-banner"></div>
-                    <div class="card_asset-trinket"></div>
-                    <div class="card_asset-rarity"></div>
+                <div id="premium" class="bg-img"><img src="https://gwent.one/img/assets/medium/art/<?= $art;?>.jpg"></div>
+                <div class="border"></div>
+                <div class="banner"></div>
+                <div class="trinket"></div>
+                <div class="rarity"></div>
 <?php break;?>
                 
 <?php case 'unit': ?>
-                    <div id="premium" class="card_asset-img"><img src="https://gwent.one/img/assets/medium/art/<?= $artid;?>.jpg"></div>
-                    <div class="card_asset-border"></div>
+                <div id="premium" class="bg-img"><img src="https://gwent.one/img/assets/medium/art/<?= $art;?>.jpg"></div>
+                <div class="border"></div>
 <?php if($armor!=0) : ?>                                        
-                    <div class="card_asset-armor-icon"><div class="card_asset-armor"></div></div>
+                <div class="armor-icon"><div class="armor"></div></div>
 <?php endif; ?>
 <?php if($provision!=0) : ?>                                        
-                    <div class="card_asset-provision-icon"></div>
-                    <div class="card_asset-provision-bg"><div class="card_asset-provision"></div></div>
+                <div class="provision-icon"></div>
+                <div class="provision-bg"><div class="provision"></div></div>
 <?php endif; ?>
-                    <div class="card_asset-banner"><div class="card_asset-power"></div></div>
-                    <div class="card_asset-rarity"></div>
+                <div class="banner"><div class="power"></div></div>
+                <div class="rarity"></div>
 <?php break;?>
                   
-                <?php case 'artifact': ?>
-                    <div id="premium" class="card_asset-img"><img src="https://gwent.one/img/assets/medium/art/<?= $artid;?>.jpg"></div>
-                    <div class="card_asset-border"></div>
-                  <?php if($provision!=0) : ?>     
-                    <div class="card_asset-provision-icon"></div>
-                    <div class="card_asset-provision-bg"><div class="card_asset-provision"></div></div>
-                  <?php endif; ?>
-                    <div class="card_asset-banner"></div>
-                    <div class="card_asset-trinket"></div>
-                    <div class="card_asset-rarity"></div>
-                <?php break;?>
+<?php case 'artifact': ?>
+                <div id="premium" class="bg-img"><img src="https://gwent.one/img/assets/medium/art/<?= $art;?>.jpg"></div>
+                <div class="border"></div>
+<?php if($provision!=0) : ?>     
+                <div class="provision-icon"></div>
+                <div class="provision-bg"><div class="provision"></div></div>
+<?php endif; ?>
+                <div class="banner"></div>
+                <div class="trinket"></div>
+                <div class="rarity"></div>
+<?php break;?>
                   
-                <?php case 'special': ?>
-                    <div id="premium" class="card_asset-img"><img src="https://gwent.one/img/assets/medium/art/<?= $artid;?>.jpg"></div>
-                    <div class="card_asset-border"></div>
-                  <?php if($provision!=0) : ?>     
-                    <div class="card_asset-provision-icon"></div>
-                    <div class="card_asset-provision-bg"><div class="card_asset-provision"></div></div>
-                  <?php endif; ?>
-                    <div class="card_asset-banner"></div>
-                    <div class="card_asset-trinket"></div>
-                    <div class="card_asset-rarity"></div>
-                <?php break;?>
-              <?php endswitch;?>
+<?php case 'special': ?>
+                <div id="premium" class="bg-img"><img src="https://gwent.one/img/assets/medium/art/<?= $art;?>.jpg"></div>
+                <div class="border"></div>
+<?php if($provision!=0) : ?>     
+                <div class="provision-icon"></div>
+                <div class="provision-bg"><div class="provision"></div></div>
+<?php endif; ?>
+                <div class="banner"></div>
+                <div class="trinket"></div>
+                <div class="rarity"></div>
+<?php break;?>
+<?php endswitch;?>
             </div>
         </div>
     </div>
@@ -153,7 +149,7 @@ $abilityIcon  = 2;
     header('Content-type: application/json; charset=UTF-8');
     $json = [
         'id' => $id,
-        'art' => $artid,
+        'art' => $art,
         'name' => $name,
         'flavor' => $flavor,
         'category' => $category,
