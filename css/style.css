@@ -1,6 +1,16 @@
+@font-face {
+    font-family:GWENT;
+    src:url(../fonts/hinted-GWENT-ExtraBold.woff)  format("woff"),
+        url(../fonts/hinted-GWENT-ExtraBold.woff2) format("woff2"),
+        url(../fonts/hinted-GWENT-ExtraBold.ttf)   format("truetype");
+    font-style:normal;
+    font-weight:700;
+    text-rendering:optimizeLegibility
+}
+
 body {
     background-color: #2e2e2e;
-    font-family: Gwent;
+    font-family: GWENT;
 }
 *, ::after, ::before {
     box-sizing: border-box;
@@ -15,20 +25,20 @@ body {
     background-image: url(https://gwent.one/image/transparency.png);
 }
 #app {
-    width: 1160px;
     margin: 0 auto;
     display:grid;
-    grid-template-columns: 555px 800px;
+    grid-template-columns: 555px 800px 555px;
 
 }
 #Deck {
     background-color: #5c3030;
     width: 100%;
-    padding: 5px;
+    padding: 10px;
 }
 #Deck .head {
     width: 100%;
     display:grid;
+    grid-template-columns: 150px 125px 125px 130px;
     grid-template-areas: "ability name name name"
                          "ability size units provision";
 }
@@ -38,41 +48,45 @@ body {
 #DeckProvision,
 #DeckSize,
 #DeckUnits {
-    font-size:4em;
+    font-size:3em;
     color:white;
-    text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 
 }
 
 #DeckUnits img,
 #DeckProvision img,
 #DeckSize img {
-    height:50px;
+    height:60px;
+}
+#DeckUnits span,
+#DeckProvision span,
+#DeckSize span {
+    margin-left:.2em;
 }
 #DeckName {
     grid-area:name;
-    font-size:2em;
+    font-size:2.5em;
 }
 #DeckUnits {
     grid-area:units;
 }
 #DeckAbility {
     grid-area:ability;
+    height:150px;
+    width:150px;
 }
 #DeckAbility img {
-    height:110px;
+    height:150px;
 }
 #DeckProvision {
     grid-area:provision;
-    font-size:4em;
-    color:white;
-    text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
 #DeckSize {
     grid-area:size;
-    font-size:4em;
-    color:white;
-    text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
 
 #DeckBuilder {
@@ -117,18 +131,6 @@ body {
     line-height: 1.5;  
     font-family: Gwent;
 }
-/*
-<DeckCard>
-    <ART />
-    <GRADIENT />
-    <BORDER />
-    <C-PROV />
-    <C-POWER />
-    <C-AMOUNT />
-    <C-NAME />
-</DeckCard>
-*/
-
 
 .DeckCard[data-color='Gold'] .border {
     background-image: url("../img/assets/deck/border/gold.png");
@@ -144,4 +146,8 @@ body {
 }
 .DeckCard[data-amount='2'] .amount {
     background-image: url("../img/assets/deck/other/amount-2.png");
+}
+
+#CardInformation {
+    background-color: aqua;
 }

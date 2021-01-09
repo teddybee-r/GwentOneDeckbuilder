@@ -67,7 +67,14 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
     <div id="canvas"></div>
     <div id="app-nav">
         <h1>app-nav</h1>
-        <button onclick="h2c()">html2canvas</button>
+        <div class="filters">
+            <div class="faction"></div>
+            <div class="type"></div>
+            <div class="rarity"></div>
+            <div class="set"></div>
+            <div class="provision"></div>
+            <div class="power"></div>
+        </div>
         <button onclick="downloadDeck()">Download</button>
     </div>
     <div id="app">
@@ -108,7 +115,7 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
         <?php break; ?>
         <?php default: ?>
         <?php array_push($cards, $card); ?>
-            <div class="DeckBuilderCard" id="<?= $card->id; ?>" onclick="Deck.addCard(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-color="<?= $card->color; ?>" data-type="<?= $card->type; ?>">
+            <div class="DeckBuilderCard" id="<?= $card->id; ?>" onclick="Deck.addCard(<?= $card->id; ?>)" oncontextmenu="cardInfo('<?= $card->id; ?>');return false;" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-color="<?= $card->color; ?>" data-type="<?= $card->type; ?>">
                 <img src="img/assets/low/art/<?= $card->art; ?>.png">
             </div>
         <?php break; ?>
@@ -116,6 +123,8 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
 <?php endforeach; ?>
     </div>
 
+    <div id="CardInformation">
+    </div>
     <script>
         var Deck = new Decklist();
         Deck.setStratagem(202140);
