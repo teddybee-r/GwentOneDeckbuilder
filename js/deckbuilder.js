@@ -21,8 +21,8 @@ class Card {
     this.provision = Number(card.dataset.provision);
     this.power = Number(card.dataset.power);
     this.armor = Number(card.dataset.armor);
-    this.color = card.dataset.color;
-    this.type = card.dataset.type;
+    this.color = card.dataset.color.toLowerCase();
+    this.type = card.dataset.type.toLowerCase();
     this.amount = 1;
 
     console.log("new Card("+this.id+") {\"id\":  " + this.id + ", \"name\": \"" + this.name + "\", \"provision\": " + this.provision + ", \"power\": " + this.power  + ", \"armor\": " + this.armor  + ", \"art\": " + this.art  + ", \"type\": \"" + this.type + "\"}")
@@ -81,7 +81,7 @@ class Decklist
             // card does not exist, add card to deck
             this.cards.push(card);
             console.log("Decklist.addCard("+ id + ") > '" + card.name + "' added to Decklist.cards");
-        } else if(cardSearch.amount === 1 && cardSearch.color === 'Bronze') {
+        } else if(cardSearch.amount === 1 && cardSearch.color === 'bronze') {
             // card does exist and is a bronze card increase amount to 2 (maximum)
             cardSearch.amount = 2;
             console.log("Decklist.addCard("+ id + ") > card.amount increased by 1");
@@ -140,7 +140,7 @@ class Decklist
         var deckSize = this.cards.reduce((total, obj) => obj.amount + total,0)
         document.getElementById("DeckSize").innerHTML = "<img src=\"img/icon/deckbuilder/cards.png\">  " + "<span>" +deckSize + "</span>";
         
-        var units = this.cards.reduce((total, obj) => (obj.type ==='Unit') + total,0)
+        var units = this.cards.reduce((total, obj) => (obj.type ==='unit') + total,0)
         document.getElementById("DeckUnits").innerHTML = "<img src=\"img/icon/deckbuilder/units.png\"> " + "<span>" + units + "</span>";
 
 

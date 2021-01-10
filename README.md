@@ -1,6 +1,5 @@
 # Gwent Deck Builder
 Requires [GwentOneDB](https://github.com/teddybee-r/GwentOneDB "GwentOneDB - github")  
-If you don't want to build a DB use the static the .html files.  
 
 # Work in Progress
 Just wait we're slowly getting there..  

@@ -2,28 +2,20 @@
 
 $pdo = new PDO("pgsql:host=localhost;dbname=gwent", 'postgres', 'meowmeow');
 $faction = $_GET["faction"] ?? 'Skellige';
+$version = '8.0.0';
 $sql = "
-        SELECT
-        card.data.id->>'card' as id,
-        card.data.id->>'art' as art,
-        card.locale_en.name as name,
-        card.data.attributes->>'provision' as provision,
-        card.data.attributes->>'power' as power,
-        card.data.attributes->>'armor' as armor,
-        card.data.attributes->>'color' as color,
-        card.data.attributes->>'type' as type
-        
+        SELECT *        
         FROM        card.data
         INNER JOIN  card.locale_en ON card.data.i= card.locale_en.i
 
         WHERE 
-        (VERSION = '8.0.0'
+        (VERSION = :version
         AND 
-        (card.data.attributes->>'faction' IN ('Neutral', '$faction')
-        OR  card.data.attributes->>'factionSecondary' IN ('Neutral', '$faction'))
+        (card.data.attributes->>'faction' IN ('Neutral', :faction)
+        OR  card.data.attributes->>'factionSecondary' IN ('Neutral', :faction))
         AND card.data.attributes->>'set'     != 'NonOwnable'
         )
-        OR (VERSION = '8.0.0' AND card.data.id->>'card' = '202140')
+        OR (VERSION = :version AND card.data.id->>'card' = '202140')
         ORDER BY 
         (CASE
             WHEN card.data.attributes->>'type' = 'Ability' THEN 1
@@ -32,10 +24,13 @@ $sql = "
         card.data.attributes->'provision' DESC,
         card.locale_en.name
         ";
-$version = '8.0.0';
 
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':version', $version);
+$stmt->bindParam(':faction', $faction);
+$stmt->execute();
               
-$result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
+$result = $stmt->fetchAll(PDO::FETCH_OBJ);
 #var_dump($result);
 
 ?>
@@ -65,8 +60,9 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
 </head>
 <body>
     <div id="canvas"></div>
+    
     <div id="app-nav">
-        <h1>app-nav</h1>
+        <h1>Filters go here</h1>
         <div class="filters">
             <div class="faction"></div>
             <div class="type"></div>
@@ -81,8 +77,8 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
         <div id="Deck" data-version="<?= $version; ?>">
         <div id="h2c">
             <div class="head">
-                <div id="DeckName"></div>
-                <div id="DeckAbility"></div>
+                <div id="DeckName">gwent.one</div>
+                <div id="DeckAbility"><img src="img/assets/ability/000000.png"></div>
                 <div id="DeckSize"></div>
                 <div id="DeckUnits"></div>
                 <div id="DeckProvision"></div>
@@ -100,26 +96,7 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
             $cards = []; 
         ?>
 <?php foreach($result as $key => $card): ?>
-    <?php switch($card->type): 
-        case("Ability"): ?>
-        <?php array_push($abilities, $card); ?>
-            <div class="DeckBuilderLeader" id="<?= $card->id; ?>" onclick="Deck.setAbility(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-color="<?= $card->color; ?>" data-type="<?= $card->type; ?>">
-                <img src="img/assets/ability/<?= $card->id; ?>.png">
-            </div>
-        <?php break; ?>
-        <?php case("Stratagem"): ?>
-        <?php array_push($stratagems, $card); ?>
-            <div class="DeckBuilderStratagem" id="<?= $card->id; ?>" onclick="Deck.setStratagem(<?= $card->id; ?>)" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-color="<?= $card->color; ?>" data-type="<?= $card->type; ?>">
-                <img src="img/assets/low/art/<?= $card->art; ?>.png">
-            </div>
-        <?php break; ?>
-        <?php default: ?>
-        <?php array_push($cards, $card); ?>
-            <div class="DeckBuilderCard" id="<?= $card->id; ?>" onclick="Deck.addCard(<?= $card->id; ?>)" oncontextmenu="cardInfo(<?= $card->id; ?>);return false;" data-name="<?= $card->name; ?>" data-provision="<?= $card->provision; ?>" data-power="<?= $card->power; ?>" data-armor="<?= $card->armor; ?>" data-art="<?= $card->art; ?>" data-id="<?= $card->id; ?>" data-color="<?= $card->color; ?>" data-type="<?= $card->type; ?>">
-                <img src="img/assets/low/art/<?= $card->art; ?>.png">
-            </div>
-        <?php break; ?>
-    <?php endswitch; ?>
+    <?php include("resources/views/deckbuilder/card-list.php"); ?>
 <?php endforeach; ?>
     </div>
 

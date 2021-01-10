@@ -1,0 +1,81 @@
+// Head coloring
+.card-render[data-faction="neutral"]         .head {background-color: var(--nt-header-bg-color);}
+.card-render[data-faction="monster"]         .head {background-color: var(--mo-header-bg-color);}
+.card-render[data-faction="nilfgaard"]       .head {background-color: var(--ng-header-bg-color);}
+.card-render[data-faction="northern realms"] .head {background-color: var(--nr-header-bg-color);}
+.card-render[data-faction="scoiatael"]       .head {background-color: var(--st-header-bg-color);}
+.card-render[data-faction="skellige"]        .head {background-color: var(--sk-header-bg-color);}
+.card-render[data-faction="syndicate"]       .head {background-color: var(--sy-header-bg-color);}
+
+.api.card-render {
+    //font-family: 'Courier New', Courier, monospace;
+    display:grid;
+    grid-template-columns: 360px;
+    grid-template-rows: 360px auto;
+    grid-template-areas: "image" "info";
+    align-items: center;
+    justify-items: center;
+    padding: .5em;
+    grid-gap: .5em;
+
+    // grid items
+    .info {
+        grid-area: info;
+
+        .head {
+            padding: 1em;
+            color:#fff;
+
+            .name {
+                font-size:1.2em;
+                font-family:GWENT;
+            }
+            .category {font-size:0.8em}
+        }
+        .body {
+            padding: 1em;
+            color: #000;
+            background-color: #a18c6c;
+            .ability {}
+            .keywords {}
+            .flavor {
+                text-align: center;
+                font-style: italic;
+                margin: 0 5%;
+            }
+            .seperator-short {
+                background-color: #89765a;
+                width: 40%;
+                height: 6px;
+                margin: 20px auto;
+                border-radius: 8px;
+            }
+            .seperator-long {
+                background-color: #8f7c5f;
+                width: 90%;
+                height: 4px;
+                margin: 20px auto;
+                border-radius: 8px;
+            }
+        }
+    }
+    .image {
+        grid-area: image;
+
+    }
+}
+
+
+.decklist.card-render {
+    //font-family: 'Courier New', Courier, monospace;
+    display:grid;
+    grid-template-columns: auto;
+    grid-template-areas: "image";
+    align-items: center;
+    justify-items: center;
+    grid-gap: .5em;
+    .image {
+        grid-area: image;
+
+    }
+}

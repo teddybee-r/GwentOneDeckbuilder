@@ -1,0 +1,149 @@
+// fonts.scss
+
+@font-face {
+    font-family:GWENT;
+    src:url(../fonts/hinted-GWENT-ExtraBold.woff)  format("woff"),
+        url(../fonts/hinted-GWENT-ExtraBold.woff2) format("woff2"),
+        url(../fonts/hinted-GWENT-ExtraBold.ttf)   format("truetype");
+    font-style:normal;
+    font-weight:700;
+    text-rendering:optimizeLegibility;
+}
+
+/* cinzel-decorative-regular - latin */
+@font-face {
+    font-family: 'Cinzel Decorative';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Cinzel Decorative Regular'), local('CinzelDecorative-Regular'),
+         url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-regular.svg#CinzelDecorative') format('svg'); /* Legacy iOS */
+  }
+  
+  /* cinzel-decorative-700 - latin */
+  @font-face {
+    font-family: 'Cinzel Decorative';
+    font-style: normal;
+    font-weight: 700;
+    src: url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-700.eot'); /* IE9 Compat Modes */
+    src: local('Cinzel Decorative Bold'), local('CinzelDecorative-Bold'),
+         url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+         url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-700.woff') format('woff'), /* Modern Browsers */
+         url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-700.svg#CinzelDecorative') format('svg'); /* Legacy iOS */
+  }
+  
+  /* cinzel-decorative-900 - latin */
+  @font-face {
+    font-family: 'Cinzel Decorative';
+    font-style: normal;
+    font-weight: 900;
+    src: url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-900.eot'); /* IE9 Compat Modes */
+    src: local('Cinzel Decorative Black'), local('CinzelDecorative-Black'),
+         url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-900.woff2') format('woff2'), /* Super Modern Browsers */
+         url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-900.woff') format('woff'), /* Modern Browsers */
+         url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-900.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('https://gwent.one/ss/font/cinzel-decorative-v6-latin-900.svg#CinzelDecorative') format('svg'); /* Legacy iOS */
+  }
+  /* cinzel-regular - latin_latin-ext */
+  @font-face {
+    font-family: 'Cinzel';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-regular.eot'); /* IE9 Compat Modes */
+    src: local('Cinzel Regular'), local('Cinzel-Regular'),
+         url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-regular.woff') format('woff'), /* Modern Browsers */
+         url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-regular.svg#Cinzel') format('svg'); /* Legacy iOS */
+  }
+  
+  /* cinzel-700 - latin_latin-ext */
+  @font-face {
+    font-family: 'Cinzel';
+    font-style: normal;
+    font-weight: 700;
+    src: url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-700.eot'); /* IE9 Compat Modes */
+    src: local('Cinzel Bold'), local('Cinzel-Bold'),
+         url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-700.woff2') format('woff2'), /* Super Modern Browsers */
+         url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-700.woff') format('woff'), /* Modern Browsers */
+         url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-700.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-700.svg#Cinzel') format('svg'); /* Legacy iOS */
+  }
+  
+  /* cinzel-900 - latin_latin-ext */
+  @font-face {
+    font-family: 'Cinzel';
+    font-style: normal;
+    font-weight: 900;
+    src: url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-900.eot'); /* IE9 Compat Modes */
+    src: local('Cinzel Black'), local('Cinzel-Black'),
+         url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-900.woff2') format('woff2'), /* Super Modern Browsers */
+         url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-900.woff') format('woff'), /* Modern Browsers */
+         url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-900.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('https://gwent.one/ss/font/cinzel-v7-latin_latin-ext-900.svg#Cinzel') format('svg'); /* Legacy iOS */
+  }
+  
+  /* muli-regular - vietnamese_latin_latin-ext */
+  @font-face {
+    font-family: 'Muli';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://gwent.one/ss/font/muli-v11-vietnamese_latin_latin-ext-regular.eot'); /* IE9 Compat Modes */
+    src: local('Muli Regular'), local('Muli-Regular'),
+         url('https://gwent.one/ss/font/muli-v11-vietnamese_latin_latin-ext-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('https://gwent.one/ss/font/muli-v11-vietnamese_latin_latin-ext-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('https://gwent.one/ss/font/muli-v11-vietnamese_latin_latin-ext-regular.woff') format('woff'), /* Modern Browsers */
+         url('https://gwent.one/ss/font/muli-v11-vietnamese_latin_latin-ext-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('https://gwent.one/ss/font/muli-v11-vietnamese_latin_latin-ext-regular.svg#Muli') format('svg'); /* Legacy iOS */
+  }
+  @font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://gwent.one/ss/font/MaterialIcons-Regular.eot'); /* For IE6-8 */
+    src: local('Material Icons'),
+      local('MaterialIcons-Regular'),
+      url('https://gwent.one/ss/font/MaterialIcons-Regular.woff2') format('woff2'),
+      url('https://gwent.one/ss/font/MaterialIcons-Regular.woff') format('woff'),
+      url('https://gwent.one/ss/font/MaterialIcons-Regular.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'gnum';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Gwent Numbers'),
+      url('https://gwent.one/ss/font/gnum.eot') format('embedded-opentype'),
+      url('https://gwent.one/ss/font/gnum.woff') format('woff'),
+      url('https://gwent.one/ss/font/gnum.ttf') format('truetype');
+  }
+  
+  
+  /* Rules for sizing the icon. */
+  .material-icons.md-18 { font-size: 18px; }
+  .material-icons.md-24 { font-size: 24px; }
+  .material-icons.md-36 { font-size: 36px; }
+  .material-icons.md-48 { font-size: 48px; }
+  
+  /* Rules for using icons as black on a light background. */
+  .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+  .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+  
+  /* Rules for using icons as white on a dark background. */
+  .material-icons.md-light { color: rgba(255, 255, 255, 1); }
+  .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+  
+  .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+  .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+  
+  .material-icons.md-light { color: rgba(255, 255, 255, 1); }
+  .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }

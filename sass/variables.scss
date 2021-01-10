@@ -1,0 +1,30 @@
+// Variables
+
+// Faction colors
+
+$nt-header: #302113;
+$mo-header: #4e120a;
+$ng-header: #222222;
+$nr-header: #113a68;
+$st-header: #323a1e;
+$sk-header: #33155d;
+$sy-header: #75390d;
+
+$nt-meta-theme: #7f6000;
+$mo-meta-theme: #c56c6c;
+$ng-meta-theme: #f0d447;
+$nr-meta-theme: #48c1ff;
+$st-meta-theme: #2abd36;
+$sk-meta-theme: #ad39ec;
+$sy-meta-theme: #e67e22;
+
+
+:root {
+    --nt-header-bg-color: #{$nt-header};
+    --mo-header-bg-color: #{$mo-header};
+    --ng-header-bg-color: #{$ng-header};
+    --nr-header-bg-color: #{$nr-header};
+    --st-header-bg-color: #{$st-header};
+    --sk-header-bg-color: #{$sk-header};
+    --sy-header-bg-color: #{$sy-header};
+}
