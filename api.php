@@ -55,6 +55,8 @@ $abilityIcon  = 2;
 ?>
 
 <?php if($response === 'html'): ?>
+
+
 <div class="cardInfo">
 
     <div class="card-render" data-id="<?= $id; ?>" data-artid="<?= $art; ?>j" data-power="<?=$power;?>" data-armor="<?=$armor;?>" data-provision="<?=$provision;?>" data-faction="<?=$faction;?>" data-set="<?=$set;?>" data-color="<?=$color;?>" data-type="<?=$type;?>" data-rarity="<?=$rarity;?>" <?php if($faction2!=''){ echo ' data-faction-duo="' . $faction . '_' . $faction2 . '"';}?>>
@@ -80,7 +82,7 @@ $abilityIcon  = 2;
 <?php switch($type):
       case 'ability': ?>
 <?php if ($abilityIcon == 0): ?>
-                <div id="premium" class="bg-img"><img src="https://gwent.one/img/assets/medium/art/<?= $art;?>.jpg"></div>
+                <div id="premium" onclick="premiumVideo(<?= $id;?>, <?= $art;?>)" class="bg-img"><img src="https://gwent.one/img/assets/medium/art/<?= $art;?>.jpg"></div>
                 <div class="border"></div>
                 <div class="banner"></div>
                 <div class="ability-icon"></div>
@@ -94,7 +96,7 @@ $abilityIcon  = 2;
 <?php break;?>
                       
 <?php case 'stratagem': ?>
-                <div id="premium" class="bg-img"><img src="https://gwent.one/img/assets/medium/art/<?= $art;?>.jpg"></div>
+                <div id="premium" onclick="premiumVideo(<?= $id;?>, <?= $art;?>)" class="bg-img"><img src="https://gwent.one/img/assets/medium/art/<?= $art;?>.jpg"></div>
                 <div class="border"></div>
                 <div class="banner"></div>
                 <div class="trinket"></div>
@@ -102,7 +104,7 @@ $abilityIcon  = 2;
 <?php break;?>
                 
 <?php case 'unit': ?>
-                <div id="premium" class="bg-img"><img src="https://gwent.one/img/assets/medium/art/<?= $art;?>.jpg"></div>
+                <div id="premium" onclick="premiumVideo(<?= $id;?>, <?= $art;?>)" class="bg-img"><img src="https://gwent.one/img/assets/medium/art/<?= $art;?>.jpg"></div>
                 <div class="border"></div>
 <?php if($armor!=0) : ?>                                        
                 <div class="armor-icon"><div class="armor"></div></div>
@@ -116,7 +118,7 @@ $abilityIcon  = 2;
 <?php break;?>
                   
 <?php case 'artifact': ?>
-                <div id="premium" class="bg-img"><img src="https://gwent.one/img/assets/medium/art/<?= $art;?>.jpg"></div>
+                <div id="premium" onclick="premiumVideo(<?= $id;?>, <?= $art;?>)" class="bg-img"><img src="https://gwent.one/img/assets/medium/art/<?= $art;?>.jpg"></div>
                 <div class="border"></div>
 <?php if($provision!=0) : ?>     
                 <div class="provision-icon"></div>
@@ -128,7 +130,7 @@ $abilityIcon  = 2;
 <?php break;?>
                   
 <?php case 'special': ?>
-                <div id="premium" class="bg-img"><img src="https://gwent.one/img/assets/medium/art/<?= $art;?>.jpg"></div>
+                <div id="premium" onclick="premiumVideo(<?= $id;?>, <?= $art;?>)" class="bg-img"><img src="https://gwent.one/img/assets/medium/art/<?= $art;?>.jpg"></div>
                 <div class="border"></div>
 <?php if($provision!=0) : ?>     
                 <div class="provision-icon"></div>

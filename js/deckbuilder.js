@@ -134,10 +134,10 @@ class Decklist
         this.stratagem.forEach(printStratagem);
 
         // provision available, deck size, unit amount
-        var total = this.cards.reduce((total, obj) => Number(obj.provision*obj.amount) + total,0)
+        var total = this.cards.reduce((total, obj) => obj.provision*obj.amount + total,0)
         document.getElementById("DeckProvision").innerHTML = "<img src=\"img/icon/deckbuilder/provision.png\"> " + "<span>" + (this.provision.limit - total) + "</span>";
         
-        var deckSize = this.cards.reduce((total, obj) => Number(obj.amount) + total,0)
+        var deckSize = this.cards.reduce((total, obj) => obj.amount + total,0)
         document.getElementById("DeckSize").innerHTML = "<img src=\"img/icon/deckbuilder/cards.png\">  " + "<span>" +deckSize + "</span>";
         
         var units = this.cards.reduce((total, obj) => (obj.type ==='Unit') + total,0)

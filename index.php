@@ -128,6 +128,19 @@ $result = $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
     <script>
         var Deck = new Decklist();
         Deck.setStratagem(202140);
+
+        function premiumVideo(card, art) {
+            var image = document.getElementById("premium");
+            var video = `
+            <video id="premium"  onclick="premiumVideo(`+card+`, `+art+`)" poster="https://gwent.one/img/assets/medium/art/`+art+`.jpg" class="premium__video" autoplay="yes" width="249" height="357">
+                <source src="https://gwent.one/video/card/premium/`+card+`.webm" type="video/webm">
+                <source src="https://gwent.one/video/card/premium/`+card+`.mp4" type="video/mp4">
+            </video>`;
+            image.outerHTML = video;
+        }
     </script>
+
+<script>
+</script>
 </body>
 </html>
