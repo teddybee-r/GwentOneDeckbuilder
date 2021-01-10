@@ -1,10 +1,10 @@
 # Gwent Deck Builder
-Since you cannot copy my database yet please use the .html files
+Requires [GwentOneDB](https://github.com/teddybee-r/GwentOneDB "GwentOneDB - github")  
+If you don't want to build a DB use the static the .html files.  
 
 # Work in Progress
 Just wait we're slowly getting there..  
 Most of the stuff here right now is get things on the screen not get them nicely there.
 
 # Decklist images
-Using html2canvas to generate images of the deck.  
-html2canvas requires local assets so I'll provide them.
+Using [html2canvas](https://html2canvas.hertzen.com/ "html2canvas.hertzen.com") (.js) for deck images.
