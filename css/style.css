@@ -4517,12 +4517,16 @@ body {
   display: -ms-grid;
   display: grid;
   grid-gap: 5px;
-  -ms-grid-columns: (150px)[5];
-      grid-template-columns: repeat(5, 150px);
+  -ms-grid-columns: (150px)[6];
+      grid-template-columns: repeat(6, 150px);
   grid-auto-rows: 215px;
   overflow: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  grid-gap: 20px;
 }
 
 .DeckBuilderLeader img, .DeckBuilderStratagem img, .DeckBuilderCard img {
