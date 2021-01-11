@@ -28,7 +28,7 @@ $abilityIcon  = 2;
             
 <?php switch($type):
   case 'ability': ?>
-    <div class="art" onclick="Deck.setAbility(<?= $id; ?>)" oncontextmenu="cardInfo(<?= $id; ?>);return false;" data-res="rel">
+    <div class="art" onclick="Deck.setAbility(<?= $id; ?>)" oncontextmenu="cardInfo(<?= $id; ?>);return false;" data-res="low">
 <?php if ($abilityIcon == 0): ?>
             <div  class="img"><img src="https://gwent.one/img/assets/low/art/<?= $art;?>.jpg"></div>
             <div class="asset border"></div>
@@ -45,7 +45,7 @@ $abilityIcon  = 2;
 <?php break;?>
                   
 <?php case 'stratagem': ?>
-        <div class="art" onclick="Deck.setStratagem(<?= $id; ?>)" oncontextmenu="cardInfo(<?= $id; ?>);return false;" data-res="rel">
+        <div class="art" onclick="Deck.setStratagem(<?= $id; ?>)" oncontextmenu="cardInfo(<?= $id; ?>);return false;" data-res="low">
             <div class="img"><img src="https://gwent.one/img/assets/low/art/<?= $art;?>.jpg"></div>
             <div class="asset border"></div>
             <div class="asset banner"></div>
@@ -55,7 +55,7 @@ $abilityIcon  = 2;
 <?php break;?>
             
 <?php case 'unit': ?>
-        <div class="art" onclick="Deck.addCard(<?= $id; ?>)" oncontextmenu="cardInfo(<?= $id; ?>);return false;" data-res="rel">
+        <div class="art" onclick="Deck.addCard(<?= $id; ?>)" oncontextmenu="cardInfo(<?= $id; ?>);return false;" data-res="low">
             <div class="img"><img src="https://gwent.one/img/assets/low/art/<?= $art;?>.jpg"></div>
             <div class="asset border"></div>
 <?php if($armor!=0) : ?>                                        
@@ -71,7 +71,7 @@ $abilityIcon  = 2;
 <?php break;?>
               
 <?php case 'artifact': ?>
-        <div class="art" onclick="Deck.addCard(<?= $id; ?>)" oncontextmenu="cardInfo(<?= $id; ?>);return false;" data-res="rel">
+        <div class="art" onclick="Deck.addCard(<?= $id; ?>)" oncontextmenu="cardInfo(<?= $id; ?>);return false;" data-res="low">
             <div class="img"><img src="https://gwent.one/img/assets/low/art/<?= $art;?>.jpg"></div>
             <div class="asset border"></div>
 <?php if($provision!=0) : ?>     
@@ -85,7 +85,7 @@ $abilityIcon  = 2;
 <?php break;?>
               
 <?php case 'special': ?>
-        <div class="art" onclick="Deck.addCard(<?= $id; ?>)" oncontextmenu="cardInfo(<?= $id; ?>);return false;" data-res="rel">
+        <div class="art" onclick="Deck.addCard(<?= $id; ?>)" oncontextmenu="cardInfo(<?= $id; ?>);return false;" data-res="low">
             <div class="img"><img src="https://gwent.one/img/assets/low/art/<?= $art;?>.jpg"></div>
             <div class="asset border"></div>
 <?php if($provision!=0) : ?>     

@@ -12,7 +12,10 @@
     color: #600101;
     font-weight: 800;
 }
-
+body,html {
+    margin: 0;
+    padding: 0;
+}
 body {
     font-family: 'Muli', sans-serif;
     color: #d9d8cb;
@@ -33,8 +36,9 @@ body {
 #app {
     margin: 0 auto;
     display:grid;
-    grid-template-columns: 570px auto 360px;
-    height: 100vh;
+    grid-template-columns: 330px auto 360px;
+    grid-template-rows: minmax(250px, 1fr);
+    height:100vh;
 }
 #Deck {
     display:flex;
@@ -42,9 +46,9 @@ body {
     align-content: center;
     width: 100%;
     padding: 10px;
-    overflow-y:scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    transform: scale(0.6) translate(-0%, -33%);
 }
 
 ::-webkit-scrollbar {
@@ -54,7 +58,7 @@ body {
 #Deck .head {
     width: 100%;
     display:grid;
-    grid-template-columns: 150px 125px 125px 130px;
+    grid-template-columns: 150px 115px 115px 130px;
     grid-template-areas: "ability name name name"
                          "ability size units provision";
 }
@@ -76,7 +80,7 @@ body {
 #DeckUnits img,
 #DeckProvision img,
 #DeckSize img {
-    height:50px;
+    height:60px;
 }
 #DeckUnits span,
 #DeckProvision span,
@@ -109,11 +113,11 @@ body {
 #DeckBuilder {
     background-color: #350c0c;
     width: 100%;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content: center;
-    align-content: center;
-    overflow-y:scroll;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(5, 150px);
+    grid-auto-rows: 215px;
+    overflow: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
 }

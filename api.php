@@ -55,8 +55,6 @@ $abilityIcon  = 2;
 ?>
 
 <?php if($response === 'html'): ?>
-
-
 <div class="cardInfo">
 
     <div class="api card-render" data-id="<?= $id; ?>" data-artid="<?= $art; ?>j" data-power="<?=$power;?>" data-armor="<?=$armor;?>" data-provision="<?=$provision;?>" data-faction="<?=$faction;?>" data-set="<?=$set;?>" data-color="<?=$color;?>" data-type="<?=$type;?>" data-rarity="<?=$rarity;?>" <?php if($faction2!=''){ echo ' data-faction-duo="' . $faction . '_' . $faction2 . '"';}?>>
