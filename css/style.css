@@ -4388,6 +4388,10 @@ a {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 15px 0px;
 }
 
 .filter {
@@ -4396,6 +4400,7 @@ a {
   -ms-grid-rows: auto auto;
       grid-template-rows: auto auto;
   padding: 10px 20px 0px 10px;
+  grid-gap: 5px;
 }
 
 .power .filter-option, .provision .filter-option {
@@ -4411,20 +4416,29 @@ a {
 }
 
 .filter-option div {
-  background-color: #ffffff;
-  border: none;
-  color: black;
-  padding: 10px 21px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50px;
+  width: 50px;
+  margin: 0px -1px 0px 0px;
+  border: 1px solid #fff;
+  background-color: #000;
+  color: #fff;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
+  font-size: 30px;
   cursor: pointer;
 }
 
 .filter-option div img {
-  width: 20px;
+  width: 45px;
 }
 
 body {
@@ -4440,8 +4454,7 @@ body {
 
 #app-nav {
   width: 100%;
-  height: 300px;
-  background-color: #43636b;
+  background-color: #000;
   color: #fff;
 }
 
