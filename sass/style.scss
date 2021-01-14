@@ -183,7 +183,8 @@ body {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
+    align-content: start;
 
     overflow: auto;
     scrollbar-width: none;

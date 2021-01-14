@@ -9,6 +9,9 @@ Most of the stuff here right now is get things on the screen not get them nicely
 Using [html2canvas](https://html2canvas.hertzen.com/ "html2canvas.hertzen.com") (.js) for deck images.
 
 
+# preview
+![image](preview.png)
+
 # ideas
 deck codes: generated from a sorted array of ID only? (duplicates appear twice) [2000001, 2000002, 200003, 200004, 200005, 200005, ...]
 since we are supporting 12 languages we can't really store things like name here and need to rebuild it later
