@@ -24,13 +24,12 @@ a {
     display:flex;
     flex-wrap:wrap;
     justify-content: center;
-    padding: 15px 0px;
 }
 .filter {
     display:grid;
     grid-template-rows: auto auto;
-    padding:10px 20px 0px 10px;
-    grid-gap: 5px;
+    padding:10px;
+    grid-gap: 3px;
 }
 .power .filter-option, .provision .filter-option {
     font-family: GWENT;
@@ -45,8 +44,8 @@ a {
         justify-content: center;
         align-items: center;
 
-        height: 50px;
-        width: 50px;
+        height: 35px;
+        width: 35px;
         margin: 0px -1px 0px 0px;
         border: 1px solid #fff;
         
@@ -57,10 +56,35 @@ a {
         font-size: 30px;
         cursor: pointer;
     img {
-        width: 45px;
+        width: 30px;
+    }
+    .common {
+        transform: rotate(135deg);
+        filter: invert(69%) sepia(12%) saturate(580%) hue-rotate(173deg) brightness(92%) contrast(91%);
+    }
+    .rare {
+        transform: rotate(135deg);
+        filter: invert(57%) sepia(60%) saturate(2973%) hue-rotate(169deg) brightness(99%) contrast(93%);
+    }
+    .epic {
+        transform: rotate(135deg);
+        filter: invert(19%) sepia(100%) saturate(3542%) hue-rotate(278deg) brightness(85%) contrast(99%);
+    }
+    .legendary {
+        transform: rotate(135deg);
+        filter: invert(70%) sepia(18%) saturate(7446%) hue-rotate(4deg) brightness(98%) contrast(101%);
     }
     }
 }
+
+.circle {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
 
 body {
     font-family: 'Muli', sans-serif;
@@ -81,7 +105,7 @@ body {
 #app {
     margin: 0 auto;
     display:grid;
-    grid-template-columns: 330px auto 360px;
+    grid-template-columns: 380px auto 259px;
     grid-template-rows: minmax(250px, 1fr);
     height:100vh;
 }
@@ -90,9 +114,10 @@ body {
     align-content: start;
     justify-content: center;
     width: 100%;
+    height: 100vh;
+    overflow: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    transform: scale(0.6) translate(-0%, -33%);
 }
 
 ::-webkit-scrollbar {
@@ -102,7 +127,7 @@ body {
 #Deck .head {
     width: 100%;
     display:grid;
-    grid-template-columns: 150px 115px 115px 130px;
+    grid-template-columns: 100px 80px 80px 100px;
     grid-template-areas: "ability name name name"
                          "ability size units provision";
 }
@@ -112,7 +137,7 @@ body {
 #DeckProvision,
 #DeckSize,
 #DeckUnits {
-    font-size:2em;
+    font-size:1.5em;
     color:white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     display: flex;
@@ -124,7 +149,7 @@ body {
 #DeckUnits img,
 #DeckProvision img,
 #DeckSize img {
-    height:60px;
+    height:40px;
 }
 #DeckUnits span,
 #DeckProvision span,
@@ -134,18 +159,17 @@ body {
 #DeckName {
     font-family: GWENT;
     grid-area: name;
-    font-size:3em;
 }
 #DeckUnits {
     grid-area:units;
 }
 #DeckAbility {
     grid-area:ability;
-    height:150px;
-    width:150px;
+    height:100px;
+    width:100px;
 }
 #DeckAbility img {
-    height:150px;
+    height:100px;
 }
 #DeckProvision {
     grid-area:provision;
@@ -157,23 +181,21 @@ body {
 #DeckBuilder {
     background-color: #350c0c;
     width: 100%;
-    display: grid;
-    grid-gap: 5px;
-    grid-template-columns: repeat(6, 150px);
-    grid-auto-rows: 215px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
     overflow: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    justify-content: center;
-    grid-gap: 20px;
 }
 .DeckBuilderLeader img, .DeckBuilderStratagem img, .DeckBuilderCard img {
     width:110px;
 }
 
-.DeckCard {
-    width:525px;
-    height:70px;
+.DeckCard {    
+    width: calc(525px * 0.7);
+    height: calc(70px * 0.7);
     position:relative;
 }
 
@@ -190,17 +212,12 @@ body {
     width: 100%; height: 100%;
     top: 0px; left: 0px;
 }
-.DeckCard .art {
-    top: 5px; left: 10px;
-}
 .DeckCard .name {
     position: absolute;
-    left: 150px; bottom: 15px;
+    left: 110px; bottom: 15px;
     text-align: left; color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    font-size: 1.5rem;
     font-weight: 800;
-    line-height: 1.5;  
     font-family: Gwent;
 }
 

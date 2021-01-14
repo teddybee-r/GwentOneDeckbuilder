@@ -16,7 +16,6 @@ since we are supporting 12 languages we can't really store things like name here
 # todos
 - rewrite for multi lang
 - rewrite html/css/js .DeckCard (deckbuilder.js)
-- add js filtering for cards (similar to gwent.one/en/cards/)
 
 # bugs
 - js: unit counter currently ignores amount

@@ -84,10 +84,10 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
             <div class="filter-head">Rarity</div>
             <div class="filter-option">
                 <div onclick="filterDeckbuilder('rarity', '*')"         ><img src="img\icon\filter\other\white\all.png"></div>
-                <div onclick="filterDeckbuilder('rarity', 'common')"    ><img src="img\icon\filter\rarity\common.png"></div>
-                <div onclick="filterDeckbuilder('rarity', 'rare')"      ><img src="img\icon\filter\rarity\rare.png"></div>
-                <div onclick="filterDeckbuilder('rarity', 'epic')"      ><img src="img\icon\filter\rarity\epic.png"></div>
-                <div onclick="filterDeckbuilder('rarity', 'legendary')" ><img src="img\icon\filter\rarity\legendary.png"></div>
+                <div onclick="filterDeckbuilder('rarity', 'common')"    ><img class="common" src="img\icon\filter\other\black\all.png"></div>
+                <div onclick="filterDeckbuilder('rarity', 'rare')"      ><img class="rare" src="img\icon\filter\other\black\all.png"></div>
+                <div onclick="filterDeckbuilder('rarity', 'epic')"      ><img class="epic" src="img\icon\filter\other\black\all.png"></div>
+                <div onclick="filterDeckbuilder('rarity', 'legendary')" ><img class="legendary" src="img\icon\filter\other\black\all.png"></div>
             </div>
         </div>
         <div class="filter set"> 

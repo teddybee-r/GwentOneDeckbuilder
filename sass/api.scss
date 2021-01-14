@@ -10,17 +10,15 @@
 .api.card-render {
     //font-family: 'Courier New', Courier, monospace;
     display:grid;
-    grid-template-columns: 360px;
+    grid-template-columns: 259px;
     grid-template-rows: 360px auto;
     grid-template-areas: "image" "info";
-    align-items: center;
     justify-items: center;
-    padding: .5em;
-    grid-gap: .5em;
 
     // grid items
     .info {
         grid-area: info;
+        width: 249px;
 
         .head {
             padding: 1em;
@@ -42,6 +40,7 @@
                 text-align: center;
                 font-style: italic;
                 margin: 0 5%;
+                display:none;
             }
             .seperator-short {
                 background-color: #89765a;
@@ -56,6 +55,7 @@
                 height: 4px;
                 margin: 20px auto;
                 border-radius: 8px;
+                display:none;
             }
         }
     }
@@ -67,15 +67,13 @@
 
 
 .decklist.card-render {
-    //font-family: 'Courier New', Courier, monospace;
     display:grid;
     grid-template-columns: auto;
     grid-template-areas: "image";
     align-items: center;
     justify-items: center;
-    grid-gap: .5em;
+    margin: 5px;
     .image {
         grid-area: image;
-
     }
 }

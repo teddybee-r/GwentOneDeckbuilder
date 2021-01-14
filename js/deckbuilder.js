@@ -157,25 +157,27 @@ class Decklist
         function printStratagem(card) {
             document.getElementById("DeckStratagem").innerHTML = "";
             document.getElementById("DeckStratagem").innerHTML += `
-                <div class="DeckCard" oncontextmenu="cardInfo('${card.id}');return false;" data-name="${card.name}" data-provision="${card.provision}" data-power="${card.power}" data-armor="${card.armor}" data-art="${card.art}" data-id="${card.id}" data-color="${card.color}" data-type="${card.type}">
-                <div class="art"><img src="img/assets/deck/cards/${card.art}.png"></div>
+            <div class="DeckCard" oncontextmenu="cardInfo('${card.id}');return false;" data-name="${card.name}" data-provision="${card.provision}" data-power="${card.power}" data-armor="${card.armor}" data-art="${card.art}" data-id="${card.id}" data-color="${card.color}" data-type="${card.type}">
+                <div class="art" style="background-image: url('img/assets/deck/cards/${card.art}.png');"></div>
                 <div class="gradient"></div>
                 <div class="border"></div>
                 <div class="stratagem" style="background-image: url('img/assets/deck/other/stratagem.png');"></div>
                 <div class="amount"></div>
                 <div class="name">${card.name}</div>
+            </div>
             `;
         }
         function printCard(card) {
             document.getElementById("DeckCards").innerHTML += `
             <div class="DeckCard" onclick="Deck.delCard(${card.id})" oncontextmenu="cardInfo(${card.id});return false;" data-name="${card.name}" data-amount="${card.amount}" data-provision="${card.provision}" data-power="${card.power}" data-armor="${card.armor}" data-art="${card.art}" data-id="${card.id}" data-color="${card.color}" data-type="${card.type}">
-            <div class="art"><img src="img/assets/deck/cards/${card.art}.png"></div>
-            <div class="gradient"></div>
-            <div class="border"></div>
-            <div class="provision" style="background-image: url('img/assets/deck/provision/${card.provision}.png');"></div>
-            <div class="power" style="background-image: url('img/assets/deck/power/${card.power}.png');">></div>
-            <div class="amount"></div>
-            <div class="name">${card.name}</div>
+                <div class="art" style="background-image: url('img/assets/deck/cards/${card.art}.png');"></div>
+                <div class="gradient"></div>
+                <div class="border"></div>
+                <div class="provision" style="background-image: url('img/assets/deck/provision/${card.provision}.png');"></div>
+                <div class="power" style="background-image: url('img/assets/deck/power/${card.power}.png');"></div>
+                <div class="amount"></div>
+                <div class="name">${card.name}</div>
+            </div>
         `;
         }
     }  
