@@ -55,13 +55,14 @@ $abilityIcon  = 2;
 ?>
 
 <?php if($response === 'html'): ?>
+
 <div class="cardInfo">
 
     <div class="api card-render" data-id="<?= $id; ?>" data-artid="<?= $art; ?>j" data-power="<?=$power;?>" data-armor="<?=$armor;?>" data-provision="<?=$provision;?>" data-faction="<?=$faction;?>" data-set="<?=$set;?>" data-color="<?=$color;?>" data-type="<?=$type;?>" data-rarity="<?=$rarity;?>" <?php if($faction2!=''){ echo ' data-faction-duo="' . $faction . '_' . $faction2 . '"';}?>>
 
         <div class="info">
             <div class="head">
-                <div class="name"><?= $name; ?></div>
+                <div class="name"><a href="https://gwent.one/en/card/<?= $id; ?>"><?= $name; ?></a></div>
                 <div class="category"><?= $category ?></div>
             </div>
 

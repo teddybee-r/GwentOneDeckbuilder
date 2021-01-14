@@ -149,7 +149,7 @@ class Decklist
         }
         function printAbility(card) {
             document.getElementById("DeckAbility").innerHTML = "";
-            document.getElementById("DeckAbility").innerHTML += "<img oncontextmenu=\"cardInfo("+card.id+");return false;\" src=\"img/assets/ability/" + card.id + ".png\">";
+            document.getElementById("DeckAbility").innerHTML += "<img oncontextmenu=\"cardInfo("+card.id+");return false;\" src=\"img/icon/ability/" + card.id + ".png\">";
             document.getElementById("DeckName").innerHTML = "";
             document.getElementById("DeckName").innerHTML += card.name;
         }
@@ -211,15 +211,23 @@ function cardSortMultiple() {
   }
 }
 
+
 // html2canvas pushing to element #canvas
 function h2c() {
-    html2canvas(document.getElementById("h2c"), { allowTaint: true, backgroundColor: "rgba(0,0,0,0)"}).then(canvas => {
+    html2canvas(document.getElementById("Deck"), { allowTaint: true, backgroundColor: "rgba(0,0,0,0)"}).then(canvas => {
         document.getElementById("canvas").append(canvas)
     });
 }
-// html2canvas pushing to download
 
-function download(url){
+// html2canvas pushing to download
+function downloadDeck() {
+  var element = document.getElementById("Deck");
+
+  html2canvas(element, { allowTaint: true, backgroundColor: "rgba(0,0,0,0)"}).then(function(canvas) {
+    download(canvas.toDataURL("image/png"));
+  })
+}
+function download(url) {
     // create a new anchor tag
     var a = document.createElement('a');
     a.style.display = "none";
@@ -231,13 +239,6 @@ function download(url){
     a.remove();
 }
 
-function downloadDeck() {
-  var element = document.getElementById("h2c");
-
-  html2canvas(element, { allowTaint: true, backgroundColor: "rgba(0,0,0,0)"}).then(function(canvas) {
-    download(canvas.toDataURL("image/png"));
-  })
-}
 
 /*
  * Rightclicking a card will display the card information
@@ -259,3 +260,65 @@ function cardInfo(id) {
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     ajax.send();   
 }
+
+
+// Click to play Gwent premium card
+function premiumVideo(card, art) {
+    var image = document.getElementById("premium");
+    var video = `
+    <video id="premium"  onclick="premiumVideo(`+card+`, `+art+`)" poster="https://gwent.one/img/assets/medium/art/`+art+`.jpg" class="premium__video" autoplay="yes" width="249" height="357">
+        <source src="https://gwent.one/video/card/premium/`+card+`.webm" type="video/webm">
+        <source src="https://gwent.one/video/card/premium/`+card+`.mp4" type="video/mp4">
+    </video>`;
+    image.outerHTML = video;
+}
+
+/*
+ * Filter the Deckbuilder cards
+ * @var data   = string  'name', 'faction', 'set', 'provision'
+ * @var search = string  'witcher', 'neutral', 'thronebreaker', '4'
+ */
+function filterDeckbuilder(data, search) {
+    console.log("filderDeckbuilder('"+data+"', '"+search+"')");
+
+    // grab all the cards so we can modify them
+    const cards   = document.querySelectorAll('.decklist');
+    // grab only the cards that match the data-attribute=value condition
+    const matches = document.querySelectorAll('.decklist[data-'+data+'="'+search+'"]');
+
+    // display all cards
+    if (search === '*') {
+        cards.forEach(card => {
+            card.style.display = "grid";
+        });
+    } 
+    // name is a text search
+    else if (data === 'name') {
+        // look at every card
+        cards.forEach(card => {
+            // look at the data-name="" field
+            var name = card.dataset.name.toLowerCase();
+            search = search.toLowerCase();
+
+            name.includes(search)
+            ? card.style.display = "grid"
+            : card.style.display = "none";
+        });
+    }
+    // display only filtered cards
+    else {
+        cards.forEach(card => {
+            card.style.display = "none";
+        });
+        matches.forEach(match => {
+            match.style.display = "grid";
+        });
+    }
+};
+
+function filterDeckbuilderTextbox(data, search) {
+    var term = document.getElementById(search).value;
+    filterDeckbuilder(data, term);
+}
+
+// [data-'+data+'="'+search+'"]

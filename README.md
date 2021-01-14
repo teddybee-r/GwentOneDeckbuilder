@@ -21,6 +21,9 @@ since we are supporting 12 languages we can't really store things like name here
 # bugs
 - js: unit counter currently ignores amount
 
+# tweaks
+- I should really inline more of my css assets and dump things like assets.scss (one of the reasons I switched back to images for values is actually html2image. using the gwent font with html2canvas doesnt produce the same quality as images)
+
 # notice
 I am no developer all of my knowledge is build up with gwent.one.  
 This includes the backend since everything is hosted on baremetal in docker containers.  
