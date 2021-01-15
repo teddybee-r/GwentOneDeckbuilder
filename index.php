@@ -33,6 +33,7 @@ $stmt->execute();
 $result = $stmt->fetchAll(PDO::FETCH_OBJ);
 #var_dump($result);
 
+$i = 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +51,7 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
     <meta property="og:description" content="Build your own Gwent decks online.">
 
     <script type="text/javascript" src="js/deckbuilder.js"></script>
+    <script type="text/javascript" src="js/helper.js"></script>
     <script type="text/javascript" src="js/html2canvas.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -61,7 +63,6 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
 <body>
 <div id="app-nav">
     <div class="filters">
-
         <div class="filter name">
             <div class="filter-head">Name</div>
             <div class="filter-option">
@@ -155,7 +156,8 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
         <div id="DeckStratagem"></div>
         <div id="DeckCards"></div>
         
-    <div onclick="downloadDeck()">Download</div>
+    <div onclick="downloadDeck()">Download</div><br>
+    <div onclick="h2c2cp()">copy to clipboard</div>
     </div>
 
 <?php $abilities = $stratagems = $cards = []; ?>
@@ -170,7 +172,7 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
     
 <script>
     var Deck = new Decklist();
-    Deck.setStratagem(202140);
+    Deck.readCode();
 </script>
 
 </div>

@@ -11,12 +11,26 @@ console.log("┬┴┬┴┬┴┤•ᴥ•ʔ  for poking around   ├┬┴┬�
 
 // every deck card is made here
 class Card {
-  constructor(card) {
+  constructor(num, where = 'id') {
     // fetch the element storing all data-attributes
-    var card = document.getElementById(card);
+    if (where === 'art') {
+        var find = '[data-'+where+'="'+num+'"]';
+        var card = document.querySelector(find);
+    } else {
+        var card = document.getElementById(num);
+    }
     // write to object
     this.id = Number(card.dataset.id);
     this.art = Number(card.dataset.art);
+    /*
+     * short id generation for the URL happens here.
+     * art ids are used over ids because of their length(4)
+     * we shorten it to length(2)
+     * I am shifting it to a lower number because it gives me more room.
+     * All url ids have to be length(2)
+     * As long as gwent's artids do not suddenly jump we have room for about 4000 cards
+     */
+    this.code = Base64.fromNumber(this.art-700);
     this.name = card.dataset.name;
     this.provision = Number(card.dataset.provision);
     this.power = Number(card.dataset.power);
@@ -24,15 +38,13 @@ class Card {
     this.color = card.dataset.color.toLowerCase();
     this.type = card.dataset.type.toLowerCase();
     this.amount = 1;
-
-    console.log("new Card("+this.id+") {\"id\":  " + this.id + ", \"name\": \"" + this.name + "\", \"provision\": " + this.provision + ", \"power\": " + this.power  + ", \"armor\": " + this.armor  + ", \"art\": " + this.art  + ", \"type\": \"" + this.type + "\"}")
+    console.log("new Card("+this.id+") {\"id\":  " + this.id + ", \"code\":  " + this.code + ", \"name\": \"" + this.name + "\", \"provision\": " + this.provision + ", \"power\": " + this.power  + ", \"armor\": " + this.armor  + ", \"art\": " + this.art  + ", \"type\": \"" + this.type + "\"}")
   }
 }
 
 
 class Decklist
 {
-
     constructor() {
         this.version = document.getElementById("Deck").dataset.version;
         this.provision = [];
@@ -42,6 +54,7 @@ class Decklist
         this.ability = [];
         this.stratagem = [];
         this.cards = [];
+        this.code = GET('code') ?? "";
     }
 
     /*
@@ -180,7 +193,63 @@ class Decklist
             </div>
         `;
         }
+        this.generateCode();
     }  
+    
+    generateCode() {
+        var code;
+        var deckArray = [];
+        var ability = this.ability;
+        var stratagem = this.stratagem;
+        var cards = this.cards;
+        // store all cards in an array
+        ability.forEach(x => {deckArray.push(x.code)});
+        stratagem.forEach(x => {deckArray.push(x.code)});
+        cards.forEach(x => {
+            if (x.amount === 2) {
+                deckArray.push(x.code);
+                deckArray.push(x.code);
+            } else {
+                deckArray.push(x.code);
+            }
+        });
+        // merge the array to generate our code
+        code = deckArray.join('');
+        this.code = code;
+        history.replaceState( '', '', "?code="+code );
+    }
+    readCode() {
+        var code = this.code;
+        // every two characters is a card. splitting them up
+        var codeArray = code.match(/.{1,2}/g);
+        var cardArray = [];
+        var previous;
+        // rebuild the decklist using ids
+        codeArray.forEach(x => {            
+            // genereate the artid from the code, shift it back by 700;
+            var artid = Number(Base64.toNumber(x)) +700;
+            var card = new Card(artid, 'art');
+
+            if (card.type === 'ability') {
+                this.ability[0] = card;
+            }
+            else if (card.type === 'stratagem') {
+                this.stratagem[0] = card;
+            }
+            else {                
+                if(x === previous) {
+                    var cardSearch = cardArray.find(card => card.art === artid);
+                    cardSearch.amount = 2;
+                }
+                else {
+                    cardArray.push(card);
+                }
+            }
+            previous = x;
+        });
+        this.cards = cardArray;
+        this.renderDeck();
+    }
 }
 
 
@@ -213,35 +282,6 @@ function cardSortMultiple() {
   }
 }
 
-
-// html2canvas pushing to element #canvas
-function h2c() {
-    html2canvas(document.getElementById("Deck"), { allowTaint: true, backgroundColor: "rgba(0,0,0,0)"}).then(canvas => {
-        document.getElementById("canvas").append(canvas)
-    });
-}
-
-// html2canvas pushing to download
-function downloadDeck() {
-  var element = document.getElementById("Deck");
-
-  html2canvas(element, { allowTaint: true, backgroundColor: "rgba(0,0,0,0)"}).then(function(canvas) {
-    download(canvas.toDataURL("image/png"));
-  })
-}
-function download(url) {
-    // create a new anchor tag
-    var a = document.createElement('a');
-    a.style.display = "none";
-    a.setAttribute("href", url);
-    a.setAttribute("download", "deck.png");
-    // add anchor tag, click and remove it
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-}
-
-
 /*
  * Rightclicking a card will display the card information
  * This is done in PHP so we're doing it with AJAX here
@@ -261,18 +301,6 @@ function cardInfo(id) {
     ajax.open("GET", "api.php?id=" + id, true);
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     ajax.send();   
-}
-
-
-// Click to play Gwent premium card
-function premiumVideo(card, art) {
-    var image = document.getElementById("premium");
-    var video = `
-    <video id="premium"  onclick="premiumVideo(`+card+`, `+art+`)" poster="https://gwent.one/img/assets/medium/art/`+art+`.jpg" class="premium__video" autoplay="yes" width="249" height="357">
-        <source src="https://gwent.one/video/card/premium/`+card+`.webm" type="video/webm">
-        <source src="https://gwent.one/video/card/premium/`+card+`.mp4" type="video/mp4">
-    </video>`;
-    image.outerHTML = video;
 }
 
 /*
@@ -322,5 +350,3 @@ function filterDeckbuilderTextbox(data, search) {
     var term = document.getElementById(search).value;
     filterDeckbuilder(data, term);
 }
-
-// [data-'+data+'="'+search+'"]
