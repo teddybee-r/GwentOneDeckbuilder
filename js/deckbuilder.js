@@ -30,7 +30,7 @@ class Card {
      * All url ids have to be length(2)
      * As long as gwent's artids do not suddenly jump we have room for about 4000 cards
      */
-    this.code = Base64.fromNumber(this.art-700);
+    this.code = Base64.fromNumber(this.art-900);
     this.name = card.dataset.name;
     this.provision = Number(card.dataset.provision);
     this.power = Number(card.dataset.power);
@@ -226,8 +226,8 @@ class Decklist
         var previous;
         // rebuild the decklist using ids
         codeArray.forEach(x => {            
-            // genereate the artid from the code, shift it back by 700;
-            var artid = Number(Base64.toNumber(x)) +700;
+            // genereate the artid from the code, shift it back by 900;
+            var artid = Number(Base64.toNumber(x)) +900;
             var card = new Card(artid, 'art');
 
             if (card.type === 'ability') {

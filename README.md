@@ -8,6 +8,11 @@ Most of the stuff here right now is get things on the screen not get them nicely
 # Decklist images
 Using [html2canvas](https://html2canvas.hertzen.com/ "html2canvas.hertzen.com") (.js) for deck images.
 
+# Deck codes
+The main idea is to give cards short ids and then just dump these short ids to the url.  
+This is done by shortening the artid length(4) with Base64 to generate a unique url friendly code length(2). 
+I am shifting it by 900 down. Art ids start at 1000 with the highest being 2439. With this method we have 
+around 4000 codes before we run out and need to switch to length(3) per id.
 
 # preview
 ![image](preview.png)
