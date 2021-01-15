@@ -14,6 +14,16 @@ This is done by shortening the artid length(4) with Base64 to generate a unique 
 I am shifting it by 900 down. Art ids start at 1000 with the highest being 2439. With this method we have 
 around 4000 codes before we run out and need to switch to length(3) per id.
 
+```js
+    // artid: 1278, shift:  900
+    Base64.fromNumber(1278-900);
+    // result: "5w"
+    
+    // id:   15240
+    Base64.fromNumber(15240);
+    // result: "3k8"
+```
+
 # preview
 ![image](preview.png)
 
