@@ -1,0 +1,124 @@
+/*
+ * <#Deck>
+ *   <head>
+ *     <#DeckName>
+ *     <#DeckAbility>
+ *       <img>
+ *     <#DeckSize>
+ *       <img><span>
+ *     <#DeckUnits>
+ *       <img><span>
+ *     <#DeckProvision>
+ *       <img><span>
+ *   <#DeckStratagem>
+ *     <DeckCard> <- data-attr
+ *   <#DeckCards>
+ *     <DeckCard> <- data-attr
+ */
+
+#Deck {
+    display:grid;
+    align-content: start;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+  
+#Deck .head {
+    width: 100%;
+    display:grid;
+    grid-template-columns: 100px 80px 80px 100px;
+    grid-template-areas: "ability name name name"
+                         "ability size units provision";
+}
+
+#DeckName,
+#DeckAbility,
+#DeckProvision,
+#DeckSize,
+#DeckUnits {
+    font-size:1.5em;
+    color:white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+#DeckUnits img,
+#DeckProvision img,
+#DeckSize img {
+    height:40px;
+}
+#DeckUnits span,
+#DeckProvision span,
+#DeckSize span {
+    margin-left:.2em;
+}
+#DeckName {
+    font-family: GWENT;
+    grid-area: name;
+}
+#DeckUnits {
+    grid-area:units;
+}
+#DeckAbility {
+    grid-area:ability;
+    height:100px;
+    width:100px;
+}
+#DeckAbility img {
+    height:100px;
+}
+#DeckProvision {
+    grid-area:provision;
+}
+#DeckSize {
+    grid-area:size;
+}
+
+.DeckCard {
+    width: calc(525px * 0.7);
+    height: calc(70px * 0.7);
+    position:relative;
+
+    .asset {
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        width: 100%; height: 100%;
+        top: 0px; left: 0px;
+    }
+    .name {
+    position: absolute;
+    left: 110px; bottom: 15px;
+    text-align: left; color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    font-weight: 800;
+    font-family: Gwent;
+    }
+
+    &[data-color="gold"] .border {
+        background-image: url("../img/assets/deck/border/gold.png");
+    }
+    &[data-color="bronze"] .border {
+        background-image: url("../img/assets/deck/border/bronze.png");
+    }
+    &[data-type="stratagem"] .border {
+        background-image: url("../img/assets/deck/border/stratagem.png") !important;
+    }
+    .gradient {
+        background-image: url("../img/assets/deck/other/gradient.png");
+    }
+    &[data-amount="2"] .amount {
+        background-image: url("../img/assets/deck/other/amount-2.png");
+    }
+}

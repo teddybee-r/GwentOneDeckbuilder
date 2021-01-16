@@ -9,7 +9,6 @@
 /*
  * Todo:
  * validation
- * css sass for this response 
  */
 
 $id       = $_GET["id"] ?? 202308 ;
@@ -69,10 +68,10 @@ $abilityIcon  = 2;
             <div class="body">
                 <div class="ability"><?= $ability; ?></div>  
                 <?php if(!empty($keywords)): ?>                    
-                <div class="seperator-short"></div>                    
+                <div class="separator-short"></div>                    
                 <div class="keywords"><?= $keywords; ?></div>                    
                 <?php endif; ?>            
-                <div class="seperator-long"></div>                    
+                <div class="separator-long"></div>                    
                 <div class="flavor"><?= $flavor; ?></div>      
             </div>
         </div>

@@ -1,0 +1,67 @@
+/*
+ * <filters>
+ *  <filter name,type,rarity,set,power,provision>
+ *   <filter-head>
+ *   <filter-option>
+ *    <div>
+ */
+
+.filters {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+.filter {
+    display:grid;
+    grid-template-rows: auto auto;
+    padding:10px;
+    grid-gap: 3px;
+}
+.power .filter-option, .provision .filter-option {
+    font-family: GWENT;
+}
+
+.filter-option {
+    display:flex;
+    flex-wrap:wrap;
+    
+    div {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 35px;
+        width: 35px;
+        margin: 0px -1px 0px 0px;
+        border: 1px solid #fff;
+        
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        font-size: 30px;
+        cursor: pointer;
+        img {
+            width: 30px;
+        }
+    }
+
+    // rotated, recolored all icon
+    // using https://codepen.io/sosuke/pen/Pjoqqp
+    .common {
+        transform: rotate(135deg);
+        filter: invert(69%) sepia(12%) saturate(580%) hue-rotate(173deg) brightness(92%) contrast(91%);
+    }
+    .rare {
+        transform: rotate(135deg);
+        filter: invert(57%) sepia(60%) saturate(2973%) hue-rotate(169deg) brightness(99%) contrast(93%);
+    }
+    .epic {
+        transform: rotate(135deg);
+        filter: invert(19%) sepia(100%) saturate(3542%) hue-rotate(278deg) brightness(85%) contrast(99%);
+    }
+    .legendary {
+        transform: rotate(135deg);
+        filter: invert(70%) sepia(18%) saturate(7446%) hue-rotate(4deg) brightness(98%) contrast(101%);
+    }
+}
