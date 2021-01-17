@@ -39,7 +39,7 @@ class Card
     this.color = card.dataset.color.toLowerCase();
     this.type = card.dataset.type.toLowerCase();
     this.amount = 1;
-    console.log("new Card("+this.id+") {\"id\":  " + this.id + ", \"code\":  " + this.code + ", \"name\": \"" + this.name + "\", \"provision\": " + this.provision + ", \"power\": " + this.power  + ", \"armor\": " + this.armor  + ", \"art\": " + this.art  + ", \"type\": \"" + this.type + "\"}")
+    //console.log("new Card("+this.id+") {\"id\":  " + this.id + ", \"code\":  " + this.code + ", \"name\": \"" + this.name + "\", \"provision\": " + this.provision + ", \"power\": " + this.power  + ", \"armor\": " + this.armor  + ", \"art\": " + this.art  + ", \"type\": \"" + this.type + "\"}")
   }
 }
 
@@ -143,9 +143,9 @@ class Decklist
     
         this.cards.sort(cardSortMultiple("-provision", "name", "power"));
 
-        this.cards.forEach(printCard);
-        this.ability.forEach(printAbility);
-        this.stratagem.forEach(printStratagem);
+        this.cards.forEach(this.renderCard);
+        this.ability.forEach(this.renderCard);
+        this.stratagem.forEach(this.renderCard);
 
         // provision available, deck size, unit amount
         var total = this.cards.reduce((total, obj) => obj.provision*obj.amount + total,0)
@@ -160,14 +160,16 @@ class Decklist
         function cleanUp() {
             document.getElementById("DeckCards").innerHTML = "";
         }
-        function printAbility(card) {
+        this.generateCode();
+    }  
+    
+    renderCard(card) {
+        if (card.type === 'ability') {
             document.getElementById("DeckAbility").innerHTML = "";
             document.getElementById("DeckAbility").innerHTML += "<img oncontextmenu=\"cardInfo("+card.id+");return false;\" src=\"img/icon/ability/" + card.id + ".png\">";
             document.getElementById("DeckName").innerHTML = "";
             document.getElementById("DeckName").innerHTML += card.name;
-        }
-
-        function printStratagem(card) {
+        } else if (card.type === 'stratagem') { 
             document.getElementById("DeckStratagem").innerHTML = "";
             document.getElementById("DeckStratagem").innerHTML += `
             <div class="DeckCard" oncontextmenu="cardInfo('${card.id}');return false;" data-name="${card.name}" data-provision="${card.provision}" data-power="${card.power}" data-armor="${card.armor}" data-art="${card.art}" data-id="${card.id}" data-color="${card.color}" data-type="${card.type}">
@@ -177,10 +179,8 @@ class Decklist
                 <div class="asset stratagem" style="background-image: url('img/assets/deck/other/stratagem.png');"></div>
                 <div class="asset amount"></div>
                 <div class="name">${card.name}</div>
-            </div>
-            `;
-        }
-        function printCard(card) {
+            </div>`
+        } else {
             document.getElementById("DeckCards").innerHTML += `
             <div class="DeckCard" onclick="Deck.delCard(${card.id})" oncontextmenu="cardInfo(${card.id});return false;" data-name="${card.name}" data-amount="${card.amount}" data-provision="${card.provision}" data-power="${card.power}" data-armor="${card.armor}" data-art="${card.art}" data-id="${card.id}" data-color="${card.color}" data-type="${card.type}">
                 <div class="asset art" style="background-image: url('img/assets/deck/cards/${card.art}.png');"></div>
@@ -190,12 +190,10 @@ class Decklist
                 <div class="asset power" style="background-image: url('img/assets/deck/power/${card.power}.png');"></div>
                 <div class="asset amount"></div>
                 <div class="name">${card.name}</div>
-            </div>
-        `;
+            </div>`
         }
-        this.generateCode();
-    }  
-    
+    }
+
     generateCode() {
         var code;
         var deckArray = [];
